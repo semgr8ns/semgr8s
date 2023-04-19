@@ -1,0 +1,47 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test-case-incl
+  labels:
+    ngaddons/validation-webhooks: enabled
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: test-case-incl
+  labels:
+    run: testpod-pass
+    ngaddons/appName: test-app
+    ngaddons/ownerCec: abcd
+    ngaddons/webexRoomId: wxyz1234
+  name: testpod-pass
+spec:
+  containers:
+  - image: nginx
+    name: testpod
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: test-case-incl
+  labels:
+    run: testpod-fail
+  name: testpod-fail
+spec:
+  containers:
+  - image: nginx
+    name: testpod
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: test-case-incl
+  labels:
+    run: testpod-bypass
+    ngaddons/bypass: "true"
+  name: testpod-bypass
+spec:
+  containers:
+  - image: nginx
+    name: testpod
