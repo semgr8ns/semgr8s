@@ -1,0 +1,47 @@
+{{- $svc := (include "semgr8s.serviceName" .) -}}
+{{- $altNames := list -}}
+{{- $altNames = append $altNames (printf "%s" $svc) -}}
+{{- $altNames = append $altNames (printf "%s.%s" $svc .Release.Namespace) -}}
+{{- $altNames = append $altNames (printf "%s.%s.svc" $svc .Release.Namespace) -}}
+{{- $altNames = append $altNames (printf "%s.%s.svc.cluster.local" $svc .Release.Namespace) -}}
+{{- $certificate := genSelfSignedCert (printf "%s.%s.svc" $svc .Release.Namespace) nil $altNames 36500 -}}
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "semgr8s.TLSName" . }}
+  labels:
+    {{- include "semgr8s.labels" . | nindent 4 }}
+type: Opaque
+data:
+  ca.crt: {{ $certificate.Cert | b64enc }}
+  ca.key: {{ $certificate.Key | b64enc }}
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: {{ include "semgr8s.webhookName" . }}
+webhooks:
+  - name: {{ .Chart.Name }}-svc.{{ .Release.Namespace }}.svc
+    failurePolicy: Fail
+    sideEffects: None
+    timeoutSeconds: 30
+    admissionReviewVersions: ["v1","v1beta1"]
+    namespaceSelector:
+      matchLabels:
+        ngaddons/validation-webhooks: enabled
+    rules:
+      - apiGroups: ["apps", ""]
+        resources:
+          - "deployments"
+          - "pods"
+        apiVersions:
+          - "*"
+        operations:
+          - CREATE
+    clientConfig:
+      service:
+        name: {{ include "semgr8s.serviceName" . }}
+        namespace: {{ .Release.Namespace }}
+        path: /validate/
+      caBundle: {{ $certificate.Cert | b64enc }}

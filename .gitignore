@@ -5,3 +5,4 @@ certs/*
 conf/*
 manifests/*
 !*/.gitkeep
+.pylintrc

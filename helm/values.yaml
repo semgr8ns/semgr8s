@@ -1,0 +1,18 @@
+deployment:
+  replicaCount: 1
+  image:
+    repository: securesystemsengineering/semgr8s
+    pullPolicy: IfNotPresent
+    tag: ""
+  containerPort: 5000
+  imagePullSecrets: []
+  podAnnotations: {}
+  podSecurityContext: {}
+  securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 443
+
+application:
+  remoteRules: []

@@ -1,0 +1,77 @@
+rules:
+- id: run-as-non-root
+  patterns:
+  # Capture spec
+  - pattern-inside: |
+      $SPEC:
+        ...
+        containers:
+          ...
+        ...
+  - metavariable-regex:
+      metavariable: $SPEC
+      regex: ^(spec)$
+  # No Pod Security Context
+  - pattern-not-inside: |
+      spec:
+        ...
+        securityContext:
+          ...
+        ...
+  # Containers defined
+  - pattern-inside: |
+      $SPEC:
+        ...
+        containers:
+          ...
+  # Security Context of all containers in this pod are missing runAsNonRoot
+  # So no decision is made to secure at container level in other containers
+  - pattern-not-inside: |
+      $SPEC:
+        ...
+        containers:
+          ...
+          - name: $NAME
+            image: ...
+            ...
+            securityContext:
+              ...
+              runAsNonRoot: $VALUE
+  - focus-metavariable: $SPEC
+  fix: |
+    $SPEC:
+      securityContext:
+        runAsNonRoot: true #
+  message: >-
+    When running containers in Kubernetes, it's important to ensure that they 
+    are properly secured to prevent privilege escalation attacks. 
+    One potential vulnerability is when a container is allowed to run 
+    applications as the root user, which could allow an attacker to gain 
+    access to sensitive resources. To mitigate this risk, it's recommended to 
+    add a `securityContext` to the container, with the parameter `runAsNonRoot` 
+    set to `true`. This will ensure that the container runs as a non-root user, 
+    limiting the damage that could be caused by any potential attacks. By 
+    adding a `securityContext` to the container in your Kubernetes pod, you can 
+    help to ensure that your containerized applications are more secure and 
+    less vulnerable to privilege escalation attacks.
+  metadata:
+    references:
+    - https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/
+    - https://kubernetes.io/docs/concepts/policy/pod-security-policy/
+    - https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html#rule-2-set-a-user
+    category: security
+    cwe:
+    - 'CWE-250: Execution with Unnecessary Privileges'
+    owasp:
+    - A05:2021 - Security Misconfiguration
+    - A06:2017 - Security Misconfiguration
+    technology:
+    - kubernetes
+    subcategory:
+    - audit
+    likelihood: LOW
+    impact: LOW
+    confidence: LOW
+  languages:
+  - yaml
+  severity: INFO
