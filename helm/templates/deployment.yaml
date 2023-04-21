@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "semgr8s.name" . }}
+  labels:
+    {{- include "semgr8s.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.deployment.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "semgr8s.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.deployment.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "semgr8s.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccount: {{ include "semgr8s.serviceAccountName" . }}
+      {{- with .Values.deployment.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.deployment.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.deployment.securityContext | nindent 12 }}
+          image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.deployment.containerPort }}
+          resources:
+            {{- toYaml .Values.deployment.resources | nindent 12 }}
+          volumeMounts:
+          - mountPath: /etc/ssl
+            name: cert
+            readOnly: true
+          - mountPath: /app/rules
+            name: rules
+            readOnly: false
+          envFrom:
+          - configMapRef:
+              name: {{ include "semgr8s.envName" . }}
+      volumes:
+      - name: cert
+        secret:
+          secretName: {{ include "semgr8s.TLSName" . }}
+      - name: rules
+        emptyDir: {}
