@@ -1,3 +1,5 @@
+# original rule: https://github.com/returntocorp/semgrep-rules/blob/develop/yaml/kubernetes/security/allow-privilege-escalation-no-securitycontext.yaml
+# used for demo purposes only
 rules:
 - id: allow-privilege-escalation-no-securitycontext
   patterns:

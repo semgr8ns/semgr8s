@@ -1,3 +1,5 @@
+# original rule: https://github.com/returntocorp/semgrep-rules/blob/develop/yaml/kubernetes/security/privileged-container.yaml
+# used for demo purposes only
 rules:
 - id: privileged-container
   pattern-either:
