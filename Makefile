@@ -5,7 +5,7 @@ tag         := $(image):$(version)
 
 ns          := semgr8ns
 
-all: delete redeploy
+all: delete install
 
 build:
 	@echo "####################"
@@ -19,9 +19,7 @@ delete:
 	@echo "####################"
 	helm uninstall semgr8s -n $(ns)
 
-redeploy: build deploy
-
-deploy:
+install:
 	@echo "####################"
 	@echo "## $(@)"
 	@echo "####################"
