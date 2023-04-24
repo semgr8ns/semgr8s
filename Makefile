@@ -5,7 +5,7 @@ tag         := $(image):$(version)
 
 ns          := semgr8ns
 
-all: delete install
+all: uninstall install
 
 build:
 	@echo "####################"
@@ -13,7 +13,7 @@ build:
 	@echo "####################"
 	docker build --platform=linux/amd64 -t $(tag) -f docker/Dockerfile .
 
-delete:
+uninstall:
 	@echo "####################"
 	@echo "## $(@)"
 	@echo "####################"

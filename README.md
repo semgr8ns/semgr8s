@@ -35,6 +35,15 @@ Getting started to validate Kubernetes resources against Semgrep rules is only a
 - *(optional)* [make](https://www.gnu.org/software/make/) (e.g. via [build-essential](https://packages.ubuntu.com/focal/build-essential))
 - *(optional)* [docker](https://docs.docker.com/get-docker/)
 
+### Get Code
+
+Installation files are contained within this repository:
+
+```bash
+git clone https://github.com/sse-secure-systems/semgr8s.git
+cd semgr8s
+```
+
 ### Configuration & Installation
 
 Semgr8s comes preconfigured with some basic rules.
@@ -56,7 +65,7 @@ helm install semgr8s helm --create-namespace --namespace semgr8ns
   
   ```bash
   NAME: semgr8s
-  LAST DEPLOYED: Mon Apr 24 18:38:57 2023
+  LAST DEPLOYED: Tue Apr 25 00:16:04 2023
   NAMESPACE: semgr8ns
   STATUS: deployed
   REVISION: 1
@@ -75,23 +84,92 @@ kubectl get all -n semgr8ns
   <summary>output</summary>
   
   ```bash
-  NAME                           READY   STATUS             RESTARTS   AGE
-pod/semgr8s-57c8457dff-fmdfn   0/1     Running   0          3m38s
+  NAME                           READY   STATUS    RESTARTS   AGE
+  pod/semgr8s-665dbb8756-qhqv6   1/1     Running   0          7s
 
-NAME                      TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
-service/semgr8s-service   ClusterIP   10.96.205.56   <none>        443/TCP   3m38s
+  NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+  service/semgr8s-service   ClusterIP   10.96.135.157   <none>        443/TCP   7s
 
-NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/semgr8s   0/1     1            0           3m38s
+  NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
+  deployment.apps/semgr8s   1/1     1            1           7s
 
-NAME                                 DESIRED   CURRENT   READY   AGE
-replicaset.apps/semgr8s-57c8457dff   1         1         0       3m38s
+  NAME                                 DESIRED   CURRENT   READY   AGE
+  replicaset.apps/semgr8s-665dbb8756   1         1         1       7s
   ```
 </details>
 
-Once the pods are in `Running` state, you have successfully installed semgr8s :rocket:
+Once all resources are in `READY` state, you have successfully installed semgr8s :rocket:
 
 ### Testing
 
+Several test resources are provided under `tests/`.
+Semgr8s denies creating pods with insecure configuration according to the rules in `helm/rules`:
 
+```bash
+kubectl create -f tests/failing_deployment.yaml
+```
+<details>
+  <summary>output</summary>
+  
+  ```bash
+  namespace/test-semgr8s-failing created
+  Error from server: error when creating "tests/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+  ->rules.allow-privilege-escalation-no-securitycontext
+  Error from server: error when creating "tests/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+  ->rules.privileged-container
+  Error from server: error when creating "tests/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+  ->rules.hostnetwork-pod
+
+  ```
+</details>
+
+Securely configured resources on the other hand are permitted to the cluster:
+
+```bash
+kubectl create -f tests/passing_deployment.yaml
+```
+<details>
+  <summary>output</summary>
+  
+  ```bash
+  namespace/test-semgr8s-passing created
+  pod/passing-testpod-1 created
+  ```
+</details>
+
+
+### Cleanup
+
+To remove all resources of the admission controller run:
+
+```bash
+helm uninstall semgr8s -n semgr8ns
+kubectl delete ns semgr8ns
+```
+<details>
+  <summary>output</summary>
+  
+  ```bash
+  release "semgr8s" uninstalled
+  ```
+</details>
+
+Test resources are deleted via:
+
+```bash
+kubectl delete -f tests/
+```
+<details>
+  <summary>output</summary>
+  
+  ```bash
+  namespace "test-semgr8s-failing" deleted
+  namespace "test-semgr8s-passing" deleted
+  pod "passing-testpod-1" deleted
+  Error from server (NotFound): error when deleting "tests/failing_deployment.yaml": pods "failing-testpod-1" not found
+  Error from server (NotFound): error when deleting "tests/failing_deployment.yaml": pods "failing-testpod-2" not found
+  Error from server (NotFound): error when deleting "tests/failing_deployment.yaml": pods "failing-testpod-3" not found
+
+  ```
+</details>
 
