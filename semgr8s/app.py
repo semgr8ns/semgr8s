@@ -76,10 +76,10 @@ def validate():
         if results["results"]:
             num_findings = len(results["results"])
             findings = "\n" + "\n".join(
-                ["->" + f["check_id"] for f in results["results"]]
+                ["* " + f["check_id"] for f in results["results"]]
             )
             APP.logger.debug("+ %s findings: %s", num_findings, findings)
-            return send_response(False, uid, f"{num_findings} findings: {findings}")
+            return send_response(False, uid, f"Found {num_findings} violation(s) of the following policies: {findings}")
     except Exception as err:
         return send_response(False, uid, f"Webhook exception: {err}")
     finally:

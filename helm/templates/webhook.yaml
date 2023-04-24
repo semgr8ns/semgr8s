@@ -29,16 +29,16 @@ webhooks:
     admissionReviewVersions: ["v1","v1beta1"]
     namespaceSelector:
       matchLabels:
-        ngaddons/validation-webhooks: enabled
+        semgr8s/validation: enabled
     rules:
-      - apiGroups: ["apps", ""]
+      - apiGroups: [""]
         resources:
-          - "deployments"
-          - "pods"
+          - "*"
         apiVersions:
           - "*"
         operations:
           - CREATE
+        resources: ["pods"]
     clientConfig:
       service:
         name: {{ include "semgr8s.serviceName" . }}

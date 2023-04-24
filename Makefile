@@ -33,7 +33,6 @@ test:
 	@echo "####################"
 	-kubectl create -f tests/
 	@echo
-	-kubectl get pods -n test-case-excl
-	-kubectl get pods -n test-case-incl
+	-kubectl get pods -n test-semgr8s
 	@echo
 	-kubectl delete -f tests/
