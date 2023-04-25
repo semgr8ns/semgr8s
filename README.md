@@ -6,14 +6,18 @@ Admission controller to use your well-known publicly available or custom Semgrep
 :hammer_and_wrench: developed by 
 <a href="https://securesystems.de">
     <picture>
-      <img src="docs/assets/sse-logo.svg" height="15" alt="SSE logo"/>
+      <source media="(prefers-color-scheme: light)" srcset="docs/assets/sse-logo-light.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="docs/assets/sse-logo-dark.svg">
+      <img src="docs/assets/sse-logo-light.svg" height="15" alt="SSE logo"/>
     </picture>
   </a>
 
 :zap: powered by
 <a href="https://semgrep.dev">
     <picture>
-      <img src="docs/assets/semgrep-logo.svg" height="15" alt="Semgrep logo"/>
+      <source media="(prefers-color-scheme: light)" srcset="docs/assets/semgrep-logo-light.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="docs/assets/semgrep-logo-dark.svg">
+      <img src="docs/assets/semgrep-logo-light.svg" height="15" alt="Semgrep logo"/>
     </picture>
   </a>
 
