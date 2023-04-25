@@ -27,7 +27,7 @@ Admission controller to use your well-known publicly available or custom Semgrep
 
 Getting started to validate Kubernetes resources against Semgrep rules is only a matter of minutes:
 
-![](docs/assets/semgr8s_demo.gif)
+![](docs/assets/semgr8s-demo.gif)
 
 ### Requirements
 
