@@ -1,4 +1,4 @@
-FROM python:3.8-slim
+FROM python:3-alpine
 
 WORKDIR /app
 
@@ -7,5 +7,4 @@ RUN pip install -r requirements.txt
 
 COPY semgr8s/ /app/semgr8s
 
-#CMD gunicorn --certfile=/app/cert.pem --keyfile=/app/key.pem --log-level=debug -bind 0.0.0.0:5000 app:app
 CMD python -m semgr8s
