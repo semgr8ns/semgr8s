@@ -114,12 +114,11 @@ kubectl create -f tests/failing_deployment.yaml
   ```bash
   namespace/test-semgr8s-failing created
   Error from server: error when creating "tests/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
-  ->rules.allow-privilege-escalation-no-securitycontext
+  * rules.allow-privilege-escalation-no-securitycontext
   Error from server: error when creating "tests/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
-  ->rules.privileged-container
+  * rules.privileged-container
   Error from server: error when creating "tests/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
-  ->rules.hostnetwork-pod
-
+  * rules.hostnetwork-pod
   ```
 </details>
 
