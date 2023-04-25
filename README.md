@@ -1,6 +1,17 @@
-# semgr8s
+<br />
+<p align="center">
+  <a href="https://github.com/sse-secure-systems/semgr8s">
+    <picture>
+      <source media="(prefers-color-scheme: light)" srcset="docs/assets/semgr8s-logo-full-light.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="docs/assets/semgr8s-logo-full-dark.svg">
+      <img src="docs/assets/semgr8s-logo-full-light.svg" height="100" alt="Semgrep logo"/>
+    </picture>
+  </a>
+</p>
+<h2 align="center">
+Semgrep-based Policy controller for Kubernetes.
+</h2>
 
-Policy controller for Kubernetes.
 Admission controller to use your well-known publicly available or custom Semgrep rules to validate k8s resources before deployment to the cluster.
 
 :hammer_and_wrench: developed by 
@@ -20,6 +31,7 @@ Admission controller to use your well-known publicly available or custom Semgrep
       <img src="docs/assets/semgrep-logo-light.svg" height="15" alt="Semgrep logo"/>
     </picture>
   </a>
+
 
 > :warning: semgr8s is in a proof-of-concept state. Do not use in production. Breaking changes, service interruptions, and development flow adjustments are expected.
 
