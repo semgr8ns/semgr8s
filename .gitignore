@@ -6,3 +6,4 @@ conf/*
 manifests/*
 !*/.gitkeep
 .pylintrc
+.demo
