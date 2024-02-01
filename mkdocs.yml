@@ -1,0 +1,88 @@
+# Project information
+site_name: semgr8s - Semgrep-based Policy Controller for Kubernetes.
+
+site_url: https://sse-secure-systems.github.io/semgr8s/
+site_description: >-
+    Admission controller to use your well-known publicly available or custom Semgrep rules to validate k8s resources before deployment to the cluster.
+
+# Repository
+repo_name: sse-secure-systems/semgr8s/
+repo_url: https://github.com/sse-secure-systems/semgr8s
+edit_uri: ""
+
+# Company
+copyright:  <a href="https://securesystems.de">Secure Systems Engineering GmbH</a> 
+
+
+# Configuration
+theme:
+  language: en
+  name: material
+  palette:
+    primary: blue
+  font:
+    text: Roboto
+    code: Roboto Mono
+  logo: 'assets/logo.png'
+  favicon: 'assets/logo.png'
+  features:
+    - content.code.copy
+    - content.code.select
+    - navigation.top
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.tabbed
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - toc:
+        permalink: ⚓︎
+
+# Plugins
+
+# Extras
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js
+
+# Customization
+extra:
+  version:
+      provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/sse-secure-systems
+      name: SSE on GitHub
+    - icon: fontawesome/brands/medium
+      link: https://medium.com/sse-blog
+      name: SSE on Medium
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/channel/UCReAmr98RzwYZeWG6CAwOhg
+      name: SSE on YouTube
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/sse_gmbh
+      name: SSE on Twitter
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/sse-secure-systems-engineering
+      name: SSE on LinkedIn
+    - icon: fontawesome/solid/link
+      link: https://www.securesystems.de/
+      name: SSE Website
+    - icon: fontawesome/solid/envelope
+      link: mailto:christoph.hamsen@securesystems.dev
+      name: Email contact
+
+# Page tree
+nav:
+  - Documentation: README.md
