@@ -20,7 +20,7 @@ jobs:
     with:
       #TODO: adjust for non private
       skip_build: 'none'
-      skip_compliance_checks: 'all'
+      skip_compliance_checks: 'none'
       skip_unit_tests: 'all'
       skip_sast: 'all'
       skip_sca: 'all'
