@@ -17,7 +17,7 @@ if __name__ == "__main__":
     update_rules()
 
     APP.run(
-        ssl_context=("/etc/ssl/ca.crt", "/etc/ssl/ca.key"),
+        ssl_context=("/app/certs/ca.crt", "/app/certs/ca.key"),
         port=5000,
         host="0.0.0.0",
         debug=True,
