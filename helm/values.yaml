@@ -2,7 +2,7 @@ deployment:
   replicaCount: 1
   image:
     repository: ghcr.io/sse-secure-systems/semgr8s
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
     tag: ""
   containerPort: 5000
   imagePullSecrets: []

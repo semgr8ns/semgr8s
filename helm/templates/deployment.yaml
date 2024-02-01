@@ -37,7 +37,7 @@ spec:
           resources:
             {{- toYaml .Values.deployment.resources | nindent 12 }}
           volumeMounts:
-          - mountPath: /etc/ssl
+          - mountPath: /app/certs
             name: cert
             readOnly: true
           - mountPath: /app/rules
