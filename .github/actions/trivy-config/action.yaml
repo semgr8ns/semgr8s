@@ -14,7 +14,7 @@ runs:
     - name: Render Helm charts
       run: |
         mkdir deployment
-        helm template charts/connaisseur > deployment/deployment.yaml
+        helm template charts/semgr8s > deployment/deployment.yaml
       shell: bash
     - name: Scan deployment.yaml
       uses: aquasecurity/trivy-action@fbd16365eb88e12433951383f5e99bd901fc618f # v0.12.0

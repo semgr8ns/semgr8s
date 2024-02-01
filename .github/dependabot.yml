@@ -12,6 +12,30 @@ updates:
       pip-packages:
         patterns:
           - "*"
+  - package-ecosystem: "pip"
+    directory: "/docs"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "update"
+    insecure-external-code-execution: "deny"
+    target-branch: "dev"
+    groups:
+      pip-packages:
+        patterns:
+          - "*"
+  - package-ecosystem: "pip"
+    directory: "/tests"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "update"
+    insecure-external-code-execution: "deny"
+    target-branch: "dev"
+    groups:
+      pip-packages:
+        patterns:
+          - "*"
   - package-ecosystem: "docker"
     directory: "/docker"
     schedule:
