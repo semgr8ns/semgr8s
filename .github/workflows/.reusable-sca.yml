@@ -1,0 +1,100 @@
+name: sca
+
+#permissions: {}  #TODO: reactivate for non-private
+
+on:
+  workflow_call:
+    inputs:
+      image:
+        description: "Image used for testing, i.e. registry + repository + tag"
+        type: string
+        required: true
+      registry:
+        description: 'Registry to login to pull image, e.g. "ghcr.io" for GHCR, leave empty if image is public'
+        type: string
+        required: false
+        default: ''
+      repo_owner:
+        description: 'Name of repository owner, e.g. "github.repository_owner" for ghcr.io'
+        type: string
+        required: false
+        default: ''
+      skip:
+        description: "Want to skip running certain jobs 'none', 'non-required', 'all'?"
+        type: string
+        default: "none"
+      output:
+        description: 'Output either "sarif" (GITHUB_TOKEN with security-events:write) or print results as "table" and fail on error'
+        type: string
+        required: false
+        default: 'sarif'
+
+jobs:
+  trivy-image-scan:
+    name: trivy image
+    runs-on: ubuntu-latest
+    if: inputs.skip != 'all'
+    #    permissions:  #TODO: reactivate for non-private
+    #      packages: read
+    #      security-events: write
+    container:
+      image: docker:stable
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - name: Run
+        uses: ./.github/actions/trivy-image
+        with:
+          image: ${{ inputs.image }}
+          registry: ${{ inputs.registry }}
+          repo_owner: ${{ inputs.repo_owner }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          output: ${{ inputs.output }}
+
+  grype:
+    name: grype
+    runs-on: ubuntu-latest
+    if: |
+      inputs.skip != 'non-required' &&
+      inputs.skip != 'all'
+    #    permissions:  #TODO: reactivate for non-private
+    #      packages: read
+    #      security-events: write
+    container:
+      image: docker:stable
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - name: Run
+        uses: ./.github/actions/grype
+        with:
+          image: ${{ inputs.image }}
+          registry: ${{ inputs.registry }}
+          repo_owner: ${{ inputs.repo_owner }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          output: ${{ inputs.output }}
+
+# WIP: Syft issue seems to cause error (https://github.com/anchore/syft/issues/1622)
+  dependency-submission:
+    name: syft / dependency review
+    runs-on: ubuntu-latest
+    if: |
+      inputs.skip != 'non-required' &&
+      inputs.skip != 'all'
+    #    permissions:  #TODO: reactivate for non-private
+    #      packages: read
+    #      contents: write
+    steps:
+      - name: Login with registry
+        if: inputs.registry != ''
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+        with:
+          registry: ${{ inputs.registry }}
+          username: ${{ inputs.repo_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run
+        uses: anchore/sbom-action@78fc58e266e87a38d4194b2137a3d4e9bcaf7ca1 # v0.14.3
+        with:
+          image: ${{ inputs.image }}
+          format: cyclonedx-json
+          dependency-snapshot: ${{ inputs.output == 'sarif' }}
