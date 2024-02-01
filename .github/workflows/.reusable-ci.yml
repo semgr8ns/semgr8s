@@ -155,7 +155,7 @@ jobs:
       output: ${{ needs.conditionals.outputs.output_type }}
 
   docs:
-    uses: ./.github/workflows/.reusable-docs.yaml
+    uses: ./.github/workflows/.reusable-docs.yml
     needs: [conditionals]
     #    permissions:  #TODO: reactivate for non-private
     #      contents: write
