@@ -24,6 +24,6 @@ jobs:
       skip_unit_tests: 'all'
       skip_sast: 'none'
       skip_sca: 'none'
-      skip_docs: 'all'
-      skip_integration_tests: 'all'
+      skip_docs: 'non-required'
+      skip_integration_tests: 'none'
       output_type: 'sarif'
