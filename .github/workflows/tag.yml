@@ -1,12 +1,11 @@
-name: push
+name: tag
 
 #permissions: {}  #TODO: reactivate for non-private
 
 on:
   push:
-    branches:
-      - main
-      - dev
+    tags:
+      - "v*"
 
 defaults:
   run:
@@ -22,8 +21,8 @@ jobs:
       skip_build: 'none'
       skip_compliance_checks: 'none'
       skip_unit_tests: 'all'
-      skip_sast: 'non-required'
-      skip_sca: 'non-required'
+      skip_sast: 'none'
+      skip_sca: 'none'
       skip_docs: 'none'
       skip_integration_tests: 'non-required'
       output_type: 'sarif'
