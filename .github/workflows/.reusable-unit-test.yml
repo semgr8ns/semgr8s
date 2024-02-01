@@ -1,0 +1,32 @@
+name: unit-test
+
+#permissions: {}  #TODO: reactivate for non-private
+
+on:
+  workflow_call:
+    inputs:
+      skip:
+        description: "Want to skip running certain jobs 'none', 'non-required', 'all'?"
+        type: string
+        default: "none"
+
+jobs:
+  gotest:
+    name: unit tests
+    runs-on: ubuntu-latest
+    if: inputs.skip != 'all'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - name: Setup
+        uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe # v4.1.0
+        with:
+          go-version: '1.21'
+      - name: Test
+        if: inputs.skip == 'non-required'
+        run: go test ./cmd/... -coverprofile=coverage.out -covermode=atomic
+      - name: Test
+        if: inputs.skip != 'non-required'
+        run: go test ./... -race -coverprofile=coverage.out -covermode=atomic
+      - name: Upload
+        uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3.1.4

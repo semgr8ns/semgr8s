@@ -1,6 +1,6 @@
 webhookName := semgr8s
-image       :=  $(shell yq e '.deployment.image.repository' helm/values.yaml)
-version     := $(shell yq e '.appVersion' helm/Chart.yaml)
+image       :=  $(shell yq e '.deployment.image.repository' charts/semgr8s/values.yaml)
+version     := $(shell yq e '.appVersion' charts/semgr8s/Chart.yaml)
 tag         := $(image):$(version)
 
 ns          := semgr8ns
@@ -12,7 +12,7 @@ build:
 	@echo "####################"
 	@echo "## $(@)"
 	@echo "####################"
-	docker buildx build --platform=linux/amd64 -t $(tag) -f docker/Dockerfile .
+	docker buildx build --platform=linux/amd64 -t $(tag) -f build/Dockerfile .
 
 .PHONY:push
 push:
