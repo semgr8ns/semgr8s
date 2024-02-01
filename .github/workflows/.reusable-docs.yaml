@@ -1,0 +1,43 @@
+name: docs
+
+#permissions: {}  #TODO: reactivate for non-private
+
+on:
+  workflow_call:
+    inputs:
+      skip:
+        description: "Want to skip running certain jobs 'none', 'non-required', 'all'?"
+        type: string
+        default: "none"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: inputs.skip != 'all'
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+            fetch-depth: 0
+      - name: Set release env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Configure the git user
+        run: |
+          git config user.name "versioning_user"
+          git config user.email "connaisseur@securesystems.dev"
+      - name: Install
+        run: |
+          pip install -r docs/requirements_docs.txt
+      - name: Deploy
+        if: inputs.skip != 'non-required'
+        run: |
+          if [[ "${GITHUB_REF}" == "refs/tags/v"* ]];
+          then
+            mike deploy --push --update-aliases ${RELEASE_VERSION} latest
+          elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
+            mike deploy --push ${RELEASE_VERSION}
+          else
+            mkdocs build
+          fi

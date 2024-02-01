@@ -1,0 +1,29 @@
+name: pr
+
+#permissions: {}  #TODO: reactivate for non-private
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  ci:
+    uses: ./.github/workflows/.reusable-ci.yml
+    #    permissions:  #TODO: adjust for non-private
+    secrets: inherit
+    with:
+      #TODO: adjust for non private
+      skip_build: 'none'
+      skip_compliance_checks: 'all'
+      skip_unit_tests: 'all'
+      skip_sast: 'all'
+      skip_sca: 'all'
+      skip_docs: 'all'
+      skip_integration_tests: 'all'
+      output_type: 'sarif'

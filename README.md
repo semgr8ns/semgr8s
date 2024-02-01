@@ -65,10 +65,10 @@ cd semgr8s
 Semgr8s comes preconfigured with some basic rules.
 However, configuration can be adjusted to your needs:
 
-- Central configuration is maintained in `helm/values.yaml`.
+- Central configuration is maintained in `charts/semgr8s/values.yaml`.
 - Configuration aims to provide the most native integration of Semgrep's functionality into Kubernetes. Working knowledge of Kubernetes and the [Semgrep documentation](https://semgrep.dev/docs/) should be sufficient to understand the concepts and options being used here.
-- [Remote Semgrep](https://registry.semgrep.dev/rule) rules, rulesets, [repository rules](https://github.com/returntocorp/semgrep-rules) are configured via `.application.remoteRules` in `helm/values.yaml`, e.g. set to `"r/yaml.kubernetes.security.allow-privilege-escalation.allow-privilege-escalation"` or `"p/kubernetes"`, or `"r/yaml.kubernetes"` respectively.
-- [Custom Semgrep rules](https://semgrep.dev/docs/writing-rules/overview/) can placed in `helm/rules/` and will be auto-mounted into the admission controller.
+- [Remote Semgrep](https://registry.semgrep.dev/rule) rules, rulesets, [repository rules](https://github.com/returntocorp/semgrep-rules) are configured via `.application.remoteRules` in `charts/semgr8s/values.yaml`, e.g. set to `"r/yaml.kubernetes.security.allow-privilege-escalation.allow-privilege-escalation"` or `"p/kubernetes"`, or `"r/yaml.kubernetes"` respectively.
+- [Custom Semgrep rules](https://semgrep.dev/docs/writing-rules/overview/) can placed in `charts/semgr8s/rules/` and will be auto-mounted into the admission controller.
 - Semgrep provides online tools to [learn](https://semgrep.dev/learn) and [create](https://semgrep.dev/playground/new) custom rules.
 
 To deploy the preconfigured admission controller simply run:
@@ -119,7 +119,7 @@ Once all resources are in `READY` state, you have successfully installed semgr8s
 ### Testing
 
 Several test resources are provided under `tests/`.
-Semgr8s denies creating pods with insecure configuration according to the rules in `helm/rules`:
+Semgr8s denies creating pods with insecure configuration according to the rules in `charts/semgr8s/rules`:
 
 ```bash
 kubectl create -f tests/failing_deployment.yaml
