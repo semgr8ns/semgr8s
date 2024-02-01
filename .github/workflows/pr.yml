@@ -23,7 +23,7 @@ jobs:
       skip_compliance_checks: 'none'
       skip_unit_tests: 'all'
       skip_sast: 'none'
-      skip_sca: 'all'
+      skip_sca: 'none'
       skip_docs: 'all'
       skip_integration_tests: 'all'
       output_type: 'sarif'
