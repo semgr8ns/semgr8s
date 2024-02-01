@@ -23,8 +23,8 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  logo: 'assets/logo.png'
-  favicon: 'assets/logo.png'
+  logo: 'assets/semgr8s-logo-single.png'
+  favicon: 'assets/semgr8s-logo-single.png'
   features:
     - content.code.copy
     - content.code.select
@@ -85,4 +85,4 @@ extra:
 
 # Page tree
 nav:
-  - Documentation: README.md
+  - intro: README.md
