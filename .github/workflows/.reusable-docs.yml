@@ -29,14 +29,14 @@ jobs:
           git config user.email "connaisseur@securesystems.dev"
       - name: Install
         run: |
-          pip install -r docs/requirements_docs.txt
+          pip install -r docs/requirements.txt
       - name: Deploy
         if: inputs.skip != 'non-required'
         run: |
           if [[ "${GITHUB_REF}" == "refs/tags/v"* ]];
           then
             mike deploy --push --update-aliases ${RELEASE_VERSION} latest
-          elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
+          elif [[ "${GITHUB_REF}" == "refs/heads/dev" ]]; then
             mike deploy --push ${RELEASE_VERSION}
           else
             mkdocs build
