@@ -1,7 +1,7 @@
 webhookName := semgr8s
 image       :=  $(shell yq e '.deployment.image.repository' charts/semgr8s/values.yaml)
 version     := $(shell yq e '.appVersion' charts/semgr8s/Chart.yaml)
-tag         := $(image):$(version)
+tag         := $(image):v$(version)
 
 ns          := semgr8ns
 
@@ -26,7 +26,7 @@ install:
 	@echo "####################"
 	@echo "## $(@)"
 	@echo "####################"
-	helm install semgr8s helm --create-namespace --namespace $(ns)
+	helm install semgr8s charts/semgr8s --create-namespace --namespace $(ns)
 
 .PHONY:uninstall
 uninstall:
