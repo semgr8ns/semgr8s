@@ -12,7 +12,7 @@ build:
 	@echo "####################"
 	@echo "## $(@)"
 	@echo "####################"
-	docker build --platform=linux/amd64 -t $(tag) -f docker/Dockerfile .
+	docker buildx build --platform=linux/amd64 -t $(tag) -f docker/Dockerfile .
 
 .PHONY:push
 push:
