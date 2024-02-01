@@ -1,37 +1,17 @@
-<br />
-<p align="center">
-  <a href="https://github.com/sse-secure-systems/semgr8s">
-    <picture>
-      <source media="(prefers-color-scheme: light)" srcset="docs/assets/semgr8s-logo-full-light.svg">
-      <source media="(prefers-color-scheme: dark)" srcset="docs/assets/semgr8s-logo-full-dark.svg">
-      <img src="docs/assets/semgr8s-logo-full-light.svg" height="100" alt="Semgrep logo"/>
-    </picture>
-  </a>
-</p>
+![](docs/assets/semgr8s-logo-full-dark.svg#gh-dark-mode-only)
+![](docs/assets/semgr8s-logo-full-light.svg#gh-light-mode-only)
+![](assets/semgr8s-logo-full-dark.svg#gh-dark-mode-only)
+![](assets/semgr8s-logo-full-light.svg#gh-light-mode-only)
+
 <h2 align="center">
 Semgrep-based Policy controller for Kubernetes.
 </h2>
 
 Admission controller to use your well-known publicly available or custom Semgrep rules to validate k8s resources before deployment to the cluster.
 
-:hammer_and_wrench: developed by 
-<a href="https://securesystems.de">
-    <picture>
-      <source media="(prefers-color-scheme: light)" srcset="docs/assets/sse-logo-light.svg">
-      <source media="(prefers-color-scheme: dark)" srcset="docs/assets/sse-logo-dark.svg">
-      <img src="docs/assets/sse-logo-light.svg" height="15" alt="SSE logo"/>
-    </picture>
-  </a>
+:hammer_and_wrench: developed by ![](docs/assets/sse-logo-dark.svg#gh-dark-mode-only)![](docs/assets/sse-logo-light.svg#gh-light-mode-only)![](assets/sse-logo-dark.svg#gh-dark-mode-only)![](assets/sse-logo-light.svg#gh-light-mode-only)
 
-:zap: powered by
-<a href="https://semgrep.dev">
-    <picture>
-      <source media="(prefers-color-scheme: light)" srcset="docs/assets/semgrep-logo-light.svg">
-      <source media="(prefers-color-scheme: dark)" srcset="docs/assets/semgrep-logo-dark.svg">
-      <img src="docs/assets/semgrep-logo-light.svg" height="15" alt="Semgrep logo"/>
-    </picture>
-  </a>
-
+:zap: powered by ![](docs/assets/semgrep-logo-dark.svg#gh-dark-mode-only)![](docs/assets/semgrep-logo-light.svg#gh-light-mode-only)![](assets/semgrep-logo-dark.svg#gh-dark-mode-only)![](assets/semgrep-logo-light.svg#gh-light-mode-only)
 
 > :warning: semgr8s is in a proof-of-concept state. Do not use in production. Breaking changes, service interruptions, and development flow adjustments are expected.
 
@@ -40,6 +20,7 @@ Admission controller to use your well-known publicly available or custom Semgrep
 Getting started to validate Kubernetes resources against Semgrep rules is only a matter of minutes:
 
 ![](docs/assets/semgr8s-demo.gif)
+![](assets/semgr8s-demo.gif)
 
 ### Requirements
 
