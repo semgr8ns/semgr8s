@@ -1,9 +1,0 @@
-.venv
-
-# project specific
-certs/*
-conf/*
-manifests/*
-!*/.gitkeep
-.pylintrc
-.demo
