@@ -1,12 +1,11 @@
-name: push
+name: pr
 
 #permissions: {}  #TODO: reactivate for non-private
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-      - dev
 
 defaults:
   run:
@@ -24,6 +23,6 @@ jobs:
       skip_unit_tests: 'all'
       skip_sast: 'none'
       skip_sca: 'none'
-      skip_docs: 'none'
+      skip_docs: 'non-required'
       skip_integration_tests: 'none'
       output_type: 'sarif'
