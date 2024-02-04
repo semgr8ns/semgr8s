@@ -25,5 +25,5 @@ jobs:
       skip_sast: 'non-required'
       skip_sca: 'non-required'
       skip_docs: 'none'
-      skip_integration_tests: 'non-required'
+      skip_integration_tests: 'none'
       output_type: 'sarif'

@@ -38,7 +38,7 @@ webhooks:
           - "*"
         operations:
           - CREATE
-        resources: ["pods"]
+          - UPDATE
     clientConfig:
       service:
         name: {{ include "semgr8s.serviceName" . }}

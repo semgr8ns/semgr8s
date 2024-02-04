@@ -29,13 +29,210 @@ env:
   IMAGEPULLSECRET: dockerconfigjson-ghcr
 
 jobs:
-  do-nothing:
+  integration-test:
     name: functional
     runs-on: ubuntu-latest
     if: inputs.skip != 'all'
     #    permissions:  #TODO: reactivate for non-private
     #      packages: read
+    env:
+      IMAGE: ${{ inputs.build_image_repository }}
+      TAG: ${{ inputs.build_tag }}
+    strategy:
+      fail-fast: false
+      matrix:
+        integration-test-arg:
+          [
+            "basic",
+          ]
     steps:
-      - name: Do nothing
+      - name: Checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - name: Login with registry
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+        with:
+          registry: ${{ inputs.build_registry }}
+          username: ${{ inputs.repo_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install yq
         run: |
-          sleep 1
+          sudo snap install yq
+      - uses: ./.github/actions/k8s-version-config
+        name: Setup k8s cluster
+        with:
+          k8s-version: v1.25
+      - name: Run test
+        run: |
+          bash tests/integration/main.sh "${{ matrix.integration-test-arg }}"
+      - name: Display semgr8s configuration
+        if: always()
+        run: |
+          echo "::group::values.yaml"
+          yq e '... comments=""' charts/semgr8s/values.yaml
+          echo "::endgroup::"
+      - name: Display k8s state if integration test failed
+        if: failure()
+        run: |
+          kubectl describe deployments.apps -n semgr8ns -lapp.kubernetes.io/name=semgr8s
+          kubectl describe pods -n semgr8ns -lapp.kubernetes.io/name=semgr8s
+      - name: Display logs if integration test failed
+        if: failure()
+        run: |
+          kubectl logs -n semgr8ns -lapp.kubernetes.io/name=semgr8s --prefix=true --tail=-1
+
+  optional-integration-test:
+    name: optional
+    runs-on: ubuntu-latest
+    if: |
+      inputs.skip != 'non-required' &&
+      inputs.skip != 'all'
+    #    permissions:  #TODO: reactivate for non-private
+    #      packages: read
+    env:
+      IMAGE: ${{ inputs.build_image_repository }}
+      TAG: ${{ inputs.build_tag }}
+    strategy:
+      fail-fast: false
+      matrix:
+        integration-test-arg:
+          [
+            "rules",
+          ]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - name: Login with registry
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+        with:
+          registry: ${{ inputs.build_registry }}
+          username: ${{ inputs.repo_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install yq
+        run: |
+          sudo snap install yq
+      - uses: ./.github/actions/k8s-version-config
+        name: Setup k8s cluster
+        with:
+          k8s-version: v1.25
+      - name: Run test
+        run: |
+          bash tests/integration/main.sh "${{ matrix.integration-test-arg }}"
+      - name: Display semgr8s configuration
+        if: always()
+        run: |
+          echo "::group::values.yaml"
+          yq e '... comments=""' charts/semgr8s/values.yaml
+          echo "::endgroup::"
+      - name: Display k8s state if integration test failed
+        if: failure()
+        run: |
+          kubectl describe deployments.apps -n semgr8ns -lapp.kubernetes.io/name=semgr8s
+          kubectl describe pods -n semgr8ns -lapp.kubernetes.io/name=semgr8s
+      - name: Display logs if integration test failed
+        if: failure()
+        run: |
+          kubectl logs -n semgr8ns -lapp.kubernetes.io/name=semgr8s --prefix=true --tail=-1
+
+  k8s-versions:
+    name: k8s versions
+    runs-on: ubuntu-latest
+    if: inputs.skip != 'all'
+    #    permissions:  #TODO: reactivate for non-private
+    #      packages: read
+    env:
+      IMAGE: ${{ inputs.build_image_repository }}
+      TAG: ${{ inputs.build_tag }}
+    strategy:
+      fail-fast: false
+      matrix:
+        k8s-version: [
+            "v1.25",
+            "v1.26",
+            "v1.27",
+            "v1.28",
+          ]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - name: Login with registry
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+        with:
+          registry: ${{ inputs.build_registry }}
+          username: ${{ inputs.repo_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install yq
+        run: |
+          sudo snap install yq
+      - uses: ./.github/actions/k8s-version-config
+        name: Setup k8s cluster
+        with:
+          k8s-version: ${{ matrix.k8s-version }}
+      - name: Run pre-config and workload integration tests
+        run: |
+          bash tests/integration/main.sh "basic"
+      - name: Display k8s state and logs if integration test failed
+        if: failure()
+        run: |
+          kubectl describe deployments.apps -n semgr8ns -lapp.kubernetes.io/name=semgr8s
+          kubectl describe pods -n semgr8ns -lapp.kubernetes.io/name=semgr8s
+          kubectl logs -n semgr8ns -lapp.kubernetes.io/name=semgr8s --prefix=true --tail=-1
+      - name: Display semgr8s configuration
+        if: always()
+        run: |
+          echo "::group::values.yaml"
+          yq e '... comments=""' charts/semgr8s/values.yaml
+          echo "::endgroup::"
+
+  optional-k8s-versions:
+    name: optional k8s versions
+    runs-on: ubuntu-latest
+    if: |
+      inputs.skip != 'non-required' &&
+      inputs.skip != 'all'
+    #    permissions:  #TODO: reactivate for non-private
+    #      packages: read
+    env:
+      IMAGE: ${{ inputs.build_image_repository }}
+      TAG: ${{ inputs.build_tag }}
+    strategy:
+      fail-fast: false
+      matrix:
+        k8s-version: [
+            "v1.20",
+            "v1.21",
+            "v1.22",
+            "v1.23",
+            "v1.24",
+          ]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - name: Login with registry
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+        with:
+          registry: ${{ inputs.build_registry }}
+          username: ${{ inputs.repo_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install yq
+        run: |
+          sudo snap install yq
+      - uses: ./.github/actions/k8s-version-config
+        name: Setup k8s cluster
+        with:
+          k8s-version: ${{ matrix.k8s-version }}
+      - name: Run pre-config and workload integration tests
+        run: |
+          bash tests/integration/main.sh "basic"
+      - name: Display k8s state and logs if integration test failed
+        if: failure()
+        run: |
+          kubectl describe deployments.apps -n semgr8ns -lapp.kubernetes.io/name=semgr8s
+          kubectl describe pods -n semgr8ns -lapp.kubernetes.io/name=semgr8s
+          kubectl logs -n semgr8ns -lapp.kubernetes.io/name=semgr8s --prefix=true --tail=-1
+      - name: Display semgr8s configuration
+        if: always()
+        run: |
+          echo "::group::values.yaml"
+          yq e '... comments=""' charts/semgr8s/values.yaml
+          echo "::endgroup::"
+
