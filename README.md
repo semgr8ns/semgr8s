@@ -1,7 +1,7 @@
-![](docs/assets/semgr8s-logo-full-dark.svg#gh-dark-mode-only)
-![](docs/assets/semgr8s-logo-full-light.svg#gh-light-mode-only)
-![](assets/semgr8s-logo-full-dark.svg#gh-dark-mode-only)
-![](assets/semgr8s-logo-full-light.svg#gh-light-mode-only)
+![](docs/assets/semgr8s-logo-full-dark.png#gh-dark-mode-only)
+![](docs/assets/semgr8s-logo-full-light.png#gh-light-mode-only)
+![](assets/semgr8s-logo-full-dark.png#gh-dark-mode-only)
+![](assets/semgr8s-logo-full-light.png#gh-light-mode-only)
 
 <h2 align="center">
 Semgrep-based Policy controller for Kubernetes.
