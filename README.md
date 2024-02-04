@@ -99,22 +99,22 @@ Once all resources are in `READY` state, you have successfully installed semgr8s
 
 ### Testing
 
-Several test resources are provided under `tests/`.
-Semgr8s denies creating pods with insecure configuration according to the rules in `charts/semgr8s/rules`:
+Several test resources are provided under `tests/demo/`.
+For namespaces with label `semgr8s/validation=enabled`, Semgr8s denies creating pods with insecure configuration according to the rules in `charts/semgr8s/rules`:
 
 ```bash
-kubectl create -f tests/failing_deployment.yaml
+kubectl create -f tests/demo/failing_deployment.yaml
 ```
 <details>
   <summary>output</summary>
   
   ```bash
   namespace/test-semgr8s-failing created
-  Error from server: error when creating "tests/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+  Error from server: error when creating "tests/demo/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
   * rules.allow-privilege-escalation-no-securitycontext
-  Error from server: error when creating "tests/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+  Error from server: error when creating "tests/demo/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
   * rules.privileged-container
-  Error from server: error when creating "tests/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+  Error from server: error when creating "tests/demo/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
   * rules.hostnetwork-pod
   ```
 </details>
@@ -122,7 +122,7 @@ kubectl create -f tests/failing_deployment.yaml
 Securely configured resources on the other hand are permitted to the cluster:
 
 ```bash
-kubectl create -f tests/passing_deployment.yaml
+kubectl create -f tests/demo/passing_deployment.yaml
 ```
 <details>
   <summary>output</summary>
@@ -153,7 +153,7 @@ kubectl delete ns semgr8ns
 Test resources are deleted via:
 
 ```bash
-kubectl delete -f tests/
+kubectl delete -f tests/demo/
 ```
 <details>
   <summary>output</summary>
@@ -162,9 +162,9 @@ kubectl delete -f tests/
   namespace "test-semgr8s-failing" deleted
   namespace "test-semgr8s-passing" deleted
   pod "passing-testpod-1" deleted
-  Error from server (NotFound): error when deleting "tests/failing_deployment.yaml": pods "failing-testpod-1" not found
-  Error from server (NotFound): error when deleting "tests/failing_deployment.yaml": pods "failing-testpod-2" not found
-  Error from server (NotFound): error when deleting "tests/failing_deployment.yaml": pods "failing-testpod-3" not found
+  Error from server (NotFound): error when deleting "tests/demo/failing_deployment.yaml": pods "failing-testpod-1" not found
+  Error from server (NotFound): error when deleting "tests/demo/failing_deployment.yaml": pods "failing-testpod-2" not found
+  Error from server (NotFound): error when deleting "tests/demo/failing_deployment.yaml": pods "failing-testpod-3" not found
 
   ```
 </details>
