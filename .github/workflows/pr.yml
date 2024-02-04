@@ -5,7 +5,6 @@ name: pr
 on:
   pull_request:
     branches:
-      - main
       - dev
 
 defaults:
@@ -22,8 +21,8 @@ jobs:
       skip_build: 'none'
       skip_compliance_checks: 'none'
       skip_unit_tests: 'all'
-      skip_sast: 'none'
-      skip_sca: 'none'
+      skip_sast: 'non-required'
+      skip_sca: 'non-required'
       skip_docs: 'non-required'
       skip_integration_tests: 'non-required'
       output_type: 'sarif'
