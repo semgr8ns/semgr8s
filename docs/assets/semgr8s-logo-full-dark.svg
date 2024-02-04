@@ -2,11 +2,13 @@
 <svg
    id="semgreplogo"
    version="1.1"
-   viewBox="0 0 1567.4318 202.26437"
+   viewBox="0 0 1583.4318 218.26437"
    sodipodi:docname="semgr8s-logo-full-dark.svg"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
-   width="1567.4318"
-   height="202.26437"
+   width="1583.4318"
+   height="218.26437"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -22,22 +24,24 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="0.16134654"
-     inkscape:cx="2094.8698"
-     inkscape:cy="-917.28027"
+     inkscape:zoom="0.44832933"
+     inkscape:cx="744.98806"
+     inkscape:cy="256.50786"
      inkscape:window-width="1920"
      inkscape:window-height="990"
      inkscape:window-x="0"
      inkscape:window-y="28"
      inkscape:window-maximized="1"
      inkscape:current-layer="semgrep-letters"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-top="8"
+     fit-margin-left="8"
+     fit-margin-right="8"
+     fit-margin-bottom="8"
+     lock-margins="true" />
   <g
      id="semgrep-ellipsis"
-     fill="#13bf95">
+     fill="#13bf95"
+     transform="translate(8,8.0000004)">
     <path
        d="M 412,-4e-7 C 467.22847,-4e-7 512,44.77153 512,100 512,155.22847 467.22847,200 412,200 356.77153,200 312,155.22847 312,100 312.001,77.24466 319.76297,55.17016 334.00391,37.42188 339.79859,44.083375 341.89453,48.02798 348,58 h 3.5 C 348.4077,50.363742 343.86104,42.93508 337.73633,33.03907 356.69682,12.00858 383.68425,0.0021796 412,9.6e-6 Z M 412,44 c -30.92795,0 -56,25.07205 -56,56 0,30.92795 25.07205,56 56,56 30.92795,0 56,-25.07205 56,-56 0,-30.92794 -25.07205,-56 -56,-56 z"
        id="path2" />
@@ -51,7 +55,7 @@
   <g
      id="semgrep-letters"
      fill="#293331"
-     transform="translate(0,-18)">
+     transform="translate(8,-9.9999996)">
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:278.689px;line-height:1.25;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:6.96723"
@@ -67,7 +71,7 @@
   </g>
   <g
      id="g872"
-     transform="translate(0,0.5727704)">
+     transform="translate(8,8.5727708)">
     <path
        d="m 488.35756,48.40401 c -1.01002,-3.23207 -3.43407,-5.85812 -6.46413,-7.47415 L 420.28217,11.43725 c -1.61603,-0.80802 -3.43407,-1.01002 -5.0501,-1.01002 -1.61604,0 -3.43407,0 -5.05011,0.40401 L 348.5707,40.52585 c -3.03006,1.41403 -5.25211,4.04008 -6.06013,7.47415 l -15.15031,66.45936 c -0.60601,3.43407 0.20201,6.86814 2.22205,9.6962 l 42.62287,52.72308 c 2.42405,2.42405 5.85812,4.04008 9.29219,4.24209 h 67.8734 c 3.63607,0.40401 7.07014,-1.21203 9.29219,-4.24209 l 42.62287,-52.72308 c 2.02004,-2.82806 2.82806,-6.26213 2.42405,-9.6962 z"
        id="path10349"
@@ -79,7 +83,7 @@
   </g>
   <g
      id="g876"
-     transform="translate(0,2.0156264)">
+     transform="translate(8,10.015627)">
     <path
        d="m 329.27997,46.961152 c -1.01002,-3.232066 -3.43407,-5.85812 -6.46413,-7.474153 L 261.20458,9.9943948 c -1.61603,-0.8080166 -3.43407,-1.0100207 -5.0501,-1.0100207 -1.61604,0 -3.43407,0 -5.05011,0.4040083 L 189.49311,39.082991 c -3.03006,1.414029 -5.25211,4.040083 -6.06013,7.474153 l -15.15031,66.459366 c -0.60601,3.43407 0.20201,6.86814 2.22205,9.69619 l 42.62287,52.72309 c 2.42405,2.42405 5.85812,4.04008 9.29219,4.24208 h 67.8734 c 3.63607,0.40401 7.07014,-1.21202 9.29219,-4.24208 l 42.62287,-52.72309 c 2.02004,-2.82805 2.82806,-6.26212 2.42405,-9.69619 z"
        id="path10349-3"
@@ -91,7 +95,7 @@
   </g>
   <g
      id="g880"
-     transform="translate(0,4.0156264)">
+     transform="translate(8,12.015627)">
     <path
        d="m 169.27997,44.961152 c -1.01002,-3.232066 -3.43407,-5.85812 -6.46413,-7.474153 L 101.20458,7.9943948 c -1.61603,-0.8080166 -3.43407,-1.0100207 -5.0501,-1.0100207 -1.61604,0 -3.43407,0 -5.05011,0.4040083 L 29.49311,37.082991 C 26.46305,38.49702 24.241,41.123074 23.43298,44.557144 L 8.28267,111.01651 c -0.60601,3.43407 0.20201,6.86814 2.22205,9.69619 l 42.62287,52.72309 c 2.42405,2.42405 5.85812,4.04008 9.29219,4.24208 h 67.8734 c 3.63607,0.40401 7.07014,-1.21202 9.29219,-4.24208 l 42.62287,-52.72309 c 2.02004,-2.82805 2.82806,-6.26212 2.42405,-9.69619 z"
        id="path10349-7"
