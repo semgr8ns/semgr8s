@@ -26,7 +26,7 @@ install:
 	@echo "####################"
 	@echo "## $(@)"
 	@echo "####################"
-	helm install semgr8s charts/semgr8s --create-namespace --namespace $(ns)
+	helm install semgr8s charts/semgr8s --atomic --create-namespace --namespace $(ns)
 
 .PHONY:uninstall
 uninstall:
@@ -48,10 +48,10 @@ test:
 	@echo "####################"
 	@echo "## $(@)"
 	@echo "####################"
-	-kubectl create -f tests/
+	-kubectl create -f tests/demo
 	@echo
 	-kubectl get pods -n test-semgr8s-passing
 	@echo
 	-kubectl get pods -n test-semgr8s-failing
 	@echo
-	-kubectl delete -f tests/
+	-kubectl delete -f tests/demo

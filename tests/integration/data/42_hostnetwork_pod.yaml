@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostnetwork-pod
+  namespace: validatedns
+  labels:
+    use: semgr8s-integration-test
+spec:
+  containers:
+  - image: busybox
+    name: hostnetwork-pod
+    command: ["/bin/sh", "-ec", "sleep 1000"]
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      privileged: false
+      readOnlyRootFilesystem: true
+  hostNetwork: true

@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: validatedns
+  labels:
+    semgr8s/validation: enabled
+    use: semgr8s-integration-test
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ignoredns
+  labels:
+    use: semgr8s-integration-test
