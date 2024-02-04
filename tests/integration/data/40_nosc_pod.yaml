@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nosc-pod
+  namespace: validatedns
+  labels:
+    use: semgr8s-integration-test
+spec:
+  containers:
+  - image: busybox
+    name: nosc-pod
+    command: ["/bin/sh", "-ec", "sleep 1000"]

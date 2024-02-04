@@ -33,7 +33,7 @@ spec:
         drop:
           - ALL
       privileged: true
-      readOnlyRootFilesystem: false
+      readOnlyRootFilesystem: true
       runAsNonRoot: true
 ---
 apiVersion: v1
@@ -52,5 +52,5 @@ spec:
         drop:
           - ALL
       privileged: false
-      readOnlyRootFilesystem: false
+      readOnlyRootFilesystem: true
   hostNetwork: true

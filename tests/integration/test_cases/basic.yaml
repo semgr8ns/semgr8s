@@ -1,0 +1,19 @@
+testCases:
+- id: b-01
+  txt: Testing compliant pod...
+  type: k8s-yaml
+  ref: 20_compliant_pod
+  namespace: validatedns
+  expected_msg: pod/compliant-pod created
+- id: b-02
+  txt: Testing non-compliant pod w/o securityContext...
+  type: k8s-yaml
+  ref: 40_nosc_pod
+  namespace: validatedns
+  expected_msg: rules.allow-privilege-escalation-no-securitycontext
+
+values:
+  deployment:
+    image:
+      repository: "${IMAGE}"
+      tag: "${TAG}"
