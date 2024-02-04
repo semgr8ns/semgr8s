@@ -1,11 +1,10 @@
-name: pr2main
+name: nightly-build
 
 #permissions: {}  #TODO: reactivate for non-private
 
 on:
-  pull_request:
-    branches:
-      - main
+  schedule:
+    - cron: "30 1 * * *"
 
 defaults:
   run:
@@ -19,10 +18,10 @@ jobs:
     with:
       #TODO: adjust for non private
       skip_build: 'none'
-      skip_compliance_checks: 'none'
+      skip_compliance_checks: 'all'
       skip_unit_tests: 'all'
-      skip_sast: 'none'
+      skip_sast: 'all'
       skip_sca: 'none'
-      skip_docs: 'non-required'
+      skip_docs: 'all'
       skip_integration_tests: 'none'
       output_type: 'sarif'

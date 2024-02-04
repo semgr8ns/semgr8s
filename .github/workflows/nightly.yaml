@@ -1,0 +1,59 @@
+name: nightly
+
+#permissions: {}  #TODO: reactivate for non-private
+
+on:
+  schedule:
+    - cron: "30 1 * * *"
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    uses: ./.github/workflows/.reusable-build.yml
+    #    permissions:  #TODO: reactivate for non-private
+    #      packages: write
+    secrets: inherit
+    with:
+      skip: "non-required"
+
+  compliance:
+    uses: ./.github/workflows/.reusable-compliance.yml
+    #    permissions:  #TODO: reactivate for non-private
+    #      contents: write
+    #      id-token: write
+    #      security-events: write
+    #      actions: read
+    #      checks: read
+    #      deployments: read
+    #      issues: read
+    #      discussions: read
+    #      packages: read
+    #      pages: read
+    #      pull-requests: read
+    #      repository-projects: read
+    #      statuses: read
+    secrets: inherit
+    with:
+      skip: "none"
+
+  sca-released:
+    name: sca (released)
+    uses: ./.github/workflows/.reusable-sca.yml
+    needs: [build]
+    #    permissions:  #TODO: reactivate for non-private
+    #      contents: write
+    #      security-events: write
+    #      packages: read
+    secrets: inherit
+    with:
+      image: ${{ needs.build.outputs.original_image }}
+      skip: "none"
+      output: "table"
+
+  cleanup-registry:
+    uses: ./.github/workflows/.reusable-cleanup-registry.yml
+    needs: [build]
+    secrets: inherit
