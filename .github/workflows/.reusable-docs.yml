@@ -11,9 +11,11 @@ on:
         default: "none"
 
 jobs:
-  deploy:
+  docs:
     runs-on: ubuntu-latest
-    if: inputs.skip != 'all'
+    if: |
+      (github.actor != 'dependabot[bot]') &&
+      inputs.skip != 'all'
     permissions:
       contents: write
     steps:
