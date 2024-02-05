@@ -1,6 +1,6 @@
 name: sca
 
-#permissions: {}  #TODO: reactivate for non-private
+permissions: {}
 
 on:
   workflow_call:
@@ -34,9 +34,9 @@ jobs:
     name: trivy image
     runs-on: ubuntu-latest
     if: inputs.skip != 'all'
-    #    permissions:  #TODO: reactivate for non-private
-    #      packages: read
-    #      security-events: write
+    permissions:
+      packages: read
+      security-events: write
     container:
       image: docker:stable
     steps:
@@ -57,9 +57,9 @@ jobs:
     if: |
       inputs.skip != 'non-required' &&
       inputs.skip != 'all'
-    #    permissions:  #TODO: reactivate for non-private
-    #      packages: read
-    #      security-events: write
+    permissions:
+      packages: read
+      security-events: write
     container:
       image: docker:stable
     steps:
@@ -81,9 +81,9 @@ jobs:
     if: |
       inputs.skip != 'non-required' &&
       inputs.skip != 'all'
-    #    permissions:  #TODO: reactivate for non-private
-    #      packages: read
-    #      contents: write
+    permissions:
+      packages: read
+      contents: write
     steps:
       - name: Login with registry
         if: inputs.registry != ''

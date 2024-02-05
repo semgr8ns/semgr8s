@@ -1,6 +1,6 @@
 name: integration-test
 
-#permissions: {}  #TODO: reactivate for non-private
+permissions: {}
 
 on:
   workflow_call:
@@ -33,8 +33,8 @@ jobs:
     name: functional
     runs-on: ubuntu-latest
     if: inputs.skip != 'all'
-    #    permissions:  #TODO: reactivate for non-private
-    #      packages: read
+    permissions:
+      packages: read
     env:
       IMAGE: ${{ inputs.build_image_repository }}
       TAG: ${{ inputs.build_tag }}
@@ -86,8 +86,8 @@ jobs:
     if: |
       inputs.skip != 'non-required' &&
       inputs.skip != 'all'
-    #    permissions:  #TODO: reactivate for non-private
-    #      packages: read
+    permissions:
+      packages: read
     env:
       IMAGE: ${{ inputs.build_image_repository }}
       TAG: ${{ inputs.build_tag }}
@@ -137,8 +137,8 @@ jobs:
     name: k8s versions
     runs-on: ubuntu-latest
     if: inputs.skip != 'all'
-    #    permissions:  #TODO: reactivate for non-private
-    #      packages: read
+    permissions:
+      packages: read
     env:
       IMAGE: ${{ inputs.build_image_repository }}
       TAG: ${{ inputs.build_tag }}
@@ -189,8 +189,8 @@ jobs:
     if: |
       inputs.skip != 'non-required' &&
       inputs.skip != 'all'
-    #    permissions:  #TODO: reactivate for non-private
-    #      packages: read
+    permissions:
+      packages: read
     env:
       IMAGE: ${{ inputs.build_image_repository }}
       TAG: ${{ inputs.build_tag }}

@@ -1,5 +1,7 @@
 name: sast
 
+permissions: {}
+
 on:
   workflow_call:
     inputs:
@@ -12,8 +14,6 @@ on:
         type: string
         required: false
         default: 'sarif'
-
-#permissions: {}  #TODO: reactivate for non-private
 
 jobs:
   bandit:
@@ -61,8 +61,8 @@ jobs:
       (github.actor != 'dependabot[bot]') &&
       inputs.skip != 'non-required' &&
       inputs.skip != 'all'
-    #    permissions:  #TODO: reactivate for non-private
-    #      security-events: write
+    permissions:
+      security-events: write
     steps:
       - name: Checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -117,8 +117,8 @@ jobs:
       (github.actor != 'dependabot[bot]') &&
       inputs.skip != 'non-required' &&
       inputs.skip != 'all'
-    #    permissions:  #TODO: reactivate for non-private
-    #      security-events: write
+    permissions:
+      security-events: write
     steps:
       - name: Checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -149,8 +149,8 @@ jobs:
       (github.actor != 'dependabot[bot]') &&
       inputs.skip != 'non-required' &&
       inputs.skip != 'all'
-    #    permissions:  #TODO: reactivate for non-private
-    #      security-events: write
+    permissions:
+      security-events: write
     steps:
       - name: Checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -198,8 +198,8 @@ jobs:
       (github.actor != 'dependabot[bot]') &&
       inputs.skip != 'non-required' &&
       inputs.skip != 'all'
-    #    permissions:  #TODO: reactivate for non-private
-    #      security-events: write
+    permissions:
+      security-events: write
     container:
       image: returntocorp/semgrep
     steps:
@@ -224,8 +224,8 @@ jobs:
       (github.actor != 'dependabot[bot]') &&
       inputs.skip != 'non-required' &&
       inputs.skip != 'all'
-    #    permissions:  #TODO: reactivate for non-private
-    #      security-events: write
+    permissions:
+      security-events: write
     steps:
       - name: Checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
