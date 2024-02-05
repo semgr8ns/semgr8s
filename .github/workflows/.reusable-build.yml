@@ -1,6 +1,6 @@
 name: build
 
-#permissions: {}  #TODO: reactivate for non-private
+permissions: {}
 
 on:
   workflow_call:
@@ -51,7 +51,7 @@ jobs:
   context:
     runs-on: ubuntu-latest
     if: inputs.skip != 'all'
-    #    permissions: {}  #TODO: reactivate for non-private
+    permissions: {}
     outputs:
       chart_version: ${{ steps.get_context.outputs.chart_version }}
       original_registry: ${{ steps.get_context.outputs.original_registry }}
@@ -77,8 +77,8 @@ jobs:
       inputs.skip != 'non-required' &&
       inputs.skip != 'all'
     needs: [context]
-    #    permissions:  #TODO: reactivate for non-private
-    #      packages: write
+    permissions:
+      packages: write
     outputs:
       cosign_public_key: ${{ steps.build.outputs.cosign_public_key }}
     steps:

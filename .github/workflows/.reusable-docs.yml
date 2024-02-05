@@ -1,6 +1,6 @@
 name: docs
 
-#permissions: {}  #TODO: reactivate for non-private
+permissions: {}
 
 on:
   workflow_call:
