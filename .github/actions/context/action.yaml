@@ -73,9 +73,9 @@ runs:
         ORIGINAL_TAG=v${{ steps.get_app_version.outputs.result }}
         BUILD_REGISTRY=${{ inputs.build_registry }}
         BUILD_REPO=${{ inputs.build_repo }}
-        if [[ "${GHREF}" != "refs/heads/master" &&
+        if [[ "${GHREF}" != "refs/heads/main" &&
           "${GHREF}" != "refs/tags/v"* &&
-          "${GHREF}" != "refs/heads/develop"
+          "${GHREF}" != "refs/heads/dev"
         ]]; then
           BUILD_REPO="${BUILD_REPO}-test"
         fi
