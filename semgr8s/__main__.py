@@ -1,3 +1,7 @@
+"""
+Main method starting the web server.
+"""
+
 import logging
 
 from apscheduler.schedulers.background import BackgroundScheduler

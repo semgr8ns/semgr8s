@@ -1,5 +1,8 @@
-import os
+"""
+k8s API wrapper to request a provided path within the current environment
+"""
 
+import os
 import requests
 
 
