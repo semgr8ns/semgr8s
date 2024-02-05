@@ -1,3 +1,7 @@
+"""
+Flask application to expose required paths and generate suitable responses.
+"""
+
 import json
 import os
 import sys
@@ -9,18 +13,30 @@ from semgrep.cli import cli
 APP = Flask(__name__)
 
 
-@APP.route("/health", methods=["GET"])
-def health():
+@APP.route("/health", methods=["GET", "POST"])
+def healthz():
+    """
+    Handle the '/health' endpoint and check the health status of the web server.
+    Return '200' status code.
+    """
     return "", 200
 
 
 @APP.route("/ready", methods=["GET"])
-def ready():
+def readyz():
+    """
+    Handle the '/ready' endpoint and check the readiness of the web server.
+    Return '200' status code.
+    """
     return "", 200
 
 
 @APP.route("/validate", methods=["POST"])
 def validate():
+    """
+    Handle the '/validate' endpoint and accept admission rquests.
+    Return response allowing or denying the request.
+    """
     uid = ""
 
     try:
@@ -58,7 +74,7 @@ def validate():
             f"k8s_{uid}.yml",
         ]
 
-        APP.logger.debug(f"+ sys.argv: {sys.argv}")
+        APP.logger.debug("+ sys.argv: %s", sys.argv)
 
         try:
             cli()  # pylint: disable=no-value-for-parameter
@@ -84,7 +100,7 @@ def validate():
                 uid,
                 f"Found {num_findings} violation(s) of the following policies: {findings}",
             )
-    except Exception as err:
+    except Exception as err:  # pylint: disable=W0718
         return send_response(False, uid, f"Webhook exception: {err}")
     finally:
         try:
@@ -97,6 +113,9 @@ def validate():
 
 
 def send_response(allowed, uid, message):
+    """
+    Prepare json response in expected format based on validation result.
+    """
     APP.logger.debug(
         "> response:(allowed=%s, uid=%s, message=%s)", allowed, uid, message
     )
