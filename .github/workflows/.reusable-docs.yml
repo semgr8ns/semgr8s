@@ -28,7 +28,7 @@ jobs:
       - name: Configure the git user
         run: |
           git config user.name "versioning_user"
-          git config user.email "connaisseur@securesystems.dev"
+          git config user.email "semgr8s@securesystems.de"
       - name: Install
         run: |
           pip install -r docs/requirements.txt
