@@ -167,7 +167,7 @@ jobs:
         name: Setup k8s cluster
         with:
           k8s-version: ${{ matrix.k8s-version }}
-      - name: Run pre-config and workload integration tests
+      - name: Run basic tests
         run: |
           bash tests/integration/main.sh "basic"
       - name: Display k8s state and logs if integration test failed
@@ -220,7 +220,7 @@ jobs:
         name: Setup k8s cluster
         with:
           k8s-version: ${{ matrix.k8s-version }}
-      - name: Run pre-config and workload integration tests
+      - name: Run basic tests
         run: |
           bash tests/integration/main.sh "basic"
       - name: Display k8s state and logs if integration test failed
