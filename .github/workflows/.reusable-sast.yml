@@ -188,6 +188,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Install
         run: |
+          pip3 install --require-hashes -r requirements.txt
           pip3 install -r tests/requirements.txt
       - name: Lint
         run: pylint --ignore-patterns=tests,coverage semgr8s
