@@ -64,6 +64,9 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/sse-secure-systems
       name: SSE on GitHub
+    - icon: fontawesome/brands/docker
+      link: https://ghcr.io/sse-secure-systems/semgr8s
+      name: Semgr8s images on GHCR
     - icon: fontawesome/brands/medium
       link: https://medium.com/sse-blog
       name: SSE on Medium
