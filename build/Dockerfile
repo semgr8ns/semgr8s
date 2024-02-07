@@ -7,7 +7,7 @@ RUN mkdir /install
 WORKDIR /install
 COPY requirements.txt /requirements.txt
 
-RUN YARL_NO_EXTENSIONS=1 MULTIDICT_NO_EXTENSIONS=1 pip install --no-cache-dir --prefix=/install -r /requirements.txt
+RUN YARL_NO_EXTENSIONS=1 MULTIDICT_NO_EXTENSIONS=1 pip install --no-cache-dir --prefix=/install --require-hashes -r /requirements.txt
 
 # Build semgr8s
 FROM base
