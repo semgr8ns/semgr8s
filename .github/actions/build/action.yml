@@ -117,7 +117,7 @@ runs:
         CONFIGURE=$(printf -- "${CONFIGURE}")
         PUBLIC_KEY="${{ steps.verify.outputs.public_key }}"
         PUBLIC_KEY="$(printf -- "${PUBLIC_KEY//'<br>'/'\n'}")"
-        HELM_PATCH="yq e '.kubernetes.deployment.image.repository = \"${{ inputs.image_registry }}/${{ inputs.image_repo }}\"' -i charts/semgr8s/values.yaml\nyq e '.kubernetes.deployment.image.tag = \"${{ inputs.image_tag }}\"' -i charts/semgr8s/values.yaml"
+        HELM_PATCH="yq e '.deployment.image.repository = \"${{ inputs.image_registry }}/${{ inputs.image_repo }}\"' -i charts/semgr8s/values.yaml\nyq e '.deployment.image.tag = \"${{ inputs.image_tag }}\"' -i charts/semgr8s/values.yaml"
         HELM_PATCH=$(printf -- "${HELM_PATCH}")
         echo "# :building_construction: Build Information" >> ${GITHUB_STEP_SUMMARY}
         echo "<table>" >> ${GITHUB_STEP_SUMMARY}
@@ -146,17 +146,13 @@ runs:
         echo "<li><b>Cosign signature</b>: <pre><code>${{ steps.verify.outputs.signature }}</code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
         echo "<li><b>Syft SBOM (cyclonedx-json)</b>: <pre><code>${{ steps.verify.outputs.sbom }}</code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
         echo "<li>Pull via <b>Docker</b>: <pre lang="bash"><code>docker pull ${{ inputs.image_registry }}/${{ inputs.image_repo }}:${{ inputs.image_tag }}</code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
-        echo "<li>Use in <b>Helm chart</b> (needs <a href='https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/'>imagePullSecret via dockerconfigjson<a> of PAT with package:read permission): <pre lang="bash"><code>${HELM_PATCH}</code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
-        echo "<li>Configure <b>Helm chart</b> for successful validation build image (RUN ONLY ONCE, insert name of <code>imagePullSecret</code> in semgr8s namespace): <pre lang="bash"><code>${CONFIGURE}</code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
+        echo "<li>Use in <b>Helm chart</b>: <pre lang="bash"><code>${HELM_PATCH}</code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
         echo "</ul>" >> ${GITHUB_STEP_SUMMARY}
         echo "</details>" >> ${GITHUB_STEP_SUMMARY}
         echo "" >> ${GITHUB_STEP_SUMMARY}
         echo "<details><summary>:mag: Verify Build</summary>" >> ${GITHUB_STEP_SUMMARY}
         echo "(needs <a href='https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry'>Docker login via PAT</a> with package:read permission)" >> ${GITHUB_STEP_SUMMARY}
         echo "<ul>" >> ${GITHUB_STEP_SUMMARY}
-        echo "<li>Show <b>BuildKit image details</b>: <pre><code>docker buildx imagetools inspect ${{ inputs.image_registry }}/${{ inputs.image_repo }}:${{ inputs.image_tag }}</code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
-        echo "<li>Extract <b>BuildKit SBOM</b> (can be consumed by e.g. <a href='https://github.com/anchore/syft'>syft</a> or <a href='https://github.com/anchore/grype'>grype</a>): <pre><code>docker buildx imagetools inspect ${{ inputs.image_registry }}/${{ inputs.image_repo }}:${{ inputs.image_tag }} --format \"{{ json .SBOM.SPDX }}\"</code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
-        echo "<li>Extract <b>BuildKit provenance (<a href='https://slsa.dev/provenance/v0.2'>SLSA</a>)</b> data: <pre><code>docker buildx imagetools inspect ${{ inputs.image_registry }}/${{ inputs.image_repo }}:${{ inputs.image_tag }} --format \"{{ json .Provenance.SLSA }}\"</code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
         echo "<li><b>Cosign public key</b>: <pre><code>${PUBLIC_KEY}</code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
         echo "<li>Store <b>Cosign public key</b>: <pre lang="bash"><code>echo \"${PUBLIC_KEY}\" > cosign.pub </code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
         echo "<li>Verify <b>Cosign signature</b> using <code>cosign.pub</code> file: <pre lang="bash"><code>cosign verify --key cosign.pub ${{ inputs.image_registry }}/${{ inputs.image_repo }}:${{ inputs.image_tag }} </code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
