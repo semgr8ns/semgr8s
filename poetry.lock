@@ -2,13 +2,13 @@
 
 [[package]]
 name = "apscheduler"
-version = "3.10.2"
+version = "3.10.4"
 description = "In-process task scheduler with Cron-like capabilities"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "APScheduler-3.10.2-py3-none-any.whl", hash = "sha256:1b6b4cb3fcb1cfd858d12d77c206f838b1c0cd0489a2643c1303e198ed7c0167"},
-    {file = "APScheduler-3.10.2.tar.gz", hash = "sha256:64b65f9ad6803846ca6d9ce0efcb4d7a049df7cb7cf2eb46eddf74dfa7665f8d"},
+    {file = "APScheduler-3.10.4-py3-none-any.whl", hash = "sha256:fb91e8a768632a4756a585f79ec834e0e27aad5860bac7eaa523d9ccefd87661"},
+    {file = "APScheduler-3.10.4.tar.gz", hash = "sha256:e6df071b27d9be898e486bc7940a7be50b4af2e9da7c08f0744a96d4bd4cef4a"},
 ]
 
 [package.dependencies]
@@ -1518,16 +1518,16 @@ pbr = "*"
 
 [[package]]
 name = "semgrep"
-version = "1.59.1"
+version = "1.60.0"
 description = "Lightweight static analysis for many languages. Find bug variants with patterns that look like source code."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "semgrep-1.59.1-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl", hash = "sha256:e54580c5ef3ee640f61e4b2dfcce23de84ffd3457b0f894540c9258d67f7e84a"},
-    {file = "semgrep-1.59.1-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-macosx_10_14_x86_64.whl", hash = "sha256:b7fa9709194422fbb5e6e76759640943355edae510562bcad0399afaada85110"},
-    {file = "semgrep-1.59.1-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-macosx_11_0_arm64.whl", hash = "sha256:99c5bb159a5823abe3dea66016a07f59bcf51fedf8f69d421149d9c3475d6c05"},
-    {file = "semgrep-1.59.1-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-musllinux_1_0_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c91c35558b15af8dcbef43b68c1d2c570f35c6b1183eeb5d905de5b519a0a5e7"},
-    {file = "semgrep-1.59.1.tar.gz", hash = "sha256:1ef9fde9f24abec865c44c5191d6cae3248c3da66d8453e8da76530aa24407d3"},
+    {file = "semgrep-1.60.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl", hash = "sha256:c72fce30465527f751123e23d9a75919983f95e38a7fb482e25363cb0e6d915f"},
+    {file = "semgrep-1.60.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-macosx_10_14_x86_64.whl", hash = "sha256:d47b425f84e1990b7f200668928fa1b3651f41358eca1d35a0658fd11d6b0584"},
+    {file = "semgrep-1.60.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-macosx_11_0_arm64.whl", hash = "sha256:4ffd07d37b659af20c052a9b1789cd4b63f53643451cc89d92685fef8861f03a"},
+    {file = "semgrep-1.60.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-musllinux_1_0_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b8cc631a5a85798f3f64e83377054abe3dfa361d94c9a27ece36b3cd1171c6e8"},
+    {file = "semgrep-1.60.0.tar.gz", hash = "sha256:9971beb735a567758863e5bbce0e2efae01c3ca8d9d11a1d3b07ebfc7f3246b7"},
 ]
 
 [package.dependencies]
@@ -1757,4 +1757,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "8dce981086c46b2eb99dd860792488f719c09c30354061cadecdd6a92685f627"
+content-hash = "00d89619157116c7aa1d67115010bfe2fbe8a2883497e522abfeea7c78fecb87"

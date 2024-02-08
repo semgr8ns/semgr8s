@@ -7,11 +7,11 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-APScheduler = "3.10.2"
+APScheduler = "3.10.4"
 Flask = "3.0.2"
 gunicorn = "21.2.0"
 PyYAML = "6.0.1"
-semgrep = "1.59.1"
+semgrep = "1.60.0"
 
 [tool.poetry.group.docs]
 optional = false
