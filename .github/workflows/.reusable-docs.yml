@@ -29,9 +29,20 @@ jobs:
         run: |
           git config user.name "versioning_user"
           git config user.email "semgr8s@securesystems.de"
-      - name: Install
+      - name: Install python
+        uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5.0.0
+        with:
+          python-version-file: '.python-version'
+      - name: Install poetry
+        uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b # v1.3.4
+        with:
+          version: 1.7.1
+          virtualenvs-create: false
+          virtualenvs-in-project: false
+          installer-parallel: true
+      - name: Install dependencies
         run: |
-          pip install -r docs/requirements.txt
+          poetry install --only docs
       - name: Deploy
         if: inputs.skip != 'non-required'
         run: |
