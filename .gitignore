@@ -7,3 +7,4 @@ manifests/*
 !*/.gitkeep
 .pylintrc
 .demo
+__pycache__

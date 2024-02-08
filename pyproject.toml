@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "semgr8s"
+version = "0.0.0"
+description = "Semgrep-based Policy controller for Kubernetes."
+authors = ["Christoph Hamsen <christoph.hamsen@securesystems.de>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+APScheduler = "3.10.2"
+Flask = "3.0.2"
+gunicorn = "21.2.0"
+PyYAML = "6.0.1"
+semgrep = "1.59.1"
+
+[tool.poetry.group.docs]
+optional = false
+
+[tool.poetry.group.docs.dependencies]
+mkdocs-material = "9.5.8"
+mike = "2.0.0"
+
+[tool.poetry.group.dev]
+optional = false
+
+[tool.poetry.group.dev.dependencies]
+bandit = "1.7.7"
+bandit-sarif-formatter = "1.1.1"
+black = "24.1.1"
+pylint = "3.0.3"
+
+[tool.poetry.group.test]
+optional = false
+
+[tool.poetry.group.test.dependencies]
+pytest = "8.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
