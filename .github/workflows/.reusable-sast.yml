@@ -26,8 +26,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-      - name: Install Packages
-        run: pip3 install -r tests/requirements.txt
+      - name: Install python
+        uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5.0.0
+        with:
+          python-version-file: '.python-version'
+      - name: Install poetry
+        uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b # v1.3.4
+        with:
+          version: 1.7.1
+          virtualenvs-create: false
+          virtualenvs-in-project: false
+          installer-parallel: true
+      - name: Install dependencies
+        run: |
+          poetry install --only main,dev
       - name: Run Bandit
         if: inputs.output == 'table'
         run: bandit -r -f screen semgr8s/
@@ -49,8 +61,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-      - name: Install packages
-        run: pip3 install -r tests/requirements.txt
+      - name: Install python
+        uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5.0.0
+        with:
+          python-version-file: '.python-version'
+      - name: Install poetry
+        uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b # v1.3.4
+        with:
+          version: 1.7.1
+          virtualenvs-create: false
+          virtualenvs-in-project: false
+          installer-parallel: true
+      - name: Install dependencies
+        run: |
+          poetry install --only main,dev
       - name: Test formatting
         run: |
           python3 -m black . 2>&1 | grep -q "reformatted" && { echo 'Not properly formatted.'; exit 1; } || true
@@ -181,15 +205,23 @@ jobs:
     if: |
       (github.actor != 'dependabot[bot]') &&
       inputs.skip != 'all'
-    container:
-      image: python:3.11-slim
     steps:
       - name: Checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-      - name: Install
+      - name: Install python
+        uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5.0.0
+        with:
+          python-version-file: '.python-version'
+      - name: Install poetry
+        uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b # v1.3.4
+        with:
+          version: 1.7.1
+          virtualenvs-create: false
+          virtualenvs-in-project: false
+          installer-parallel: true
+      - name: Install dependencies
         run: |
-          pip3 install --require-hashes -r requirements.txt
-          pip3 install -r tests/requirements.txt
+          poetry install --only main,dev
       - name: Lint
         run: pylint --ignore-patterns=tests,coverage semgr8s
 
