@@ -11,7 +11,7 @@ ENV POETRY_NO_INTERACTION=1 \
   POETRY_VIRTUALENVS_CREATE=1 \
   POETRY_CACHE_DIR=/tmp/poetry_cache
 
-RUN apk add poetry=1.7.1-r0
+RUN apk add --no-cache poetry=1.7.1-r0
 
 WORKDIR /app
 COPY pyproject.toml poetry.lock ./
