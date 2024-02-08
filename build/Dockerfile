@@ -1,16 +1,28 @@
-FROM python:3.12-alpine@sha256:14cfc61fc2404da8adc7b1cb1fcb299aefafab22ae571f652527184fbb21ce69 as base
+FROM alpine:3.19.1@sha256:6457d53fb065d6f250e1504b9bc42d5b6c65941d57532c072d929dd0628977d0 as base
+
+COPY .python-version /
+RUN apk add --no-cache python3~="$(cat .python-version)"
 
 # Build dependencies
 FROM base as builder
 
-RUN mkdir /install
-WORKDIR /install
-COPY requirements.txt /requirements.txt
+ENV POETRY_NO_INTERACTION=1 \
+  POETRY_VIRTUALENVS_IN_PROJECT=1 \
+  POETRY_VIRTUALENVS_CREATE=1 \
+  POETRY_CACHE_DIR=/tmp/poetry_cache
 
-RUN YARL_NO_EXTENSIONS=1 MULTIDICT_NO_EXTENSIONS=1 pip install --no-cache-dir --prefix=/install --require-hashes -r /requirements.txt
+RUN apk add poetry=1.7.1-r0
+
+WORKDIR /app
+COPY pyproject.toml poetry.lock ./
+
+RUN --mount=type=cache,target=$POETRY_CACHE_DIR poetry install --only main --no-root
 
 # Build semgr8s
 FROM base
+
+ENV VIRTUAL_ENV=/app/.venv \
+  PATH="/app/.venv/bin:$PATH"
 
 RUN mkdir /app \
   && chown 10001:20001 /app \
@@ -20,12 +32,12 @@ RUN mkdir /app \
   && chown 10001:20001 /.cache
 
 WORKDIR /app
-COPY build/harden.sh /
-RUN sh /harden.sh && rm /harden.sh
 
 # Copy source code and packages
-COPY --from=builder /install /usr/local
+COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 COPY semgr8s/ /app/semgr8s
+COPY build/harden.sh /
+RUN sh /harden.sh
 
 USER 10001:20001
 
