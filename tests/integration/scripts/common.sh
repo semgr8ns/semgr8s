@@ -33,9 +33,11 @@ install() { # $1: helm or make, $2: namespace (helm), $3: additional args (helm)
 	"helm")
 		helm install semgr8s charts/semgr8s --atomic --namespace "${2}" \
 			${3} >/dev/null || fail
+		sleep 1
 		;;
 	"make")
 		make install >/dev/null || fail
+		sleep 1
 		;;
 	*)
 		fail
@@ -165,4 +167,3 @@ multi_test() { # $1: file name, $2: key to find the testcases (default: testCase
 		single_test "${ID}" "${TEST_CASE_TXT}" "${TYPE:=deploy}" "${REF}" "${NAMESPACE:=default}" "${EXP_MSG}" "${EXP_RES:=null}"
 	done
 }
-
