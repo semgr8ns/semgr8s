@@ -9,6 +9,7 @@ import sys
 import yaml
 from flask import Flask, jsonify, request
 from semgrep.cli import cli
+from werkzeug.utils import secure_filename
 
 APP = Flask(__name__)
 
@@ -53,10 +54,12 @@ def validate():
             return send_response(
                 False, "none", "Invalid request, no payload.request.uid found"
             )
+        k8s_yaml_file = secure_filename(f"data/k8s_{uid}.yml")
+        results_file = secure_filename(f"data/results_{uid}.json")
 
         k8syaml = req.get("object", {})
-        with open(f"k8s_{uid}.yml", "w", encoding="utf-8") as k8s_file:
-            yaml.dump(k8syaml, k8s_file, default_flow_style=False)
+        with open(k8s_yaml_file, "w", encoding="utf-8") as file:
+            yaml.dump(k8syaml, file, default_flow_style=False)
 
         remote_rules = []
         for remote_rule in os.environ.get("SEMGREP_RULES", "").split(" "):
@@ -65,13 +68,16 @@ def validate():
 
         sys.argv = [
             "scan",
+            "--metrics",
+            "off",
+            "--disable-version-check",
             "--config",
             "/app/rules/",
             *remote_rules,
             "--json",
             "--output",
-            "results.json",
-            f"k8s_{uid}.yml",
+            results_file,
+            k8s_yaml_file,
         ]
 
         APP.logger.debug("+ sys.argv: %s", sys.argv)
@@ -81,8 +87,8 @@ def validate():
         except SystemExit as err:
             APP.logger.debug("+ semgrep exit: %s", err)
 
-        with open("results.json", "r", encoding="utf-8") as result_file:
-            results = json.load(result_file)
+        with open(results_file, "r", encoding="utf-8") as file:
+            results = json.load(file)
         APP.logger.debug("+ scan results: %s", results)
 
         if results["errors"]:
@@ -104,8 +110,8 @@ def validate():
         return send_response(False, uid, f"Webhook exception: {err}")
     finally:
         try:
-            os.remove("results.json")
-            os.remove(f"k8s_{uid}.yml")
+            os.remove(results_file)
+            os.remove(k8s_yaml_file)
         except FileNotFoundError:
             pass
 

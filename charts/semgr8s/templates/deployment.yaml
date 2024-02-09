@@ -40,8 +40,17 @@ spec:
           - mountPath: /app/certs
             name: cert
             readOnly: true
+          - mountPath: /.semgrep
+            name: semgrep-config
+            readOnly: false
+          - mountPath: /.cache
+            name: cache
+            readOnly: false
           - mountPath: /app/rules
             name: rules
+            readOnly: false
+          - mountPath: /app/data
+            name: data
             readOnly: false
           envFrom:
           - configMapRef:
@@ -50,5 +59,13 @@ spec:
       - name: cert
         secret:
           secretName: {{ include "semgr8s.TLSName" . }}
+      - name: semgrep-config
+        emptyDir: {}
+      - name: cache
+        emptyDir: {}
       - name: rules
         emptyDir: {}
+      - name: data
+        emptyDir:
+          medium: "Memory"
+          sizeLimit: 1Mi

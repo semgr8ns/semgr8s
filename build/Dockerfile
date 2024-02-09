@@ -24,13 +24,6 @@ FROM base
 ENV VIRTUAL_ENV=/app/.venv \
   PATH="/app/.venv/bin:$PATH"
 
-RUN mkdir /app \
-  && chown 10001:20001 /app \
-  && mkdir /.semgrep \
-  && chown 10001:20001 /.semgrep \
-  && mkdir /.cache \
-  && chown 10001:20001 /.cache
-
 WORKDIR /app
 
 # Copy source code and packages
