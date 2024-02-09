@@ -11,22 +11,22 @@ on:
         default: "none"
     outputs:
       cosign_public_key: 
-        description: "Cosign public key used for signing Connaisseur image"
+        description: "Cosign public key used for signing semgr8s image"
         value: ${{ jobs.build.outputs.cosign_public_key }}
       chart_version: 
-        description: "Connaisseur Helm chart version"
+        description: "semgr8s Helm chart version"
         value: ${{ jobs.context.outputs.chart_version }}
       original_registry:
-        description: "Public Connaisseur registry"
+        description: "Public semgr8s registry"
         value: ${{ jobs.context.outputs.original_registry }}
       original_repo:
-        description: "Public Connaisseur repo"
+        description: "Public semgr8s repo"
         value: ${{ jobs.context.outputs.original_repo }}
       original_tag:
-        description: "Current Connaisseur tag, i.e. version"
+        description: "Current semgr8s tag, i.e. version"
         value: ${{ jobs.context.outputs.original_tag }}
       original_image:
-        description: "Full Connaisseur image reference, i.e. registry + repository + tag"
+        description: "Full semgr8s image reference, i.e. registry + repository + tag"
         value: ${{ jobs.context.outputs.original_image }}
       build_registry:
         description: "Workflow build registry used for testing"
@@ -84,7 +84,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-      - name: Build Connaisseur
+      - name: Build semgr8s
         id: build
         uses: ./.github/actions/build
         with:
