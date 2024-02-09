@@ -10,7 +10,6 @@ from semgr8s.app import APP
 from semgr8s.updater import update_rules
 
 if __name__ == "__main__":
-    APP.logger.addHandler(logging.StreamHandler())
     APP.logger.setLevel(logging.DEBUG)
 
     scheduler = BackgroundScheduler()
