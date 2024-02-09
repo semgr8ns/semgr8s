@@ -23,12 +23,16 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- with .Values.deployment.podSecurityContext }}
       securityContext:
-        {{- toYaml .Values.deployment.podSecurityContext | nindent 8 }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
+          {{- with .Values.deployment.securityContext }}
           securityContext:
-            {{- toYaml .Values.deployment.securityContext | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag | default (print "v" .Chart.AppVersion) }}"
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           ports:
