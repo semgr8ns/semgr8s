@@ -12,6 +12,7 @@ from semgrep.cli import cli
 from werkzeug.utils import secure_filename
 
 APP = Flask(__name__)
+DATA_FOLDER = "/app/data"
 
 
 @APP.route("/health", methods=["GET", "POST"])
@@ -54,8 +55,8 @@ def validate():
             return send_response(
                 False, "none", "Invalid request, no payload.request.uid found"
             )
-        k8s_yaml_file = secure_filename(f"data/k8s_{uid}.yml")
-        results_file = secure_filename(f"data/results_{uid}.json")
+        k8s_yaml_file = os.path.join(DATA_FOLDER, secure_filename(f"k8s_{uid}.yml"))
+        results_file = os.path.join(DATA_FOLDER, secure_filename(f"results_{uid}.json"))
 
         k8syaml = req.get("object", {})
         with open(k8s_yaml_file, "w", encoding="utf-8") as file:
