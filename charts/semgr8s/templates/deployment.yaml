@@ -50,6 +50,9 @@ spec:
           - mountPath: /.cache
             name: cache
             readOnly: false
+          - mountPath: /tmp
+            name: tmp
+            readOnly: false
           - mountPath: /app/rules
             name: rules
             readOnly: false
@@ -67,6 +70,10 @@ spec:
         emptyDir: {}
       - name: cache
         emptyDir: {}
+      - name: tmp
+        emptyDir:
+          medium: "Memory"
+          sizeLimit: 10Mi
       - name: rules
         emptyDir: {}
       - name: data
