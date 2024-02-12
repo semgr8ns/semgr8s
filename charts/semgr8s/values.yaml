@@ -33,4 +33,4 @@ service:
   port: 443
 
 application:
-  remoteRules: []
+  remoteRules: ["p/kubernetes"]
