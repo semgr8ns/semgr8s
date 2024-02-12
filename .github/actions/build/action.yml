@@ -25,6 +25,10 @@ inputs:
   cosign_version:
     description: 'Cosign version to be used'
     required: true
+outputs:
+  digest:
+    description: "Image digest"
+    value: ${{ steps.build.outputs.digest }}
 runs:
   using: "composite"
   steps:

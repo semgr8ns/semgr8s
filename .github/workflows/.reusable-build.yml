@@ -77,6 +77,8 @@ jobs:
     permissions:
       id-token: write
       packages: write
+    outputs:
+      digest: ${{ steps.build.outputs.digest }}
     steps:
       - name: Checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -91,3 +93,18 @@ jobs:
           image_labels: ${{ needs.context.outputs.build_labels }}
           repo_owner: ${{ github.repository_owner }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+
+  provenance:
+      needs: [build]
+      permissions:
+        actions: read # for detecting the Github Actions environment.
+        id-token: write # for creating OIDC tokens for signing.
+        packages: write # for uploading attestations.
+    #     if: startsWith(github.ref, 'refs/tags/')
+      uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v1.9.0
+      with:
+        image: ${{ needs.context.outputs.build_registry }}/${{ needs.context.outputs.build_repo }}
+        digest: ${{ needs.build.outputs.digest }}
+        registry-username: ${{ github.actor }}
+      secrets:
+        registry-password: ${{ secrets.GITHUB_TOKEN }}

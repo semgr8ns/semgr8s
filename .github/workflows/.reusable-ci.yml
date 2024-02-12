@@ -97,6 +97,7 @@ jobs:
     uses: ./.github/workflows/.reusable-build.yml
     needs: [conditionals]
     permissions:
+      actions: read
       id-token: write
       packages: write
     secrets: inherit
