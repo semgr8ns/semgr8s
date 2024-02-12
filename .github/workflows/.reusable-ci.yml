@@ -77,7 +77,7 @@ jobs:
       - name: Show conditionals
         id: show_conditionals
         run: |
-          get_output() { case "$1" in "none") echo ":white_check_mark:";; "non-required") echo ":information_source:";; "all") echo ":x:";; *) echo "Unknown value";; esac; }
+          get_output() { case "$1" in "none") echo ":heavy_check_mark:";; "non-required") echo ":warning:";; "all") echo ":x:";; *) echo "Unknown value";; esac; }
           echo "# :pencil: CI Settings" >> ${GITHUB_STEP_SUMMARY}
           echo "<table>" >> ${GITHUB_STEP_SUMMARY}
           echo "<tr><th>Setting</th><th>Value</th></tr>" >> ${GITHUB_STEP_SUMMARY}
@@ -90,7 +90,7 @@ jobs:
           echo "<tr><td>Run Integration Tests</td><td>$(get_output ${{ steps.conditionals.outputs.skip_integration_tests }})</td></tr>" >> ${GITHUB_STEP_SUMMARY}
           echo "<tr><td>Report type</td><td><code>${{ steps.conditionals.outputs.output_type }}</code></td></tr>" >> ${GITHUB_STEP_SUMMARY}
           echo "</table>" >> ${GITHUB_STEP_SUMMARY}
-          echo "($(get_output 'none') - run all jobs, $(get_output 'non-required') - run important/required jobs only, $(get_output 'all') - skip jobs)" >> ${GITHUB_STEP_SUMMARY}
+          echo "( $(get_output 'none') - run all jobs, $(get_output 'non-required') - run important/required jobs only, $(get_output 'all') - skip jobs)" >> ${GITHUB_STEP_SUMMARY}
           echo "" >> ${GITHUB_STEP_SUMMARY}
 
   build:
