@@ -79,8 +79,7 @@ runs:
       id: sign
       run: |
         cosign sign --key env://COSIGN_PRIVATE_KEY -a tag=${{ inputs.image_tag }} -y ${TAGS}
-        cosign attach sbom --sbom sbom.cdx --type cyclonedx ${TAGS}
-        cosign sign --key env://COSIGN_PRIVATE_KEY --attachment sbom -y ${TAGS}
+        cosign attest -y --type cyclonedx --predicate sbom.cdx --key env://COSIGN_PRIVATE_KEY ${TAGS}
       env:
         TAGS: ${{ inputs.image_registry }}/${{ inputs.image_repo }}@${{ steps.build.outputs.digest }}
         COSIGN_PRIVATE_KEY: ${{ inputs.cosign_private_key }}
@@ -94,10 +93,10 @@ runs:
         PUBLIC_KEY="$(cat ci/cosign.pub)"
         cosign tree ${TAGS}
         PUBLIC_KEY=${PUBLIC_KEY} cosign verify --key env://PUBLIC_KEY ${TAGS}
-        PUBLIC_KEY=${PUBLIC_KEY} cosign verify --key env://PUBLIC_KEY --attachment sbom ${TAGS}
+        PUBLIC_KEY=${PUBLIC_KEY} cosign verify-attestation --type cyclonedx --key env://PUBLIC_KEY ${TAGS}
         SIGNATURE=$(cosign triangulate ${TAGS})
         PUBLIC_KEY="${PUBLIC_KEY//$'\n'/'<br>'}"
-        SBOM="${SIGNATURE::-4}.sbom"
+        SBOM="${SIGNATURE::-4}.att"
         echo public_key="${PUBLIC_KEY}" >> ${GITHUB_OUTPUT}
         echo signature=${SIGNATURE} >> ${GITHUB_OUTPUT}
         echo sbom=${SBOM} >> ${GITHUB_OUTPUT}
@@ -138,7 +137,7 @@ runs:
         echo "</details>" >> ${GITHUB_STEP_SUMMARY}
         echo "" >> ${GITHUB_STEP_SUMMARY}
         echo "<details><summary>:hammer_and_wrench: Use Build Artifacts</summary>" >> ${GITHUB_STEP_SUMMARY}
-        echo "(needs <a href='https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry'>docker login via PAT</a> with package:read permission)" >> ${GITHUB_STEP_SUMMARY}
+        echo "(might require <a href='https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry'>docker login via PAT</a> with package:read permission)" >> ${GITHUB_STEP_SUMMARY}
         echo "<ul>" >> ${GITHUB_STEP_SUMMARY}
         echo "<li><b>Workflow image reference</b> by tag: <pre><code>${{ inputs.image_registry }}/${{ inputs.image_repo }}:${{ inputs.image_tag }}</code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
         echo "<li><b>Main image reference</b> by tag: <pre><code>${{ inputs.image_registry }}/${{ inputs.image_repo }}:$(echo ${{ inputs.ref_tags }} | tr ' ' '\n' | head -n1)</code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
@@ -151,7 +150,7 @@ runs:
         echo "</details>" >> ${GITHUB_STEP_SUMMARY}
         echo "" >> ${GITHUB_STEP_SUMMARY}
         echo "<details><summary>:mag: Verify Build</summary>" >> ${GITHUB_STEP_SUMMARY}
-        echo "(needs <a href='https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry'>Docker login via PAT</a> with package:read permission)" >> ${GITHUB_STEP_SUMMARY}
+        echo "(might require <a href='https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry'>Docker login via PAT</a> with package:read permission)" >> ${GITHUB_STEP_SUMMARY}
         echo "<ul>" >> ${GITHUB_STEP_SUMMARY}
         echo "<li><b>Cosign public key</b>: <pre><code>${PUBLIC_KEY}</code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
         echo "<li>Store <b>Cosign public key</b>: <pre lang="bash"><code>echo \"${PUBLIC_KEY}\" > cosign.pub </code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
@@ -159,8 +158,7 @@ runs:
         echo "<li>Verify <b>Cosign signature</b> : <pre lang="bash"><code>COSIGN_PUBLIC_KEY='${PUBLIC_KEY}' cosign verify --key env://COSIGN_PUBLIC_KEY ${{ inputs.image_registry }}/${{ inputs.image_repo }}:${{ inputs.image_tag }} </code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
         echo "<li>Display all <b>Cosign supply chain security artifacts</b>: <pre lang="bash"><code>cosign tree ${{ inputs.image_registry }}/${{ inputs.image_repo }}:${{ inputs.image_tag }} </code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
         echo "<li>Download <b>Cosign-attached SBOM</b> (syft-generated cyclonedx-json): <pre lang="bash"><code>
-        COSIGN_PUBLIC_KEY='${PUBLIC_KEY}' cosign verify --key env://COSIGN_PUBLIC_KEY --attachment sbom ${{ inputs.image_registry }}/${{ inputs.image_repo }}:${{ inputs.image_tag }} && # verify signature before download
-        cosign download sbom ${{ inputs.image_registry }}/${{ inputs.image_repo }}:${{ inputs.image_tag }} > sbom.cdx # perform actual download
+        COSIGN_PUBLIC_KEY='${PUBLIC_KEY}' cosign verify-attestation --type cyclonedx --key env://COSIGN_PUBLIC_KEY ${{ inputs.image_registry }}/${{ inputs.image_repo }}:${{ inputs.image_tag }} | jq -r '.payload' | base64 -d | jq '.predicate' > sbom.cdx
           </code></pre></li>" >> ${GITHUB_STEP_SUMMARY}
         echo "</ul>" >> ${GITHUB_STEP_SUMMARY}
         echo "</details>" >> ${GITHUB_STEP_SUMMARY}
