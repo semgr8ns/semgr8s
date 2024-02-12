@@ -21,9 +21,6 @@ on:
         description: "Want to skip running certain jobs 'none', 'non-required', 'all'?"
         type: string
         default: "none"
-      cosign_public_key:
-        description: "Cosign public key used for signing the build image"
-        type: string
 
 env:
   IMAGEPULLSECRET: dockerconfigjson-ghcr

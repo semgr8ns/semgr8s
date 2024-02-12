@@ -10,9 +10,6 @@ on:
         type: string
         default: "none"
     outputs:
-      cosign_public_key: 
-        description: "Cosign public key used for signing semgr8s image"
-        value: ${{ jobs.build.outputs.cosign_public_key }}
       chart_version: 
         description: "semgr8s Helm chart version"
         value: ${{ jobs.context.outputs.chart_version }}
@@ -78,9 +75,8 @@ jobs:
       inputs.skip != 'all'
     needs: [context]
     permissions:
+      id-token: write
       packages: write
-    outputs:
-      cosign_public_key: ${{ steps.build.outputs.cosign_public_key }}
     steps:
       - name: Checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -95,5 +91,3 @@ jobs:
           image_labels: ${{ needs.context.outputs.build_labels }}
           repo_owner: ${{ github.repository_owner }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          cosign_private_key: ${{ secrets.COSIGN_PRIVATE_KEY }}
-          cosign_password: ${{ secrets.COSIGN_PASSWORD }}
