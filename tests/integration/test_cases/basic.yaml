@@ -6,11 +6,17 @@ testCases:
   namespace: validatedns
   expected_msg: pod/compliant-pod created
 - id: b-02
-  txt: Testing non-compliant pod w/o securityContext...
+  txt: Testing non-compliant in ignored namespace...
   type: k8s-yaml
-  ref: 40_nosc_pod
+  ref: 40_testlabel_pod
+  namespace: ignoredns
+  expected_msg: pod/forbiddenlabel-pod created
+- id: b-03
+  txt: Testing non-compliant pod against local rule for forbidden test label...
+  type: k8s-yaml
+  ref: 40_testlabel_pod
   namespace: validatedns
-  expected_msg: rules.allow-privilege-escalation-no-securitycontext
+  expected_msg: rules.test-semgr8s-forbidden-label
 
 values:
   deployment:

@@ -8,21 +8,27 @@ testCases:
 - id: r-02
   txt: Testing non-compliant pod w/o securityContext...
   type: k8s-yaml
-  ref: 40_nosc_pod
+  ref: 41_nosc_pod
   namespace: validatedns
-  expected_msg: rules.allow-privilege-escalation-no-securitycontext
+  expected_msg: yaml.kubernetes.security.writable-filesystem-container.writable-filesystem-container
 - id: r-03
   txt: Testing non-compliant privileged pod...
   type: k8s-yaml
-  ref: 41_privileged_pod
+  ref: 42_privileged_pod
   namespace: validatedns
-  expected_msg: rules.privileged-container
+  expected_msg: yaml.kubernetes.security.privileged-container.privileged-container
 - id: r-04
   txt: Testing non-compliant pod w/ access to host network...
   type: k8s-yaml
-  ref: 42_hostnetwork_pod
+  ref: 43_hostnetwork_pod
   namespace: validatedns
-  expected_msg: rules.hostnetwork-pod
+  expected_msg: yaml.kubernetes.security.hostnetwork-pod.hostnetwork-pod
+- id: r-05
+  txt: Testing non-compliant pod w/ multiple local & remote issues...
+  type: k8s-yaml
+  ref: 44_multifail_pod
+  namespace: validatedns
+  expected_msg: Found 3 violation(s) of the following policies
 
 values:
   deployment:

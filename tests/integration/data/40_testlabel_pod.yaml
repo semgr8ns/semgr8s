@@ -2,15 +2,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: compliant-pod
-  namespace: validatedns
+  name: forbiddenlabel-pod
   labels:
+    use: semgr8s-integration-test
     foo: bar
     semgr8s-test: forbidden-test-label-e3b0c44298fc1c
 spec:
   containers:
   - image: busybox
-    name: compliant-pod
+    name: forbiddenlabel-container
     command: ["/bin/sh", "-ec", "sleep 1000"]
     securityContext:
       allowPrivilegeEscalation: false
