@@ -5,6 +5,6 @@ rules_integration_test() {
 	create_namespaces
 	update_with_file "basic"
 	install "make"
-	multi_test "rules"
+	multi_test "remote_rules"
 	uninstall "make"
 }

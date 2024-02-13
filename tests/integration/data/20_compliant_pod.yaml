@@ -3,7 +3,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: compliant-pod
-  namespace: validatedns
+  labels:
+    use: semgr8s-integration-test
 spec:
   containers:
   - image: busybox

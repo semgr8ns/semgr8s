@@ -101,10 +101,7 @@ update_with_file() { # $1: file name
 
 create_namespaces() {
 	echo -n "Creating test namespaces..."
-	kubectl create namespace ignoredns >/dev/null
-	kubectl label ns ignoredns semgr8s/validation=disabled use=semgr8s-integration-test >/dev/null
-	kubectl create namespace validatedns >/dev/null
-	kubectl label ns validatedns semgr8s/validation=enabled use=semgr8s-integration-test >/dev/null
+	kubectl apply -f tests/integration/data/00_namespaces.yaml >/dev/null
 	success
 }
 
@@ -125,7 +122,7 @@ single_test() { # ID TXT TYP REF NS MSG RES
 		if [[ "$3" == "deploy" ]]; then
 			kubectl run pod-$1-${RAND} --image="$4" --namespace="$5" -luse="semgr8s-integration-test" >output.log 2>&1 || true
 		else
-			kubectl apply -f "${SCRIPT_PATH}/data/$4.yaml" >output.log 2>&1 || true
+			kubectl apply -f "${SCRIPT_PATH}/data/$4.yaml" --namespace="$5" >output.log 2>&1 || true
 		fi
 		# if the webhook couldn't be called, try again.
 		[[ ("$(cat output.log)" =~ "failed calling webhook") && $i -lt ${RETRY} ]] || break

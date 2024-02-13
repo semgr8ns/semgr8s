@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multifail-pod
+  labels:
+    use: semgr8s-integration-test
+    semgr8s-test: forbidden-test-label-e3b0c44298fc1c
+    foo: bar
+spec:
+  containers:
+  - image: busybox
+    name: multifail-container
+    command: ["/bin/sh", "-ec", "sleep 1000"]
+    securityContext:
+      allowPrivilegeEscalation: true
+      capabilities:
+        drop:
+          - ALL
+      privileged: true
+      readOnlyRootFilesystem: true
+  hostNetwork: true

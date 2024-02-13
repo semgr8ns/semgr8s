@@ -101,7 +101,7 @@ def validate():
             findings = "\n" + "\n".join(
                 ["* " + f["check_id"] for f in results["results"]]
             )
-            APP.logger.debug("+ %s findings: %s", num_findings, findings)
+            APP.logger.debug("+ %s finding(s): %s", num_findings, findings)
             return send_response(
                 False,
                 uid,

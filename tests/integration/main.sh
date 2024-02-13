@@ -16,7 +16,7 @@ source ${SCRIPT_PATH}/scripts/common.sh
 
 # integration test specific functions
 source ${SCRIPT_PATH}/scripts/basic.sh
-source ${SCRIPT_PATH}/scripts/rules.sh
+source ${SCRIPT_PATH}/scripts/remote_rules.sh
 
 # backup values.yaml
 cp charts/semgr8s/values.yaml charts/semgr8s/values.yaml.bak
@@ -26,7 +26,7 @@ case $1 in
 	# testing basic functionality
 	basic_integration_test
 	;;
-"rules")
+"remote_rules")
 	# testing multiple pre-built rules
 	rules_integration_test
 	;;
