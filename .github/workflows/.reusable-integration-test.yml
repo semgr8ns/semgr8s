@@ -93,7 +93,7 @@ jobs:
       matrix:
         integration-test-arg:
           [
-            "rules",
+            "remote_rules",
           ]
     steps:
       - name: Checkout code
