@@ -27,7 +27,7 @@ optional = false
 bandit = "1.7.7"
 bandit-sarif-formatter = "1.1.1"
 black = "24.2.0"
-pylint = "3.0.3"
+pylint = "3.0.4"
 
 [tool.poetry.group.test]
 optional = false
