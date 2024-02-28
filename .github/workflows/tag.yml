@@ -24,7 +24,7 @@ jobs:
       issues: read
       packages: write
       pages: read
-      pull-requests: read
+      pull-requests: write
       repository-projects: read
       security-events: write
       statuses: read

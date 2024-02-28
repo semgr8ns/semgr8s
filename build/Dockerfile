@@ -49,6 +49,7 @@ RUN --mount=type=cache,target=$POETRY_CACHE_DIR poetry install --only test
 CMD ["pytest", "--cov=semgr8s", "--cov-report=xml:tests/coverage.xml", "tests/"]
 
 
+
 ## SEMGR8S
 FROM base
 
