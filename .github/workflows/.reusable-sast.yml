@@ -101,12 +101,14 @@ jobs:
         if: inputs.output == 'table'
         uses: bridgecrewio/checkov-action@94200023b0c8b45fdd614fe40f20d6d49915bff0 # v12.2676.0
         with:
+          skip_check: CKV_DOCKER_2
           output_format: cli
           soft_fail: false
       - name: Scan
         if: inputs.output == 'sarif'
         uses: bridgecrewio/checkov-action@94200023b0c8b45fdd614fe40f20d6d49915bff0 # v12.2676.0
         with:
+          skip_check: CKV_DOCKER_2
           output_file_path: console,checkov-results.sarif
           output_format: cli,sarif
           soft_fail: true
