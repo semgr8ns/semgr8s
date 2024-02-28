@@ -127,6 +127,8 @@ jobs:
   unit-test:
     uses: ./.github/workflows/.reusable-unit-test.yml
     needs: [conditionals]
+    permissions:
+      pull-requests: write
     with:
       skip: ${{ needs.conditionals.outputs.skip_unit_tests }}
 
