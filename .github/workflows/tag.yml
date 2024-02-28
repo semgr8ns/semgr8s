@@ -32,7 +32,7 @@ jobs:
     with:
       skip_build: 'none'
       skip_compliance_checks: 'none'
-      skip_unit_tests: 'all'
+      skip_unit_tests: 'none'
       skip_sast: 'none'
       skip_sca: 'none'
       skip_docs: 'none'
