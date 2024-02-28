@@ -1,9 +1,10 @@
+## BASE
 FROM alpine:3.19.1@sha256:c5b1261d6d3e43071626931fc004f70149baeba2c8ec672bd4f27761f8e1ad6b as base
 
 COPY .python-version /
 RUN apk add --no-cache python3~="$(cat .python-version)"
 
-# Build dependencies
+## BUILDER
 FROM base as builder
 
 ENV POETRY_NO_INTERACTION=1 \
@@ -18,7 +19,37 @@ COPY pyproject.toml poetry.lock ./
 
 RUN --mount=type=cache,target=$POETRY_CACHE_DIR poetry install --only main --no-root
 
-# Build semgr8s
+
+## TESTER
+FROM base as tester
+
+ENV VIRTUAL_ENV=/app/.venv \
+  PATH="/app/.venv/bin:$PATH" \
+  POETRY_NO_INTERACTION=1 \
+  POETRY_VIRTUALENVS_IN_PROJECT=1 \
+  POETRY_VIRTUALENVS_CREATE=1 \
+  POETRY_CACHE_DIR=/tmp/poetry_cache
+
+WORKDIR /app
+RUN mkdir /app/rules && \
+  mkdir /app/data && \
+  mkdir /.cache && \
+  mkdir /.semgrep
+
+# Copy source code, packages, and rules
+COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+COPY semgr8s/ /app/semgr8s
+COPY charts/semgr8s/rules/ /app/rules
+
+# Install test dependencies
+RUN apk add --no-cache poetry=1.7.1-r0
+COPY pyproject.toml poetry.lock ./
+RUN --mount=type=cache,target=$POETRY_CACHE_DIR poetry install --only test
+
+CMD ["pytest", "--cov=semgr8s", "--cov-report=xml:tests/coverage.xml", "tests/"]
+
+
+## SEMGR8S
 FROM base
 
 ENV VIRTUAL_ENV=/app/.venv \

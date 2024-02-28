@@ -116,7 +116,7 @@ def validate():
         except FileNotFoundError:
             pass
 
-    return send_response(True, uid, "Request has required labels")
+    return send_response(True, uid, "Compliant resource admitted")
 
 
 def send_response(allowed, uid, message):
