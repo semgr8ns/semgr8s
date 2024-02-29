@@ -31,7 +31,7 @@ jobs:
     with:
       skip_build: 'none'
       skip_compliance_checks: 'all'
-      skip_unit_tests: 'none'
+      skip_unit_tests: 'non-required'
       skip_sast: 'all'
       skip_sca: 'none'
       skip_docs: 'all'
