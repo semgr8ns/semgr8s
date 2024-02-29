@@ -37,6 +37,9 @@ jobs:
         run: docker run --rm -t -v ${PWD}/tests/:/app/tests/ semgr8s:tester pytest --cov-report=term-missing:skip-covered --junitxml=tests/pytest.xml --cov=semgr8s tests/ | tee tests/pytest-coverage.txt
       - name: Coverage comment
         uses: MishaKav/pytest-coverage-comment@a1fe18e2b00c64a765568e2edb9f1706eb8fc88b # v1.1.51
+        if: |
+          github.event_name == 'pull_request' &&
+          inputs.skip != 'non-required'
         with:
           pytest-coverage-path: tests/pytest-coverage.txt
           junitxml-path: tests/pytest.xml
