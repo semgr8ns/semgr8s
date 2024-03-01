@@ -17,7 +17,7 @@ def update_rules():
     logging.info("updateing rule set")
 
     try:
-        namespace = os.environ.get("NAMESPACE", "default")
+        namespace = os.getenv("NAMESPACE", "default")
         query = {"labelSelector": "semgr8s/rule"}
 
         rules = request_kube_api(
