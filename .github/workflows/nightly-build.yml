@@ -15,7 +15,7 @@ jobs:
     uses: ./.github/workflows/.reusable-ci.yml
     permissions:
       actions: read
-      checks: read
+      checks: write
       contents: write
       deployments: read
       discussions: read

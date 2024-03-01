@@ -18,6 +18,7 @@ jobs:
       inputs.skip != 'non-required' &&
       inputs.skip != 'all'
     permissions:
+      pull-requests: write
       security-events: write
     steps:
       - name: Checkout code
@@ -45,6 +46,7 @@ jobs:
       inputs.skip != 'all'
     permissions:
       contents: write
+      pull-requests: write
     steps:
       - name: Checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
