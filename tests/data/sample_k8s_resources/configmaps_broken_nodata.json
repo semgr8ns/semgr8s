@@ -1,0 +1,59 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "data": {},
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {
+          "meta.helm.sh/release-name": "semgr8s",
+          "meta.helm.sh/release-namespace": "semgr8ns"
+        },
+        "creationTimestamp": "2024-02-29T16:55:00Z",
+        "labels": {
+          "app.kubernetes.io/instance": "semgr8s",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "semgr8s",
+          "app.kubernetes.io/version": "0.1.5",
+          "helm.sh/chart": "semgr8s-0.1.5",
+          "semgr8s/rule": "true"
+        },
+        "name": "test-semgr8s-forbidden-label",
+        "namespace": "semgr8ns",
+        "resourceVersion": "1088322",
+        "uid": "1ccd87f6-fe42-4428-910a-978643a44409"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "tester-test-broken.yaml": "rules:\n- id: test-semgr8s-forbidden-label\n  patterns:\n    - pattern-inside: |\n        metadata:\n          ...\n    - pattern-inside: |\n        labels:\n          ...\n    - pattern: |\n        semgr8s-test: forbidden-test-label-e3b0c44298fc1c\n  fix: \"\"\n  message: TEST ONLY. Found kubernetes resource with semgr8s forbidden test label. Any resource with label \"semgr8s-test=forbidden-test-label-e3b0c44298fc1c\" is denied. This label carries no meaning beyond testing and demonstration purposes.\n  metadata:\n    category: test \n    technology:\n      - kubernetes\n    references:\n      - https://sse-secure-systems.github.io/semgr8s/latest/#testing\n  languages: [yaml]\n  severity: INFO\n"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {
+          "meta.helm.sh/release-name": "semgr8s",
+          "meta.helm.sh/release-namespace": "semgr8ns"
+        },
+        "creationTimestamp": "2024-02-29T16:55:00Z",
+        "labels": {
+          "app.kubernetes.io/instance": "semgr8s",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "semgr8s",
+          "app.kubernetes.io/version": "0.1.5",
+          "helm.sh/chart": "semgr8s-0.1.5",
+          "semgr8s/rule": "true"
+        },
+        "name": "tester-test-name",
+        "namespace": "semgr8ns",
+        "resourceVersion": "1088323",
+        "uid": "9404b1fc-7f93-41f2-a006-4326c327e356"
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}
