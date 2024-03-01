@@ -116,7 +116,7 @@ jobs:
       issues: read
       packages: read
       pages: read
-      pull-requests: read
+      pull-requests: write
       repository-projects: read
       security-events: write
       statuses: read
@@ -128,6 +128,7 @@ jobs:
     uses: ./.github/workflows/.reusable-unit-test.yml
     needs: [conditionals]
     permissions:
+      checks: write
       pull-requests: write
     with:
       skip: ${{ needs.conditionals.outputs.skip_unit_tests }}
