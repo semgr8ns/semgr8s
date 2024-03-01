@@ -3,7 +3,10 @@ k8s API wrapper to request a provided path within the current environment
 """
 
 import os
+from json.decoder import JSONDecodeError
 import requests
+
+from semgr8s.app import APP
 
 
 def request_kube_api(path: str):
@@ -22,7 +25,12 @@ def request_kube_api(path: str):
     url = f"https://{kube_ip}:{kube_port}/{path}"
     headers = {"Authorization": f"Bearer {token}"}
 
-    response = requests.get(url, verify=ca_path, headers=headers, timeout=30)
+    try:
+        response = requests.get(url, verify=ca_path, headers=headers, timeout=30)
+    except JSONDecodeError as err:
+        APP.logger.error("ERROR: Malformed k8s API response or resource yaml: %s", err)
+        return {}
+
     response.raise_for_status()
 
     return response.json()

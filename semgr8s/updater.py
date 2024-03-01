@@ -14,7 +14,7 @@ def update_rules():
     """
     Request all rule configmaps from kubernetes api and store locally in semgrep format.
     """
-    logging.info("updateing rule set")
+    logging.info("INFO: updateing rule set")
 
     try:
         namespace = os.getenv("NAMESPACE", "default")
@@ -24,11 +24,12 @@ def update_rules():
             f"api/v1/namespaces/{namespace}/configmaps?{urlencode(query)}"
         )
 
-        for rule in rules["items"]:
-            file, content = list(rule["data"].items())[0]
-
-            logging.debug("updating %s rule", file)
-            with open(f"/app/rules/{file}", "w", encoding="utf-8") as rule_file:
-                rule_file.write(content)
+        for item in rules.get("items", []):
+            data = list(item.get("data", {}).items())
+            for datum in data:
+                file, content = datum
+                with open(f"/app/rules/{file}", "w", encoding="utf-8") as rule_file:
+                    rule_file.write(content)
+                logging.info("INFO: updated %s rule", file)
     except Exception as err:  # pylint: disable=W0718
         logging.error("Error updating rules: %s", err)
