@@ -35,7 +35,7 @@ def readyz():
 
 
 @APP.route("/validate", methods=["POST"])
-def validate():
+def validate():  # pylint: disable=too-many-return-statements
     """
     Handle the '/validate' endpoint and accept admission rquests.
     Return response allowing or denying the request.
@@ -124,7 +124,9 @@ def validate():
 
         if results["errors"]:
             APP.logger.error("ERROR: %s", results["errors"])
-            return send_response(False, uid, 418, "Request caused error during semgrep scan")
+            return send_response(
+                False, uid, 418, "Request caused error during semgrep scan"
+            )
 
         if results["results"]:
             num_findings = len(results["results"])
