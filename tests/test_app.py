@@ -1,3 +1,5 @@
+import base64
+import json
 import pytest
 
 from . import conftest as fix
@@ -59,3 +61,40 @@ def test_validate(
     assert admission_response["allowed"] == allowed
     assert admission_response["status"]["code"] == code
     assert msg in admission_response["status"]["message"]
+
+
+@pytest.mark.parametrize(
+    "index, remote_rules, allowed, code, msg, patch",
+    [
+        (5, "", True, 201, "Compliant resource admitted", None),
+        (
+            6,
+            "",
+            True,
+            202,
+            "forbidden-label",
+            '[{"op": "remove", "path": "/metadata/labels/semgr8s-test"}]',
+        ),
+    ],
+)
+def test_mutate(
+    monkeypatch, adm_req_samples, index, remote_rules, allowed, code, msg, patch
+):
+    monkeypatch.setenv("SEMGREP_RULES", remote_rules)
+    client = pytest.sapp.APP.test_client()
+    if index is not None:
+        payload = adm_req_samples[index]
+    else:
+        payload = ""
+    response = client.post("/mutate", json=payload)
+    assert response.is_json
+    assert response.status_code == 200
+    admission_response = response.get_json()["response"]
+    assert admission_response["allowed"] == allowed
+    assert admission_response["status"]["code"] == code
+    assert msg in admission_response["status"]["message"]
+    if patch:
+        assert admission_response["patchType"] == "JSONPatch"
+        assert admission_response["patch"] == base64.b64encode(
+            bytearray(json.dumps(json.loads(patch)), "utf-8")
+        ).decode("utf-8")
