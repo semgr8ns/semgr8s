@@ -1,0 +1,33 @@
+testCases:
+- id: a-01
+  txt: Testing compliant pod...
+  type: k8s-yaml
+  ref: 20_compliant_pod
+  namespace: validatedns
+  expected_msg: pod/compliant-pod created
+- id: a-02
+  txt: Testing non-compliant in ignored namespace...
+  type: k8s-yaml
+  ref: 40_testlabel_pod
+  namespace: ignoredns
+  expected_msg: pod/forbiddenlabel-pod created
+- id: a-03
+  txt: Testing non-compliant partly autofixable pod...
+  type: k8s-yaml
+  ref: 40_testlabel_pod
+  namespace: validatedns
+  expected_msg: rules.test-semgr8s-no-foobar-label
+- id: a-04
+  txt: Testing non-compliant autofixable pod...
+  type: k8s-yaml
+  ref: 30_testlabel_pod
+  namespace: validatedns
+  expected_msg: pod/fixable-pod created
+
+values:
+  deployment:
+    image:
+      repository: "${IMAGE}"
+      tag: "${TAG}"
+  application:
+    autofix: true
