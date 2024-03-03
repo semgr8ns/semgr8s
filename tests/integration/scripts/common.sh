@@ -97,6 +97,16 @@ update_with_file() { # $1: file name
 	rm $1
 }
 
+## RULES ------------------------------------------------------- ##
+
+add_rule() { # $1: rule name
+	cp tests/integration/rules/$1.yaml charts/semgr8s/rules/
+}
+
+add_test_rules() {
+	cp tests/integration/rules/* charts/semgr8s/rules/
+}
+
 ## TEST NAMESPACES --------------------------------------------- ##
 
 create_namespaces() {
