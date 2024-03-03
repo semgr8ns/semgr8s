@@ -38,3 +38,4 @@ application:
   # * semgrep-rules github repo: https://github.com/semgrep/semgrep-rules
   # common choices: p/kubernetes, r/yaml.kubernetes
   remoteRules: ["p/kubernetes"]
+  autofix: false
