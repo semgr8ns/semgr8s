@@ -55,7 +55,7 @@ However, configuration can be adjusted to your needs:
 To deploy the preconfigured admission controller simply run:
 
 ```bash
-helm install semgr8s helm --create-namespace --namespace semgr8ns
+helm install semgr8s charts/semgr8s --create-namespace --namespace semgr8ns
 ```
 <details>
   <summary>output</summary>
