@@ -25,7 +25,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
       - name: Install python
         uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5.0.0
         with:
@@ -48,7 +48,7 @@ jobs:
         run: bandit -r -f sarif -o bandit-results.sarif semgr8s/ --exit-zero
       - name: Upload
         if: inputs.output == 'sarif'
-        uses: github/codeql-action/upload-sarif@8a470fddafa5cbb6266ee11b37ef4d8aae19c571 # v3.24.6
+        uses: github/codeql-action/upload-sarif@3ab4101902695724f9365a384f86c1074d94e18c # v3.24.7
         with:
           sarif_file: 'bandit-results.sarif'
 
@@ -60,7 +60,7 @@ jobs:
       inputs.skip != 'all'
     steps:
       - name: Checkout code
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
       - name: Install python
         uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5.0.0
         with:
@@ -89,7 +89,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
       - name: Render Helm charts
         run: |
           rm -rf test # remove 'test' folder from scan #TODO: fix once final
@@ -99,14 +99,14 @@ jobs:
         shell: bash
       - name: Scan
         if: inputs.output == 'table'
-        uses: bridgecrewio/checkov-action@ab6d29741992e8db224261675f42b0a900789797 # v12.2681.0
+        uses: bridgecrewio/checkov-action@8b268e1e4d7e52a78ba9d86e2489fb09b8a340c3 # v12.2690.0
         with:
           skip_check: CKV_DOCKER_2
           output_format: cli
           soft_fail: false
       - name: Scan
         if: inputs.output == 'sarif'
-        uses: bridgecrewio/checkov-action@ab6d29741992e8db224261675f42b0a900789797 # v12.2681.0
+        uses: bridgecrewio/checkov-action@8b268e1e4d7e52a78ba9d86e2489fb09b8a340c3 # v12.2690.0
         with:
           skip_check: CKV_DOCKER_2
           output_file_path: console,checkov-results.sarif
@@ -114,7 +114,7 @@ jobs:
           soft_fail: true
       - name: Upload
         if: inputs.output == 'sarif'
-        uses: github/codeql-action/upload-sarif@8a470fddafa5cbb6266ee11b37ef4d8aae19c571 # v3.24.6
+        uses: github/codeql-action/upload-sarif@3ab4101902695724f9365a384f86c1074d94e18c # v3.24.7
         with:
           sarif_file: checkov-results.sarif
 
@@ -129,13 +129,13 @@ jobs:
       pull-requests: read
     steps:
     - name: Checkout repository
-      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@8a470fddafa5cbb6266ee11b37ef4d8aae19c571 # v3.24.6
+      uses: github/codeql-action/init@3ab4101902695724f9365a384f86c1074d94e18c # v3.24.7
       with:
         languages: 'python'
     - name: Analyze
-      uses: github/codeql-action/analyze@8a470fddafa5cbb6266ee11b37ef4d8aae19c571 # v3.24.6
+      uses: github/codeql-action/analyze@3ab4101902695724f9365a384f86c1074d94e18c # v3.24.7
 
   hadolint:
     runs-on: ubuntu-latest
@@ -147,7 +147,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
       - name: Scan
         uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf # v3.1.0
         if: inputs.output == 'table'
@@ -164,7 +164,7 @@ jobs:
           no-fail: true
           output-file: hadolint-results.sarif
       - name: Upload
-        uses: github/codeql-action/upload-sarif@8a470fddafa5cbb6266ee11b37ef4d8aae19c571 # v3.24.6
+        uses: github/codeql-action/upload-sarif@3ab4101902695724f9365a384f86c1074d94e18c # v3.24.7
         if: inputs.output == 'sarif'
         with:
           sarif_file: 'hadolint-results.sarif'
@@ -179,7 +179,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
       - name: Scan
         uses: stackrox/kube-linter-action@5792edc6a03735d592b13c08201711327a935735 # v1.0.5
         if: inputs.output == 'table'
@@ -197,7 +197,7 @@ jobs:
           format: sarif
           output-file: kubelinter-results.sarif
       - name: Upload
-        uses: github/codeql-action/upload-sarif@8a470fddafa5cbb6266ee11b37ef4d8aae19c571 # v3.24.6
+        uses: github/codeql-action/upload-sarif@3ab4101902695724f9365a384f86c1074d94e18c # v3.24.7
         if: inputs.output == 'sarif'
         with:
           sarif_file: 'kubelinter-results.sarif'
@@ -209,7 +209,7 @@ jobs:
       inputs.skip != 'all'
     steps:
       - name: Checkout code
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
       - name: Install python
         uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5.0.0
         with:
@@ -239,7 +239,7 @@ jobs:
       image: returntocorp/semgrep
     steps:
       - name: Checkout code
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
       - name: Scan
         if: inputs.output == 'table'
         run: semgrep ci --config=auto --suppress-errors --text
@@ -247,7 +247,7 @@ jobs:
         if: inputs.output == 'sarif'
         run: semgrep ci --config=auto --suppress-errors --sarif --output=semgrep-results.sarif || exit 0
       - name: Upload
-        uses: github/codeql-action/upload-sarif@8a470fddafa5cbb6266ee11b37ef4d8aae19c571 # v3.24.6
+        uses: github/codeql-action/upload-sarif@3ab4101902695724f9365a384f86c1074d94e18c # v3.24.7
         if: inputs.output == 'sarif'
         with:
           sarif_file: semgrep-results.sarif
@@ -263,7 +263,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
       - name: Run Trivy
         uses: ./.github/actions/trivy-config
         with:
