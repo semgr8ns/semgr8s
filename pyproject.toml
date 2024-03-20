@@ -11,14 +11,14 @@ APScheduler = "3.10.4"
 Flask = "3.0.2"
 gunicorn = "21.2.0"
 PyYAML = "6.0.1"
-semgrep = "1.65.0"
+semgrep = "1.66.0"
 jsonpatch = "1.33"
 
 [tool.poetry.group.docs]
 optional = false
 
 [tool.poetry.group.docs.dependencies]
-mkdocs-material = "9.5.13"
+mkdocs-material = "9.5.14"
 mike = "2.0.0"
 
 [tool.poetry.group.dev]
@@ -27,7 +27,7 @@ optional = false
 [tool.poetry.group.dev.dependencies]
 bandit = "1.7.8"
 bandit-sarif-formatter = "1.1.1"
-black = "24.2.0"
+black = "24.3.0"
 pylint = "3.1.0"
 
 [tool.poetry.group.test]
