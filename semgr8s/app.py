@@ -5,20 +5,16 @@ Flask application to expose required paths and generate suitable responses.
 import base64
 import json
 import os
-import random
-import string
 import sys
 
 import jsonpatch
-import yaml
 from flask import Flask, jsonify, request
 from semgrep.cli import cli
-from werkzeug.utils import secure_filename
 from werkzeug.exceptions import UnsupportedMediaType
 
+from semgr8s.files import S8sFiles
+
 APP = Flask(__name__)
-DATA_FOLDER = "/app/data"
-RANDOM = random.SystemRandom()
 
 
 @APP.route("/health", methods=["GET", "POST"])
@@ -91,12 +87,12 @@ def perform_review(
     * 500 - Unexpected Webhook exception
     """
     uid = ""
-    postfix = "".join(RANDOM.choices(string.ascii_letters + string.digits, k=10))
+    files = S8sFiles()
 
     try:
         APP.logger.debug("+ request object: %s", admission_request)
         try:
-            req = (admission_request.json).get("request", {})
+            req = (admission_request.get_json()).get("request", {})
         except (UnsupportedMediaType, AttributeError) as err:
             return send_response(False, "none", 415, f"Unsupported Media Type: {err}")
 
@@ -112,16 +108,8 @@ def perform_review(
             return send_response(
                 False, "none", 422, "Malformed request, no payload.request.uid found"
             )
-        k8s_yaml_file = os.path.join(
-            DATA_FOLDER, secure_filename(f"k8s_{uid}_{postfix}.yml")
-        )
-        results_file = os.path.join(
-            DATA_FOLDER, secure_filename(f"results_{uid}_{postfix}.json")
-        )
-
         k8s_res = req.get("object", {})
-        with open(k8s_yaml_file, "w", encoding="utf-8") as file:
-            yaml.safe_dump(k8s_res, file, default_flow_style=False)
+        files.write_k8s_yaml(data=k8s_res)
 
         remote_rules = []
         for remote_rule in os.environ.get("SEMGREP_RULES", "").split(" "):
@@ -139,8 +127,8 @@ def perform_review(
             *remote_rules,
             "--json",
             "--output",
-            results_file,
-            k8s_yaml_file,
+            files.results_file,
+            files.k8s_yaml_file,
         ]
 
         APP.logger.debug("+ sys.argv: %s", sys.argv)
@@ -150,8 +138,7 @@ def perform_review(
         except SystemExit as err:
             APP.logger.info("+ Unexpected semgrep error recorded: %s", err)
 
-        with open(results_file, "r", encoding="utf-8") as file:
-            results = json.load(file)
+        results = files.results
         APP.logger.debug("+ scan results: %s", results)
 
         if results["errors"]:
@@ -162,8 +149,7 @@ def perform_review(
 
         if results["results"]:
             if autofix:
-                with open(k8s_yaml_file, "r", encoding="utf-8") as file:
-                    patched_k8s_res = yaml.safe_load(file)
+                patched_k8s_res = files.read_k8s_yaml()
                 patches = jsonpatch.JsonPatch.from_diff(k8s_res, patched_k8s_res).patch
             else:
                 patches = None
@@ -182,11 +168,7 @@ def perform_review(
     except Exception as err:  # pylint: disable=W0718
         return send_response(False, uid, 500, f"Unexpected Webhook exception: {err}")
     finally:
-        try:
-            os.remove(results_file)
-            os.remove(k8s_yaml_file)
-        except (FileNotFoundError, UnboundLocalError):
-            pass
+        files.remove_files()
 
     return send_response(True, uid, 201, "Compliant resource admitted")
 
