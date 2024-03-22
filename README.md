@@ -100,35 +100,48 @@ Once all resources are in `READY` state, you have successfully installed semgr8s
 ### Testing
 
 Several test resources are provided under `tests/demo/`.
-For namespaces with label `semgr8s/validation=enabled`, Semgr8s denies creating pods with insecure configuration according to the rules in `charts/semgr8s/rules`:
+Semgr8s only validates resources in namespaces with label `semgr8s/validation=enabled`:
 
 ```bash
-kubectl create -f tests/demo/failing_deployment.yaml
+kubectl apply -f tests/demo/00_test-namespace.yaml
 ```
 <details>
   <summary>output</summary>
   
   ```bash
-  namespace/test-semgr8s-failing created
-  Error from server: error when creating "tests/demo/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
-  * rules.allow-privilege-escalation-no-securitycontext
-  Error from server: error when creating "tests/demo/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
-  * rules.privileged-container
-  Error from server: error when creating "tests/demo/failing_deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
-  * rules.hostnetwork-pod
+  namespace/test-semgr8s created
   ```
 </details>
 
-Securely configured resources on the other hand are permitted to the cluster:
+It denies creating pods with non-compliant configuration according to the local rules in `charts/semgr8s/rules` and `.application.remoteRules`  `charts/semgr8s/values.yaml`:
 
 ```bash
-kubectl create -f tests/demo/passing_deployment.yaml
+kubectl apply -f tests/demo/40_failing-deployment.yaml
 ```
 <details>
   <summary>output</summary>
   
   ```bash
-  namespace/test-semgr8s-passing created
+  Error from server: error when creating "tests/demo/40_failing-deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+  * rules.test-semgr8s-forbidden-label
+  Error from server: error when creating "tests/demo/40_failing-deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+  * yaml.kubernetes.security.writable-filesystem-container.writable-filesystem-container
+  Error from server: error when creating "tests/demo/40_failing-deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+  * yaml.kubernetes.security.privileged-container.privileged-container
+  Error from server: error when creating "tests/demo/40_failing-deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+  * yaml.kubernetes.security.hostnetwork-pod.hostnetwork-pod
+  ```
+</details>
+
+Compliantly configured resources on the other hand are permitted to the cluster:
+
+```bash
+kubectl apply -f tests/demo/20_passing-deployment.yaml
+```
+<details>
+  <summary>output</summary>
+  
+  ```bash
   pod/passing-testpod-1 created
   ```
 </details>
@@ -159,12 +172,12 @@ kubectl delete -f tests/demo/
   <summary>output</summary>
   
   ```bash
-  namespace "test-semgr8s-failing" deleted
-  namespace "test-semgr8s-passing" deleted
+  namespace "test-semgr8s" deleted
   pod "passing-testpod-1" deleted
-  Error from server (NotFound): error when deleting "tests/demo/failing_deployment.yaml": pods "failing-testpod-1" not found
-  Error from server (NotFound): error when deleting "tests/demo/failing_deployment.yaml": pods "failing-testpod-2" not found
-  Error from server (NotFound): error when deleting "tests/demo/failing_deployment.yaml": pods "failing-testpod-3" not found
+  Error from server (NotFound): error when deleting "tests/demo/40_failing-deployment.yaml": pods "forbiddenlabel-pod" not found
+  Error from server (NotFound): error when deleting "tests/demo/40_failing-deployment.yaml": pods "failing-testpod-1" not found
+  Error from server (NotFound): error when deleting "tests/demo/40_failing-deployment.yaml": pods "failing-testpod-2" not found
+  Error from server (NotFound): error when deleting "tests/demo/40_failing-deployment.yaml": pods "failing-testpod-3" not found
 
   ```
 </details>
