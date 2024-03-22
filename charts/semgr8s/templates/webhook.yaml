@@ -14,8 +14,8 @@ metadata:
     {{- include "semgr8s.labels" . | nindent 4 }}
 type: Opaque
 data:
-  ca.crt: {{ $certificate.Cert | b64enc }}
-  ca.key: {{ $certificate.Key | b64enc }}
+  tls.crt: {{ $certificate.Cert | b64enc }}
+  tls.key: {{ $certificate.Key | b64enc }}
 ---
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
