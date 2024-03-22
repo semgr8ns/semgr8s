@@ -4,7 +4,7 @@ deployment:
     pullPolicy: IfNotPresent
     tag: ""
   imagePullSecrets: []
-  replicaCount: 1
+  replicas: 2
   containerPort: 5000
   podAnnotations: {}
   podSecurityContext: {}
