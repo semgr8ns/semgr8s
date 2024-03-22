@@ -144,10 +144,10 @@ jobs:
       fail-fast: false
       matrix:
         k8s-version: [
-            "v1.25",
             "v1.26",
             "v1.27",
             "v1.28",
+            "v1.29",
           ]
     steps:
       - name: Checkout code
@@ -201,6 +201,7 @@ jobs:
             "v1.22",
             "v1.23",
             "v1.24",
+            "v1.25",
           ]
     steps:
       - name: Checkout code
