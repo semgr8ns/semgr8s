@@ -48,7 +48,7 @@ jobs:
         run: bandit -r -f sarif -o bandit-results.sarif semgr8s/ --exit-zero
       - name: Upload
         if: inputs.output == 'sarif'
-        uses: github/codeql-action/upload-sarif@05963f47d870e2cb19a537396c1f668a348c7d8f # v3.24.8
+        uses: github/codeql-action/upload-sarif@1b1aada464948af03b950897e5eb522f92603cc2 # v3.24.9
         with:
           sarif_file: 'bandit-results.sarif'
 
@@ -114,7 +114,7 @@ jobs:
           soft_fail: true
       - name: Upload
         if: inputs.output == 'sarif'
-        uses: github/codeql-action/upload-sarif@05963f47d870e2cb19a537396c1f668a348c7d8f # v3.24.8
+        uses: github/codeql-action/upload-sarif@1b1aada464948af03b950897e5eb522f92603cc2 # v3.24.9
         with:
           sarif_file: checkov-results.sarif
 
@@ -131,11 +131,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@05963f47d870e2cb19a537396c1f668a348c7d8f # v3.24.8
+      uses: github/codeql-action/init@1b1aada464948af03b950897e5eb522f92603cc2 # v3.24.9
       with:
         languages: 'python'
     - name: Analyze
-      uses: github/codeql-action/analyze@05963f47d870e2cb19a537396c1f668a348c7d8f # v3.24.8
+      uses: github/codeql-action/analyze@1b1aada464948af03b950897e5eb522f92603cc2 # v3.24.9
 
   hadolint:
     runs-on: ubuntu-latest
@@ -164,7 +164,7 @@ jobs:
           no-fail: true
           output-file: hadolint-results.sarif
       - name: Upload
-        uses: github/codeql-action/upload-sarif@05963f47d870e2cb19a537396c1f668a348c7d8f # v3.24.8
+        uses: github/codeql-action/upload-sarif@1b1aada464948af03b950897e5eb522f92603cc2 # v3.24.9
         if: inputs.output == 'sarif'
         with:
           sarif_file: 'hadolint-results.sarif'
@@ -197,7 +197,7 @@ jobs:
           format: sarif
           output-file: kubelinter-results.sarif
       - name: Upload
-        uses: github/codeql-action/upload-sarif@05963f47d870e2cb19a537396c1f668a348c7d8f # v3.24.8
+        uses: github/codeql-action/upload-sarif@1b1aada464948af03b950897e5eb522f92603cc2 # v3.24.9
         if: inputs.output == 'sarif'
         with:
           sarif_file: 'kubelinter-results.sarif'
@@ -247,7 +247,7 @@ jobs:
         if: inputs.output == 'sarif'
         run: semgrep ci --config=auto --suppress-errors --sarif --output=semgrep-results.sarif || exit 0
       - name: Upload
-        uses: github/codeql-action/upload-sarif@05963f47d870e2cb19a537396c1f668a348c7d8f # v3.24.8
+        uses: github/codeql-action/upload-sarif@1b1aada464948af03b950897e5eb522f92603cc2 # v3.24.9
         if: inputs.output == 'sarif'
         with:
           sarif_file: semgrep-results.sarif
