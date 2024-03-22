@@ -57,7 +57,7 @@ def mutate():
 
 def perform_review(
     admission_request, autofix=False
-):  # pylint: disable=too-many-return-statements
+):  # pylint: disable=too-many-return-statements,too-many-branches
     """
     Review admission request using semgrep as policy engine.
     Return admission response.
@@ -81,6 +81,7 @@ def perform_review(
     * 202 - Passed mutation phase, validation still open
     * 400 - Malformed request payload lacking 'request' key/values
     * 403 - Request violates policy rules
+    * 406 - K8s resource 'event' ignored
     * 415 - Unsupported request payload media type
     * 418 - Error during semgrep scan
     * 422 - Malformed request payload without 'request.uid' key
@@ -108,6 +109,12 @@ def perform_review(
             return send_response(
                 False, "none", 422, "Malformed request, no payload.request.uid found"
             )
+
+        kind = req.get("kind", {}).get("kind", "")
+        APP.logger.debug("+ k8s resource kind: %s", kind)
+        if not kind or kind == "Event":
+            return send_response(True, uid, 406, f"Ignored k8s resource kind '{kind}'")
+
         k8s_res = req.get("object", {})
         files.write_k8s_yaml(data=k8s_res)
 
