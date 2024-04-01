@@ -19,7 +19,7 @@ cheroot = "10.0.0"
 optional = false
 
 [tool.poetry.group.docs.dependencies]
-mkdocs-material = "9.5.15"
+mkdocs-material = "9.5.16"
 mike = "2.0.0"
 
 [tool.poetry.group.dev]
