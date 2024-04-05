@@ -57,9 +57,7 @@ test:
 	@echo "####################"
 	-kubectl create -f tests/demo
 	@echo
-	-kubectl get pods -n test-semgr8s-passing
-	@echo
-	-kubectl get pods -n test-semgr8s-failing
+	-kubectl get pods -n test-semgr8s
 	@echo
 	-kubectl delete -f tests/demo
 
