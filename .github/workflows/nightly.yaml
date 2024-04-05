@@ -32,7 +32,7 @@ jobs:
       issues: read
       packages: read
       pages: read
-      pull-requests: read
+      pull-requests: write
       repository-projects: read
       security-events: write
       statuses: read
