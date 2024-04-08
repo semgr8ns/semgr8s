@@ -8,7 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 APScheduler = "3.10.4"
-Flask = "3.0.2"
+Flask = "3.0.3"
 gunicorn = "21.2.0"
 PyYAML = "6.0.1"
 semgrep = "1.67.0"
