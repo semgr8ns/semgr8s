@@ -28,7 +28,7 @@ def request_kube_api(path: str):
     try:
         response = requests.get(url, verify=ca_path, headers=headers, timeout=30)
     except JSONDecodeError as err:
-        APP.logger.error("ERROR: Malformed k8s API response or resource yaml: %s", err)
+        APP.logger.error("Malformed k8s API response or resource yaml: %s", err)
         return {}
 
     response.raise_for_status()
