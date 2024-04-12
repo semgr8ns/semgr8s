@@ -1,0 +1,52 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: passing-testpod-1
+# ruleid: deny-default-namespace
+  namespace: default
+  labels:
+    foo: bar
+spec:
+  containers:
+  - image: docker.io/library/busybox
+    name: passing-testpod-1
+    command: ["/bin/sh", "-ec", "sleep 1000"]
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      privileged: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 10001
+      runAsGroup: 20001
+      seccompProfile:
+        type: RuntimeDefault
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: passing-testpod-2
+# ok: deny-default-namespace
+  namespace: test-semgr8s
+  labels:
+    foo: bar
+spec:
+  containers:
+  - image: docker.io/library/busybox
+    name: passing-testpod-2
+    command: ["/bin/sh", "-ec", "sleep 1000"]
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      privileged: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 10001
+      runAsGroup: 20001
+      seccompProfile:
+        type: RuntimeDefault

@@ -1,5 +1,14 @@
 rules:
 - id: test-semgr8s-forbidden-label
+  message: TEST ONLY. Found kubernetes resource with semgr8s forbidden test label. Any resource with label "semgr8s-test=forbidden-test-label-e3b0c44298fc1c" is denied. This label carries no meaning beyond testing and demonstration purposes.
+  metadata:
+    category: test 
+    technology:
+      - kubernetes
+    references:
+      - https://sse-secure-systems.github.io/semgr8s/latest/#testing
+  languages: [yaml]
+  severity: INFO
   patterns:
     - pattern-inside: |
         metadata:
@@ -10,12 +19,3 @@ rules:
     - pattern: |
         semgr8s-test: forbidden-test-label-e3b0c44298fc1c
   fix: ""
-  message: TEST ONLY. Found kubernetes resource with semgr8s forbidden test label. Any resource with label "semgr8s-test=forbidden-test-label-e3b0c44298fc1c" is denied. This label carries no meaning beyond testing and demonstration purposes.
-  metadata:
-    category: test 
-    technology:
-      - kubernetes
-    references:
-      - https://sse-secure-systems.github.io/semgr8s/latest/#testing
-  languages: [yaml]
-  severity: INFO

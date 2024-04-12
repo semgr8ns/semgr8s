@@ -1,0 +1,31 @@
+rules:
+- id: restrict-image-registry
+  message: Container image reference points to non-designated registry / repository. Referencing unauthorized container image sources can lead to supply chain attacks via targeted or accidental creation of malicious workloads.
+  metadata:
+    likelihood: HIGH
+    confidence: HIGH
+    impact: HIGH
+    category: security
+    technology:
+      - kubernetes
+    owasp:
+        - A08:2021 - Software and Data Integrity Failures
+        - K02:2022 - Supply Chain Vulnerabilities
+    references:
+      - https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/
+      - https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K02-supply-chain-vulnerabilities
+  languages: [yaml]
+  severity: ERROR
+  patterns:
+    - pattern-inside: |
+        spec:
+          ...
+    - pattern-inside: |
+        containers:
+          ...
+    - pattern: |
+        image: $IMG
+    - metavariable-regex:
+        metavariable: $IMG
+        regex: ^(?!docker\.io\/library\/).* # example for restriction to "docker.io/library/"
+    - focus-metavariable: $IMG

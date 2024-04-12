@@ -1,0 +1,8 @@
+rules:
+- id: template-rule
+  message: Rule template.
+  languages: [yaml]
+  severity: INFO
+  patterns:
+    - pattern: |
+        semgr8s-test: forbidden-test-label-e3b0c44298fc1c

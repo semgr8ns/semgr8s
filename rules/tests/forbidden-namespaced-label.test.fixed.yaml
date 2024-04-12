@@ -1,0 +1,130 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: passing-testpod-1
+  namespace: test-semgr8s
+  labels:
+    foo: bar
+# ruleid: forbidden-namespaced-label
+    semgr8s-test: allowed-test-label
+spec:
+  containers:
+  - image: docker.io/library/busybox
+    name: passing-testpod-1
+    command: ["/bin/sh", "-ec", "sleep 1000"]
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      privileged: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 10001
+      runAsGroup: 20001
+      seccompProfile:
+        type: RuntimeDefault
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: passing-testpod-2
+  namespace: test-otherns
+  labels:
+    foo: bar
+# ok: forbidden-namespaced-label
+    semgr8s-test: forbidden-test-label-e3b0c44298fc1c
+spec:
+  containers:
+  - image: ghcr.io/library/busybox
+    name: passing-testpod-2
+    command: ["/bin/sh", "-ec", "sleep 1000"]
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      privileged: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 10001
+      runAsGroup: 20001
+      seccompProfile:
+        type: RuntimeDefault
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: passing-testpod-2
+  labels:
+    foo: bar
+# ok: forbidden-namespaced-label
+    semgr8s-test: forbidden-test-label-e3b0c44298fc1c
+spec:
+  containers:
+  - image: ghcr.io/library/busybox
+    name: passing-testpod-2
+    command: ["/bin/sh", "-ec", "sleep 1000"]
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      privileged: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 10001
+      runAsGroup: 20001
+      seccompProfile:
+        type: RuntimeDefault
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-1
+  namespace: test-semgr8s
+  labels:
+    app: nginx
+# ruleid: forbidden-namespaced-label
+    semgr8s-test: allowed-test-label
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-2
+  namespace: audit-semgr8s
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+# ruleid: forbidden-namespaced-label
+        semgr8s-test: allowed-test-label
+    spec:
+      containers:
+      - name: nginx
+        image: docker.io/library/nginx:1.14.2
+        ports:
+        - containerPort: 80

@@ -1,0 +1,23 @@
+rules:
+- id: forbidden-workload-label
+  message: Kubernetes workload with forbidden label. Any workload resource with label "semgr8s-test=forbidden-test-label-e3b0c44298fc1c" is denied. This label carries no meaning beyond testing and demonstration purposes.
+  languages: [yaml]
+  severity: INFO
+  patterns:
+    - pattern-inside: |
+        ...
+        kind: $KIND
+        ...
+    - metavariable-regex:
+        metavariable: $KIND
+        regex: (Pod|Deployment|ReplicaSet|DaemonSet|StatefulSet)
+    # remaining pattern as normal
+    - pattern-inside: |
+        metadata:
+          ...
+    - pattern-inside: |
+        labels:
+          ...
+    - pattern: |
+        semgr8s-test: forbidden-test-label-e3b0c44298fc1c
+  fix: "semgr8s-test: allowed-test-label"

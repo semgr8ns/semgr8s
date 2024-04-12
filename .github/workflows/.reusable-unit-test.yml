@@ -52,3 +52,57 @@ jobs:
           report_paths: 'tests/pytest.xml'
           fail_on_failure: true
 
+  semgr8s-rules-validate:
+    name: validate rules
+    runs-on: ubuntu-latest
+    if: |
+      inputs.skip != 'all'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
+      - name: Install python
+        uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
+        with:
+          python-version-file: '.python-version'
+      - name: Install poetry
+        uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b # v1.3.4
+        with:
+          version: 1.7.1
+          virtualenvs-create: false
+          virtualenvs-in-project: false
+          installer-parallel: true
+      - name: Install dependencies
+        run: |
+          poetry install --only main
+      - name: Validate pre-configured rules
+        run: |
+          semgrep scan --metrics=off --validate --config ./charts/semgr8s/rules/
+      - name: Validate additional rules
+        run: |
+          semgrep scan --metrics=off --validate --config ./rules/
+
+  semgr8s-rules-test:
+    name: test rules
+    runs-on: ubuntu-latest
+    if: |
+      inputs.skip != 'all'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
+      - name: Install python
+        uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
+        with:
+          python-version-file: '.python-version'
+      - name: Install poetry
+        uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b # v1.3.4
+        with:
+          version: 1.7.1
+          virtualenvs-create: false
+          virtualenvs-in-project: false
+          installer-parallel: true
+      - name: Install dependencies
+        run: |
+          poetry install --only main
+      - name: Test rules
+        run: semgrep scan --metrics=off --test --config ./rules/ ./rules/tests/
+

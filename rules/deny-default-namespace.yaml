@@ -1,0 +1,27 @@
+rules:
+- id: deny-default-namespace
+  message: The default namespace should not be used. For granular security controls, resources should be segregated by namespace.
+  metadata:
+    likelihood: HIGH
+    confidence: HIGH
+    impact: LOW
+    category: security
+    technology:
+      - kubernetes
+    owasp:
+        - A04:2021 - Insecure Design
+        - K07:2022 - Network Segmentation
+    references:
+      - https://owasp.org/Top10/A04_2021-Insecure_Design/
+      - https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K07-network-segmentation
+  languages: [yaml]
+  severity: WARNING
+  patterns:
+    - pattern: |
+        metadata:
+          ...
+          namespace: $NS
+    - metavariable-regex:
+        metavariable: $NS
+        regex: (default)
+    - focus-metavariable: $NS
