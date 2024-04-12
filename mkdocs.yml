@@ -35,6 +35,7 @@ markdown_extensions:
   - admonition
   - codehilite
   - footnotes
+  - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -42,10 +43,10 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  - pymdownx.tabbed
-  - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed
   - toc:
         permalink: ⚓︎
 
@@ -88,5 +89,15 @@ extra:
 
 # Page tree
 nav:
-  - intro: README.md
+  - Intro: README.md
+  - concept.md
   - usage.md
+  - Exemplary rules:
+    - examples/template-rule.md
+    - examples/template-autofix-rule.md
+    - examples/forbidden-pod-label.md
+    - examples/forbidden-workload-label.md
+    - examples/forbidden-namespaced-label.md
+  - Selected rules:
+    - examples/deny-default-namespace.md
+    - examples/restrict-image-registry.md
