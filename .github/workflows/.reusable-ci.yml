@@ -108,6 +108,7 @@ jobs:
     needs: [conditionals]
     permissions:
       actions: read
+      attestations: read
       checks: read
       contents: write
       deployments: read
