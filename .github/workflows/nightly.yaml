@@ -24,6 +24,7 @@ jobs:
     uses: ./.github/workflows/.reusable-compliance.yml
     permissions:
       actions: read
+      attestations: read
       checks: read
       contents: write
       deployments: read
