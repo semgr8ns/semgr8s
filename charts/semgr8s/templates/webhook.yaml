@@ -31,7 +31,12 @@ webhooks:
       matchLabels:
         semgr8s/validation: enabled
     rules:
-      - apiGroups: [""]
+      - apiGroups:
+          - ""
+          - "apps"
+          - "batch"
+          - "networking.k8s.io"
+          - "rbac.authorization.k8s.io"
         resources:
           - "*"
         apiVersions:
