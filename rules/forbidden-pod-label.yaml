@@ -1,0 +1,20 @@
+rules:
+- id: forbidden-pod-label
+  message: Kubernetes pod with forbidden label. Any pod with label "semgr8s-test=forbidden-test-label-e3b0c44298fc1c" is denied. This label carries no meaning beyond testing and demonstration purposes.
+  languages: [yaml]
+  severity: INFO
+  patterns:
+    - pattern-inside: |
+        ...
+        kind: Pod
+        ...
+    # remaining pattern as normal
+    - pattern-inside: |
+        metadata:
+          ...
+    - pattern-inside: |
+        labels:
+          ...
+    - pattern: |
+        semgr8s-test: forbidden-test-label-e3b0c44298fc1c
+  fix: "semgr8s-test: allowed-test-label"

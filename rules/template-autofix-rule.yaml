@@ -1,0 +1,9 @@
+rules:
+- id: template-autofix-rule
+  message: Rule template with autofix.
+  languages: [yaml]
+  severity: INFO
+  patterns:
+    - pattern: |
+        semgr8s-test: forbidden-test-label-e3b0c44298fc1c
+  fix: "semgr8s-test: allowed-test-label"

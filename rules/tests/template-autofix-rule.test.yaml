@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: passing-testpod-1
+  namespace: test-semgr8s
+  labels:
+    foo: bar
+# ruleid: template-autofix-rule
+    semgr8s-test: forbidden-test-label-e3b0c44298fc1c
+spec:
+  containers:
+  - image: docker.io/library/busybox
+    name: passing-testpod-1
+    command: ["/bin/sh", "-ec", "sleep 1000"]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: passing-testpod-2
+  namespace: test-semgr8s
+  labels:
+    foo: bar
+# ok: template-autofix-rule
+    semgr8s-test: foobar
+spec:
+  containers:
+  - image: ghcr.io/library/busybox
+    name: passing-testpod-2
+    command: ["/bin/sh", "-ec", "sleep 1000"]
