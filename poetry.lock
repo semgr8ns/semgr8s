@@ -300,13 +300,13 @@ files = [
 
 [[package]]
 name = "cheroot"
-version = "10.0.0"
+version = "10.0.1"
 description = "Highly-optimized, pure-python HTTP server"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "cheroot-10.0.0-py3-none-any.whl", hash = "sha256:8f65dd38ad3d56419cfe2d1b5e4b4e3282b1d58758ca2a336231641a80cf0717"},
-    {file = "cheroot-10.0.0.tar.gz", hash = "sha256:59c4a1877fef9969b3c3c080caaaf377e2780919437853fc0d32a9df40b311f0"},
+    {file = "cheroot-10.0.1-py3-none-any.whl", hash = "sha256:6ea332f20bfcede14e66174d112b30e9807492320d737ca628badc924d997595"},
+    {file = "cheroot-10.0.1.tar.gz", hash = "sha256:e0b82f797658d26b8613ec8eb563c3b08e6bd6a7921e9d5089bd1175ad1b1740"},
 ]
 
 [package.dependencies]
@@ -1891,4 +1891,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "a6ccce4a7c6bc4654bb772f8dd9eeebbcb81c4533cf166b78ad3ab060cea8d19"
+content-hash = "646f0d37155d18043eaea2571e2a09179292b8dc238088b485380abc76cbba4b"
