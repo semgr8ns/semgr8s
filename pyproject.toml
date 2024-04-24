@@ -10,9 +10,9 @@ python = "^3.11"
 APScheduler = "3.10.4"
 Flask = "3.0.3"
 PyYAML = "6.0.1"
-semgrep = "1.69.0"
+semgrep = "1.70.0"
 jsonpatch = "1.33"
-cheroot = "10.0.0"
+cheroot = "10.0.1"
 
 [tool.poetry.group.docs]
 optional = false
@@ -27,7 +27,7 @@ optional = false
 [tool.poetry.group.dev.dependencies]
 bandit = "1.7.8"
 bandit-sarif-formatter = "1.1.1"
-black = "24.4.0"
+black = "24.4.1"
 pylint = "3.1.0"
 
 [tool.poetry.group.test]
