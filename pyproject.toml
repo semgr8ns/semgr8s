@@ -19,7 +19,7 @@ optional = false
 
 [tool.poetry.group.docs.dependencies]
 mkdocs-material = "9.5.20"
-mike = "2.0.0"
+mike = "2.1.0"
 
 [tool.poetry.group.dev]
 optional = false
