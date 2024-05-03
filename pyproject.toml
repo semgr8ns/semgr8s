@@ -10,7 +10,7 @@ python = "^3.11"
 APScheduler = "3.10.4"
 Flask = "3.0.3"
 PyYAML = "6.0.1"
-semgrep = "1.70.0"
+semgrep = "1.71.0"
 jsonpatch = "1.33"
 cheroot = "10.0.1"
 
@@ -18,8 +18,8 @@ cheroot = "10.0.1"
 optional = false
 
 [tool.poetry.group.docs.dependencies]
-mkdocs-material = "9.5.20"
-mike = "2.0.0"
+mkdocs-material = "9.5.21"
+mike = "2.1.1"
 
 [tool.poetry.group.dev]
 optional = false

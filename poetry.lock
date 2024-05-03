@@ -886,13 +886,13 @@ files = [
 
 [[package]]
 name = "mike"
-version = "2.0.0"
+version = "2.1.1"
 description = "Manage multiple versions of your MkDocs-powered documentation"
 optional = false
 python-versions = "*"
 files = [
-    {file = "mike-2.0.0-py3-none-any.whl", hash = "sha256:87f496a65900f93ba92d72940242b65c86f3f2f82871bc60ebdcffc91fad1d9e"},
-    {file = "mike-2.0.0.tar.gz", hash = "sha256:566f1cab1a58cc50b106fb79ea2f1f56e7bfc8b25a051e95e6eaee9fba0922de"},
+    {file = "mike-2.1.1-py3-none-any.whl", hash = "sha256:0b1d01a397a423284593eeb1b5f3194e37169488f929b860c9bfe95c0d5efb79"},
+    {file = "mike-2.1.1.tar.gz", hash = "sha256:f39ed39f3737da83ad0adc33e9f885092ed27f8c9e7ff0523add0480352a2c22"},
 ]
 
 [package.dependencies]
@@ -902,6 +902,7 @@ jinja2 = ">=2.7"
 mkdocs = ">=1.0"
 pyparsing = ">=3.0"
 pyyaml = ">=5.1"
+pyyaml-env-tag = "*"
 verspec = "*"
 
 [package.extras]
@@ -956,13 +957,13 @@ pyyaml = ">=5.1"
 
 [[package]]
 name = "mkdocs-material"
-version = "9.5.20"
+version = "9.5.21"
 description = "Documentation that simply works"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "mkdocs_material-9.5.20-py3-none-any.whl", hash = "sha256:ad0094a7597bcb5d0cc3e8e543a10927c2581f7f647b9bb4861600f583180f9b"},
-    {file = "mkdocs_material-9.5.20.tar.gz", hash = "sha256:986eef0250d22f70fb06ce0f4eac64cc92bd797a589ec3892ce31fad976fe3da"},
+    {file = "mkdocs_material-9.5.21-py3-none-any.whl", hash = "sha256:210e1f179682cd4be17d5c641b2f4559574b9dea2f589c3f0e7c17c5bd1959bc"},
+    {file = "mkdocs_material-9.5.21.tar.gz", hash = "sha256:049f82770f40559d3c2aa2259c562ea7257dbb4aaa9624323b5ef27b2d95a450"},
 ]
 
 [package.dependencies]
@@ -1668,16 +1669,16 @@ pbr = "*"
 
 [[package]]
 name = "semgrep"
-version = "1.70.0"
+version = "1.71.0"
 description = "Lightweight static analysis for many languages. Find bug variants with patterns that look like source code."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "semgrep-1.70.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl", hash = "sha256:0e322fe4b4ce65b8c8afc045aa72291f9874f4ab71ae082d037c5d099f8ebd9f"},
-    {file = "semgrep-1.70.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-macosx_10_14_x86_64.whl", hash = "sha256:9d1a6424478ef3f710992720f2f36e44b15f29c259eef1bba4fdfb16a81c3654"},
-    {file = "semgrep-1.70.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-macosx_11_0_arm64.whl", hash = "sha256:4b3a8563258914dc96e47e7111cc45d46b2e2caf46a1aaa2031f785fbe784292"},
-    {file = "semgrep-1.70.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-musllinux_1_0_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d3dcde56849beb559e28725938b2075c73fe9ba5f993bc77f2253c8e5a6e6c19"},
-    {file = "semgrep-1.70.0.tar.gz", hash = "sha256:ac05f4441e211355bbb196dc2de7000849fb885ee9621af3f1251998aba27f7c"},
+    {file = "semgrep-1.71.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl", hash = "sha256:d29129c4861e774674f3a9756a9257b84556d47972e076aecc70fc6e3c51d59c"},
+    {file = "semgrep-1.71.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-macosx_10_14_x86_64.whl", hash = "sha256:c2009a4bb2f0d453f8da63999a13b9bf6373f0f9c312410fda06f1afb686b439"},
+    {file = "semgrep-1.71.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-macosx_11_0_arm64.whl", hash = "sha256:2197364596c06297e592cce5e6516eb718a4c2d3ba5c6a32c9e1c922153f2be9"},
+    {file = "semgrep-1.71.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-musllinux_1_0_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e9579f800e1816263b7eccbbb1b4055c28ec24d338faf96feae2d2af305ddaa2"},
+    {file = "semgrep-1.71.0.tar.gz", hash = "sha256:5b8068505fcd86dfabf2624d348b90022144901fc0f1df8277065dbd85d1ac2e"},
 ]
 
 [package.dependencies]
@@ -1907,4 +1908,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "9e02c34901814a6a3838b456d461a54dbd1fb8057fb02bc44785d3081bfd1539"
+content-hash = "79c197c9b1014d2d5e72dc5350ba06c07e504965e24af79c88e4828851d5edc5"
