@@ -32,6 +32,36 @@ service:
   type: ClusterIP
   port: 443
 
+webhooks:  # configuration options for webhooks described under https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
+  validating: # main webhook
+    failurePolicy: Fail
+    sideEffects: None
+    timeoutSeconds: 30
+    admissionReviewVersions: ["v1","v1beta1"]
+    namespaceSelector:
+      matchLabels:
+        semgr8s/validation: enabled
+    rules:
+      - scope: "*"
+        apiGroups: ["", "apps", "batch", "networking.k8s.io", "rbac.authorization.k8s.io"]
+        resources: ["*/*"]
+        apiVersions: ["*"]
+        operations: ["CREATE", "UPDATE"]
+  mutating: # autofix webhook, only used when enabled
+    failurePolicy: Fail
+    sideEffects: None
+    timeoutSeconds: 30
+    admissionReviewVersions: ["v1","v1beta1"]
+    namespaceSelector:
+      matchLabels:
+        semgr8s/validation: enabled
+    rules:
+      - scope: "*"
+        apiGroups: ["", "apps", "batch", "networking.k8s.io", "rbac.authorization.k8s.io"]
+        resources: ["*/*"]
+        apiVersions: ["*"]
+        operations: ["CREATE", "UPDATE"]
+
 application:
   # Apply remote rules from e.g.
   # * semgrep registry: https://semgrep.dev/r

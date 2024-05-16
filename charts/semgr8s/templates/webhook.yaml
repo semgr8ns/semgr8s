@@ -23,27 +23,9 @@ metadata:
   name: {{ include "semgr8s.webhookName" . }}
 webhooks:
   - name: {{ .Chart.Name }}-svc.{{ .Release.Namespace }}.svc
-    failurePolicy: Fail
-    sideEffects: None
-    timeoutSeconds: 30
-    admissionReviewVersions: ["v1","v1beta1"]
-    namespaceSelector:
-      matchLabels:
-        semgr8s/validation: enabled
-    rules:
-      - apiGroups:
-          - ""
-          - "apps"
-          - "batch"
-          - "networking.k8s.io"
-          - "rbac.authorization.k8s.io"
-        resources:
-          - "*"
-        apiVersions:
-          - "*"
-        operations:
-          - CREATE
-          - UPDATE
+    {{- with .Values.webhooks.validating }}
+      {{- toYaml . | nindent 4 }}
+    {{- end }}
     clientConfig:
       service:
         name: {{ include "semgr8s.serviceName" . }}
@@ -58,22 +40,9 @@ metadata:
   name: {{ include "semgr8s.webhookName" . }}
 webhooks:
   - name: {{ .Chart.Name }}-svc.{{ .Release.Namespace }}.svc
-    failurePolicy: Fail
-    sideEffects: None
-    timeoutSeconds: 30
-    admissionReviewVersions: ["v1","v1beta1"]
-    namespaceSelector:
-      matchLabels:
-        semgr8s/validation: enabled
-    rules:
-      - apiGroups: [""]
-        resources:
-          - "*"
-        apiVersions:
-          - "*"
-        operations:
-          - CREATE
-          - UPDATE
+    {{- with .Values.webhooks.mutating }}
+      {{- toYaml . | nindent 4 }}
+    {{- end }}
     clientConfig:
       service:
         name: {{ include "semgr8s.serviceName" . }}
