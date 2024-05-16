@@ -30,13 +30,13 @@ zookeeper = ["kazoo"]
 
 [[package]]
 name = "astroid"
-version = "3.1.0"
+version = "3.2.1"
 description = "An abstract syntax tree for Python with inference support."
 optional = false
 python-versions = ">=3.8.0"
 files = [
-    {file = "astroid-3.1.0-py3-none-any.whl", hash = "sha256:951798f922990137ac090c53af473db7ab4e70c770e6d7fae0cec59f74411819"},
-    {file = "astroid-3.1.0.tar.gz", hash = "sha256:ac248253bfa4bd924a0de213707e7ebeeb3138abeb48d798784ead1e56d419d4"},
+    {file = "astroid-3.2.1-py3-none-any.whl", hash = "sha256:b452064132234819f023b94f4bd045b250ea0009f372b4377cfcd87f10806ca5"},
+    {file = "astroid-3.2.1.tar.gz", hash = "sha256:902564b36796ba1eab3ad2c7a694861fbd926f574d5dbb5fa1d86778a2ba2d91"},
 ]
 
 [[package]]
@@ -957,13 +957,13 @@ pyyaml = ">=5.1"
 
 [[package]]
 name = "mkdocs-material"
-version = "9.5.22"
+version = "9.5.23"
 description = "Documentation that simply works"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "mkdocs_material-9.5.22-py3-none-any.whl", hash = "sha256:8c7a377d323567934e6cd46915e64dc209efceaec0dec1cf2202184f5649862c"},
-    {file = "mkdocs_material-9.5.22.tar.gz", hash = "sha256:22a853a456ae8c581c4628159574d6fc7c71b2c7569dc9c3a82cc70432219599"},
+    {file = "mkdocs_material-9.5.23-py3-none-any.whl", hash = "sha256:ffd08a5beaef3cd135aceb58ded8b98bbbbf2b70e5b656f6a14a63c917d9b001"},
+    {file = "mkdocs_material-9.5.23.tar.gz", hash = "sha256:4627fc3f15de2cba2bde9debc2fd59b9888ef494beabfe67eb352e23d14bf288"},
 ]
 
 [package.dependencies]
@@ -1117,17 +1117,17 @@ windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
 name = "pylint"
-version = "3.1.1"
+version = "3.2.0"
 description = "python code static checker"
 optional = false
 python-versions = ">=3.8.0"
 files = [
-    {file = "pylint-3.1.1-py3-none-any.whl", hash = "sha256:862eddf25dab42704c5f06d3688b8bc19ef4c99ad8a836b6ff260a3b2fbafee1"},
-    {file = "pylint-3.1.1.tar.gz", hash = "sha256:c7c2652bf8099c7fb7a63bc6af5c5f8f7b9d7b392fa1d320cb020e222aff28c2"},
+    {file = "pylint-3.2.0-py3-none-any.whl", hash = "sha256:9f20c05398520474dac03d7abb21ab93181f91d4c110e1e0b32bc0d016c34fa4"},
+    {file = "pylint-3.2.0.tar.gz", hash = "sha256:ad8baf17c8ea5502f23ae38d7c1b7ec78bd865ce34af9a0b986282e2611a8ff2"},
 ]
 
 [package.dependencies]
-astroid = ">=3.1.0,<=3.2.0-dev0"
+astroid = ">=3.2.0,<=3.3.0-dev0"
 colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
 dill = [
     {version = ">=0.3.7", markers = "python_version >= \"3.12\""},
@@ -1669,16 +1669,16 @@ pbr = "*"
 
 [[package]]
 name = "semgrep"
-version = "1.72.0"
+version = "1.73.0"
 description = "Lightweight static analysis for many languages. Find bug variants with patterns that look like source code."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "semgrep-1.72.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl", hash = "sha256:fd7673cc36ec5baa70f0b0bc0e0a1f6751abede790c87ef5f4dcc90c2a178699"},
-    {file = "semgrep-1.72.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-macosx_10_14_x86_64.whl", hash = "sha256:8f2905397382b44b654f137acf5ee6f04da0d96a5beea757c7ac382fac3e0db6"},
-    {file = "semgrep-1.72.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-macosx_11_0_arm64.whl", hash = "sha256:d1d0648b7cbdb4c7634517d86f1b65d1f5530d73bcb4ba71efa10f212c6d0b2e"},
-    {file = "semgrep-1.72.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-musllinux_1_0_aarch64.manylinux2014_aarch64.whl", hash = "sha256:ef30b2d886f1b0d3b5265fde7eef5dc12cafbfa6b41d8bea101cf15694f3a803"},
-    {file = "semgrep-1.72.0.tar.gz", hash = "sha256:65cd19df8b8cafafdfd420303cc1bc81412a27e4b6895e01852d5f92d7aef347"},
+    {file = "semgrep-1.73.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl", hash = "sha256:35295eced0a1f7e544b1ecf2a5b212ef82e5f8a3ff35bff3a805ae9bbb5da0c7"},
+    {file = "semgrep-1.73.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-macosx_10_14_x86_64.whl", hash = "sha256:8cef07d304a35b7e329f1f96374a0ff26a6e02c7ccbdaec7f3a820ef65abb016"},
+    {file = "semgrep-1.73.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-macosx_11_0_arm64.whl", hash = "sha256:122cf1ad323b6f8a92a7c9cbc170a7bc9a8ac198deefe597cb0e73f9893a6ef4"},
+    {file = "semgrep-1.73.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-musllinux_1_0_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b724ac87e08b7222515e9af8a096bf87a661d05c3c73e10375234d47039f2a98"},
+    {file = "semgrep-1.73.0.tar.gz", hash = "sha256:bd39868e74813657a763146c36d899498e12ca0bdcfc84438b0d22b310be63e1"},
 ]
 
 [package.dependencies]
@@ -1908,4 +1908,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "38bcadc3c6681d000df693adf717cfff600f652bfa90dabd9a4e6d411f1eef1f"
+content-hash = "e209fd8b797a19fe5ddf7ec443a55e82b12cefd603aaffce08fd587b72c59f8d"
