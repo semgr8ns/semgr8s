@@ -25,7 +25,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
       - name: Install python
         uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
         with:
@@ -60,7 +60,7 @@ jobs:
       inputs.skip != 'all'
     steps:
       - name: Checkout code
-        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
       - name: Install python
         uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
         with:
@@ -89,7 +89,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
       - name: Render Helm charts
         run: |
           rm -rf tests # remove 'tests' folder from scan
@@ -99,14 +99,14 @@ jobs:
         shell: bash
       - name: Scan
         if: inputs.output == 'table'
-        uses: bridgecrewio/checkov-action@ea0fbea17e084215b9191c1e8ad4c6effe2328e8 # v12.2744.0
+        uses: bridgecrewio/checkov-action@797b144cd39b0c07432d3aa7370bedefd38fd1b2 # v12.2747.0
         with:
           skip_check: CKV_DOCKER_2
           output_format: cli
           soft_fail: false
       - name: Scan
         if: inputs.output == 'sarif'
-        uses: bridgecrewio/checkov-action@ea0fbea17e084215b9191c1e8ad4c6effe2328e8 # v12.2744.0
+        uses: bridgecrewio/checkov-action@797b144cd39b0c07432d3aa7370bedefd38fd1b2 # v12.2747.0
         with:
           skip_check: CKV_DOCKER_2
           output_file_path: console,checkov-results.sarif
@@ -129,7 +129,7 @@ jobs:
       pull-requests: read
     steps:
     - name: Checkout repository
-      uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+      uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
     - name: Initialize CodeQL
       uses: github/codeql-action/init@b7cec7526559c32f1616476ff32d17ba4c59b2d6 # v3.25.5
       with:
@@ -147,7 +147,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
       - name: Scan
         uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf # v3.1.0
         if: inputs.output == 'table'
@@ -179,7 +179,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
       - name: Scan
         uses: stackrox/kube-linter-action@5792edc6a03735d592b13c08201711327a935735 # v1.0.5
         if: inputs.output == 'table'
@@ -209,7 +209,7 @@ jobs:
       inputs.skip != 'all'
     steps:
       - name: Checkout code
-        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
       - name: Install python
         uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
         with:
@@ -239,7 +239,7 @@ jobs:
       image: returntocorp/semgrep
     steps:
       - name: Checkout code
-        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
       - name: Scan
         if: inputs.output == 'table'
         run: semgrep ci --config=auto --suppress-errors --text
@@ -263,7 +263,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
       - name: Run Trivy
         uses: ./.github/actions/trivy-config
         with:
