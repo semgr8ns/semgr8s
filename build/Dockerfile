@@ -66,7 +66,7 @@ RUN sh /harden.sh
 
 USER 10001:20001
 
-LABEL org.opencontainers.image.documentation="https://sse-secure-systems.github.io/semgr8s/"
+LABEL org.opencontainers.image.documentation="https://semgr8ns.github.io/semgr8s/"
 LABEL org.opencontainers.image.authors="Christoph Hamsen <christoph.hamsen@securesystems.de>"
 LABEL org.opencontainers.image.vendor="Secure Systems Engineering"
 

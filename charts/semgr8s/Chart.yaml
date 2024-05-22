@@ -8,10 +8,10 @@ keywords:
   - kubernetes
   - admission controller
   - policy management
-home: https://sse-secure-systems.github.io/semgr8s/latest
+home: https://semgr8ns.github.io/semgr8s/latest
 sources:
-  - https://github.com/sse-secure-systems/semgr8s
-icon: https://raw.githubusercontent.com/sse-secure-systems/semgr8s/main/docs/assets/semgr8s-logo.png
+  - https://github.com/semgr8ns/semgr8s
+icon: https://raw.githubusercontent.com/semgr8ns/semgr8s/main/docs/assets/semgr8s-logo.png
 maintainers:
   - name: Christoph Hamsen
     email: christoph.hamsen@securesystems.de

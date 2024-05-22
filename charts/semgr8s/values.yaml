@@ -1,6 +1,6 @@
 deployment:
   image:
-    repository: ghcr.io/sse-secure-systems/semgr8s
+    repository: ghcr.io/semgr8ns/semgr8s
     pullPolicy: IfNotPresent
     tag: ""
   imagePullSecrets: []

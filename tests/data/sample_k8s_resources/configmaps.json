@@ -4,7 +4,7 @@
     {
       "apiVersion": "v1",
       "data": {
-        "test-semgr8s-forbidden-label.yaml": "rules:\n- id: test-semgr8s-forbidden-label\n  patterns:\n    - pattern-inside: |\n        metadata:\n          ...\n    - pattern-inside: |\n        labels:\n          ...\n    - pattern: |\n        semgr8s-test: forbidden-test-label-e3b0c44298fc1c\n  fix: \"\"\n  message: TEST ONLY. Found kubernetes resource with semgr8s forbidden test label. Any resource with label \"semgr8s-test=forbidden-test-label-e3b0c44298fc1c\" is denied. This label carries no meaning beyond testing and demonstration purposes.\n  metadata:\n    category: test \n    technology:\n      - kubernetes\n    references:\n      - https://sse-secure-systems.github.io/semgr8s/latest/#testing\n  languages: [yaml]\n  severity: INFO\n"
+        "test-semgr8s-forbidden-label.yaml": "rules:\n- id: test-semgr8s-forbidden-label\n  patterns:\n    - pattern-inside: |\n        metadata:\n          ...\n    - pattern-inside: |\n        labels:\n          ...\n    - pattern: |\n        semgr8s-test: forbidden-test-label-e3b0c44298fc1c\n  fix: \"\"\n  message: TEST ONLY. Found kubernetes resource with semgr8s forbidden test label. Any resource with label \"semgr8s-test=forbidden-test-label-e3b0c44298fc1c\" is denied. This label carries no meaning beyond testing and demonstration purposes.\n  metadata:\n    category: test \n    technology:\n      - kubernetes\n    references:\n      - https://semgr8ns.github.io/semgr8s/latest/#testing\n  languages: [yaml]\n  severity: INFO\n"
       },
       "kind": "ConfigMap",
       "metadata": {
@@ -30,7 +30,7 @@
     {
       "apiVersion": "v1",
       "data": {
-        "tester-test-name.yaml": "rules:\n- id: test-semgr8s-forbidden-label\n  patterns:\n    - pattern-inside: |\n        metadata:\n          ...\n    - pattern-inside: |\n        labels:\n          ...\n    - pattern: |\n        semgr8s-test: forbidden-test-label-e3b0c44298fc1c\n  fix: \"\"\n  message: TEST ONLY. Found kubernetes resource with semgr8s forbidden test label. Any resource with label \"semgr8s-test=forbidden-test-label-e3b0c44298fc1c\" is denied. This label carries no meaning beyond testing and demonstration purposes.\n  metadata:\n    category: test \n    technology:\n      - kubernetes\n    references:\n      - https://sse-secure-systems.github.io/semgr8s/latest/#testing\n  languages: [yaml]\n  severity: INFO\n"
+        "tester-test-name.yaml": "rules:\n- id: test-semgr8s-forbidden-label\n  patterns:\n    - pattern-inside: |\n        metadata:\n          ...\n    - pattern-inside: |\n        labels:\n          ...\n    - pattern: |\n        semgr8s-test: forbidden-test-label-e3b0c44298fc1c\n  fix: \"\"\n  message: TEST ONLY. Found kubernetes resource with semgr8s forbidden test label. Any resource with label \"semgr8s-test=forbidden-test-label-e3b0c44298fc1c\" is denied. This label carries no meaning beyond testing and demonstration purposes.\n  metadata:\n    category: test \n    technology:\n      - kubernetes\n    references:\n      - https://semgr8ns.github.io/semgr8s/latest/#testing\n  languages: [yaml]\n  severity: INFO\n"
       },
       "kind": "ConfigMap",
       "metadata": {

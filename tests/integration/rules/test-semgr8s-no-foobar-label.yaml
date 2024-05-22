@@ -15,6 +15,6 @@ rules:
     technology:
       - kubernetes
     references:
-      - https://sse-secure-systems.github.io/semgr8s/latest/#testing
+      - https://semgr8ns.github.io/semgr8s/latest/#testing
   languages: [yaml]
   severity: INFO

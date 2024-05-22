@@ -1,13 +1,13 @@
 # Project information
 site_name: semgr8s - Semgrep-based Policy Controller for Kubernetes.
 
-site_url: https://sse-secure-systems.github.io/semgr8s/
+site_url: https://semgr8ns.github.io/semgr8s/
 site_description: >-
     Admission controller to use your well-known publicly available or custom Semgrep rules to validate k8s resources before deployment to the cluster.
 
 # Repository
-repo_name: sse-secure-systems/semgr8s/
-repo_url: https://github.com/sse-secure-systems/semgr8s
+repo_name: semgr8ns/semgr8s/
+repo_url: https://github.com/semgr8ns/semgr8s
 edit_uri: ""
 
 # Company
@@ -63,10 +63,10 @@ extra:
       provider: mike
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/sse-secure-systems
+      link: https://github.com/semgr8ns
       name: SSE on GitHub
     - icon: fontawesome/brands/docker
-      link: https://ghcr.io/sse-secure-systems/semgr8s
+      link: https://ghcr.io/semgr8ns/semgr8s
       name: Semgr8s images on GHCR
     - icon: fontawesome/brands/medium
       link: https://medium.com/sse-blog

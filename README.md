@@ -37,7 +37,7 @@ Getting started to validate Kubernetes resources against Semgrep rules is only a
 Installation files are contained within this repository:
 
 ```bash
-git clone https://github.com/sse-secure-systems/semgr8s.git
+git clone https://github.com/semgr8ns/semgr8s.git
 cd semgr8s
 ```
 

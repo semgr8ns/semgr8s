@@ -7,7 +7,7 @@ Understand how to plan, install and operate Semgr8s.
 Before integrating Semgr8s, it is important to bear a few considerations in mind:
 
 * Semgr8s is still in an early stage of development with exciting ideas for improvement :rocket:
-* There is only limited operational experience so far and there might be breaking changes. We are happy for any feedback, bug reports, feature requests, and contributions via [GitHub discussions](https://github.com/sse-secure-systems/semgr8s/discussions),  [issues](https://github.com/sse-secure-systems/semgr8s/issues) and PRs :pray:
+* There is only limited operational experience so far and there might be breaking changes. We are happy for any feedback, bug reports, feature requests, and contributions via [GitHub discussions](https://github.com/semgr8ns/semgr8s/discussions),  [issues](https://github.com/semgr8ns/semgr8s/issues) and PRs :pray:
 * Semgrep's *yaml* support is currently [experimental](https://semgrep.dev/docs/supported-languages#semgrep-code-language-support).
 * Semgr8s (like any other Kubernetes admission controller) can break a cluster when misconfigured. Therefore, testing should be rigorous and happen on a dedicated test cluster.
 * Semgr8s can be used with remote rules. Those introduce an external dependence for validation which can affect performance and availability.
@@ -32,7 +32,7 @@ Semgr8s is installed via *Helm*, but instructions can be adapted for usage with 
 The Helm charts are contained within the Semgr8s repository:
 
 ```bash
-git clone https://github.com/sse-secure-systems/semgr8s.git
+git clone https://github.com/semgr8ns/semgr8s.git
 cd semgr8s
 ```
 
@@ -260,7 +260,7 @@ Remote rules can currently only be configured prior to deployment and changes re
 
 Local rules are your custom written rules and added as configmaps with label `semgr8s/rule=true` to Semgr8s's namespace `semgr8ns`.
 They can either be provided prior to installation as files under `charts/semgr8s/rules/` or added after deployment.
-Templates and selected rules are available under [`./rules/`](https://github.com/sse-secure-systems/semgr8s/tree/main/rules).
+Templates and selected rules are available under [`./rules/`](https://github.com/semgr8ns/semgr8s/tree/main/rules).
 
 !!! tip "Share your own rules :writing_hand:"
     We hope to continuously extend the list of selected rules to facilitate policy creation.

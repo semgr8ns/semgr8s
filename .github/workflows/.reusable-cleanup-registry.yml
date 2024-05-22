@@ -16,7 +16,7 @@ jobs:
           cut-off: three weeks ago UTC+1
           timestamp-to-use: updated_at
           account-type: org
-          org-name: sse-secure-systems
+          org-name: semgr8ns
           token: ${{ secrets.GHCR_PAT }}
       - name: Cleanup dangling images without tag
         uses: snok/container-retention-policy@b56f4ff7539c1f94f01e5dc726671cd619aa8072 # v2.2.1
@@ -26,7 +26,7 @@ jobs:
           cut-off: four hours ago UTC+1
           timestamp-to-use: updated_at
           account-type: org
-          org-name: sse-secure-systems
+          org-name: semgr8ns
           token: ${{ secrets.GHCR_PAT }}
       #      - name: Cleanup all images
       #        uses: snok/container-retention-policy@b56f4ff7539c1f94f01e5dc726671cd619aa8072 # v2.2.1
@@ -36,5 +36,5 @@ jobs:
       #          cut-off: four days ago UTC+1
       #          timestamp-to-use: updated_at
       #          account-type: org
-      #          org-name: sse-secure-systems
+      #          org-name: semgr8ns
       #          token: ${{ secrets.GHCR_PAT }}

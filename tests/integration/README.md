@@ -4,7 +4,7 @@ Use the cluster of your choice, e.g. [kind](https://kind.sigs.k8s.io/).
 Specify which semgr8s image is to be used as environment variable, e.g.:
 
 ```bash
-export IMAGE=ghcr.io/sse-secure-systems/semgr8s
+export IMAGE=ghcr.io/semgr8ns/semgr8s
 export TAG=v0.1.0
 ```
 
