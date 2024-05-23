@@ -1,6 +1,6 @@
 # Template autofix rule
 
-Template rule demonstrating minimal syntax for [autofix rules](usage.md#autofix) at the example of a forbidden test mapping that is removed upon fixing.
+Template rule demonstrating minimal syntax for [autofix rules](../usage.md#autofix) at the example of a forbidden test mapping that is removed upon fixing.
 
 ## Use rule
 
