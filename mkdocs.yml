@@ -57,6 +57,7 @@ markdown_extensions:
   - admonition
   - codehilite
   - footnotes
+  - attr_list
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -73,6 +74,10 @@ markdown_extensions:
         permalink: ⚓︎
 
 # Plugins
+plugins:
+  - glightbox:
+      skip_classes:
+        - skip-lightbox
 
 # Extras
 extra_javascript:

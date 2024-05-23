@@ -26,7 +26,7 @@ Accordingly, the Kube API then either persists the (modified) requests to etcd f
 
 ## Architecture & Design
 
-![](assets/semgr8s-architecture.png#gh-light-mode-only)![](assets/semgr8s-architecture-dark.png#gh-dark-mode-only)
+![](assets/semgr8s-architecture.png#gh-light-mode-only){data-gallery="light"}![](assets/semgr8s-architecture-dark.png#gh-dark-mode-only){data-gallery="dark"}
 
 Semgr8s is developed for installation via [helm](https://helm.sh/) to setup the required Kubernetes resources.
 However, rendering of Kubernetes manifests for usage with `kubectl apply` is expected to work as well.
@@ -65,7 +65,7 @@ The Semgr8s application logic performs the following core functions:
 * mutate admission requests
 * update local rules
 
-![](assets/semgr8s-design.png#gh-light-mode-only)![](assets/semgr8s-design-dark.png#gh-dark-mode-only)
+![](assets/semgr8s-design.png#gh-light-mode-only){data-gallery="light"}![](assets/semgr8s-design-dark.png#gh-dark-mode-only){data-gallery="dark"}
 
 Semgrep is designed to scan files and consequently Semgr8s application logic manages rules, request and results data as files.
 As the container file system is configured as `readOnlyRootFilesystem`, corresponding volumes (`/app/rules/`, `/app/data`) and additional Semgrep folders (`/.semgrep/`, `/.cache`, `/tmp`) are provided via volume mounts.
