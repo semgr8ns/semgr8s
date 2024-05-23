@@ -18,6 +18,7 @@ copyright:  <a href="https://securesystems.de">Secure Systems Engineering GmbH</
 theme:
   language: en
   name: material
+  custom_dir: docs/overrides
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
