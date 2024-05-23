@@ -28,7 +28,7 @@ Getting started to validate Kubernetes resources against Semgrep rules is only a
 - Kubernetes cluster for testing (e.g. [kind](https://kind.sigs.k8s.io/), [microk8s](https://microk8s.io/docs), or [minikube](https://minikube.sigs.k8s.io/docs/start/))
 - [kubectl](https://kubernetes.io/docs/reference/kubectl/)
 - [Helm](https://helm.sh/)
-- (optional) [yq v4.x](https://mikefarah.gitbook.io/yq/)
+- *(optional)* [yq v4.x](https://mikefarah.gitbook.io/yq/)
 - *(optional)* [make](https://www.gnu.org/software/make/) (e.g. via [build-essential](https://packages.ubuntu.com/focal/build-essential))
 - *(optional)* [docker](https://docs.docker.com/get-docker/)
 
@@ -183,6 +183,8 @@ kubectl delete -f tests/demo/
 </details>
 
 ## Next steps
+
+Excited about Semgr8s? Here is some next steps:
 
 * :books: For more details, checkout the [docs](https://semgr8ns.github.io/semgr8s/latest/), e.g. on [Concept](https://semgr8ns.github.io/semgr8s/latest/concept/) or [Usage](https://semgr8ns.github.io/semgr8s/latest/usage/)
 * :writing_hand: To share feedback, reach out via [GitHub Discussions](https://github.com/semgr8ns/semgr8s/discussions)
