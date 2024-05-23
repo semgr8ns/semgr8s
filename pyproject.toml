@@ -19,6 +19,7 @@ optional = false
 
 [tool.poetry.group.docs.dependencies]
 mkdocs-material = "9.5.24"
+mkdocs-glightbox = "0.4.0"
 mike = "2.1.1"
 
 [tool.poetry.group.dev]
