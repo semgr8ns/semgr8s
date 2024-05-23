@@ -19,7 +19,28 @@ theme:
   language: en
   name: material
   palette:
-    primary: blue
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: blue
+      toggle:
+        icon: material/brightness-auto
+        name: system preference
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      toggle:
+        icon: material/brightness-7
+        name: light mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      toggle:
+        icon: material/brightness-4
+        name: dark mode
   font:
     text: Roboto
     code: Roboto Mono
@@ -28,7 +49,6 @@ theme:
   features:
     - content.code.copy
     - content.code.select
-    - navigation.top
 
 # Extensions
 markdown_extensions:
