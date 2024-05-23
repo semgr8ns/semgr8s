@@ -3,6 +3,7 @@ FROM alpine:3.20.0@sha256:77726ef6b57ddf65bb551896826ec38bc3e53f75cdde31354fbffb
 
 COPY .python-version /
 RUN apk add --no-cache python3~="$(cat .python-version)"
+ARG POETRY_VERSION="1.8.3-r0"
 
 ## BUILDER
 FROM base as builder
@@ -12,7 +13,7 @@ ENV POETRY_NO_INTERACTION=1 \
   POETRY_VIRTUALENVS_CREATE=1 \
   POETRY_CACHE_DIR=/tmp/poetry_cache
 
-RUN apk add --no-cache poetry=1.7.1-r0
+RUN apk add --no-cache poetry="${POETRY_VERSION}"
 
 WORKDIR /app
 COPY pyproject.toml poetry.lock ./
@@ -42,7 +43,7 @@ COPY semgr8s/ /app/semgr8s
 COPY charts/semgr8s/rules/ /app/rules
 
 # Install test dependencies
-RUN apk add --no-cache poetry=1.7.1-r0
+RUN apk add --no-cache poetry="${POETRY_VERSION}"
 COPY pyproject.toml poetry.lock ./
 RUN --mount=type=cache,target=$POETRY_CACHE_DIR poetry install --only test
 
