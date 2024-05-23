@@ -9,9 +9,9 @@ Semgrep-based Policy controller for Kubernetes.
 
 Admission controller to use your well-known publicly available or custom Semgrep rules to validate k8s resources before deployment to the cluster.
 
-:hammer_and_wrench: developed by ![](docs/assets/sse-logo-dark.svg#gh-dark-mode-only)![](docs/assets/sse-logo-light.svg#gh-light-mode-only)![](assets/sse-logo-dark.svg#gh-dark-mode-only)![](assets/sse-logo-light.svg#gh-light-mode-only)
+:hammer_and_wrench: developed by ![](docs/assets/sse-logo-dark.svg#gh-dark-mode-only)![](docs/assets/sse-logo-light.svg#gh-light-mode-only)[![](assets/sse-logo-dark.svg#gh-dark-mode-only)![](assets/sse-logo-light.svg#gh-light-mode-only)](https://securesystems.de/)
 
-:zap: powered by ![](docs/assets/semgrep-logo-dark.svg#gh-dark-mode-only)![](docs/assets/semgrep-logo-light.svg#gh-light-mode-only)![](assets/semgrep-logo-dark.svg#gh-dark-mode-only)![](assets/semgrep-logo-light.svg#gh-light-mode-only)
+:zap: powered by ![](docs/assets/semgrep-logo-dark.svg#gh-dark-mode-only)![](docs/assets/semgrep-logo-light.svg#gh-light-mode-only)[![](assets/semgrep-logo-dark.svg#gh-dark-mode-only)![](assets/semgrep-logo-light.svg#gh-light-mode-only)](https://semgrep.dev)
 
 > :warning: semgr8s is in a proof-of-concept state. Do not use in production. Breaking changes, service interruptions, and development flow adjustments are expected.
 
