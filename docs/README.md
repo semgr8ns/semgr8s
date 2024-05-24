@@ -1,14 +1,18 @@
-![](assets/semgr8s-logo-full-dark.png#gh-dark-mode-only){ .off-glb }
-![](assets/semgr8s-logo-full-light.png#gh-light-mode-only){ .off-glb }
+---
+glightbox-manual: true
+---
+
+![](assets/semgr8s-logo-full-dark.png#gh-dark-mode-only)
+![](assets/semgr8s-logo-full-light.png#gh-light-mode-only)
 
 <h2 align="center">
 Semgrep-based Policy controller for Kubernetes.
 </h2>
 Admission controller to use your well-known publicly available or custom Semgrep rules to validate k8s resources before deployment to the cluster.
 
-:hammer_and_wrench: developed by [![](assets/sse-logo-dark.svg#gh-dark-mode-only){ .off-glb }![](assets/sse-logo-light.svg#gh-light-mode-only){ .off-glb }](https://securesystems.de/)
+:hammer_and_wrench: developed by [![](assets/sse-logo-dark.svg#gh-dark-mode-only)![](assets/sse-logo-light.svg#gh-light-mode-only)](https://securesystems.de/)
 
-:zap: powered by [![](assets/semgrep-logo-dark.svg#gh-dark-mode-only){ .off-glb }![](assets/semgrep-logo-light.svg#gh-light-mode-only){ .off-glb }](https://semgrep.dev)
+:zap: powered by [![](assets/semgrep-logo-dark.svg#gh-dark-mode-only)![](assets/semgrep-logo-light.svg#gh-light-mode-only)](https://semgrep.dev)
 
 > :warning: semgr8s is in a proof-of-concept state. Do not use in production. Breaking changes, service interruptions, and development flow adjustments are expected.
 
@@ -16,7 +20,7 @@ Admission controller to use your well-known publicly available or custom Semgrep
 
 Getting started to validate Kubernetes resources against Semgrep rules is only a matter of minutes:
 
-![](assets/semgr8s-demo.gif)
+![](assets/semgr8s-demo.gif){ .on-glb }
 
 ### Requirements
 
