@@ -2,52 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://semgr8ns.github.io/semgr8s/dev/</loc>
-         <lastmod>2024-05-23</lastmod>
+         <lastmod>2024-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://semgr8ns.github.io/semgr8s/dev/concept/</loc>
-         <lastmod>2024-05-23</lastmod>
+         <lastmod>2024-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://semgr8ns.github.io/semgr8s/dev/usage/</loc>
-         <lastmod>2024-05-23</lastmod>
+         <lastmod>2024-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://semgr8ns.github.io/semgr8s/dev/examples/deny-default-namespace/</loc>
-         <lastmod>2024-05-23</lastmod>
+         <lastmod>2024-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://semgr8ns.github.io/semgr8s/dev/examples/forbidden-namespaced-label/</loc>
-         <lastmod>2024-05-23</lastmod>
+         <lastmod>2024-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://semgr8ns.github.io/semgr8s/dev/examples/forbidden-pod-label/</loc>
-         <lastmod>2024-05-23</lastmod>
+         <lastmod>2024-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://semgr8ns.github.io/semgr8s/dev/examples/forbidden-workload-label/</loc>
-         <lastmod>2024-05-23</lastmod>
+         <lastmod>2024-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://semgr8ns.github.io/semgr8s/dev/examples/restrict-image-registry/</loc>
-         <lastmod>2024-05-23</lastmod>
+         <lastmod>2024-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://semgr8ns.github.io/semgr8s/dev/examples/template-autofix-rule/</loc>
-         <lastmod>2024-05-23</lastmod>
+         <lastmod>2024-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://semgr8ns.github.io/semgr8s/dev/examples/template-rule/</loc>
-         <lastmod>2024-05-23</lastmod>
+         <lastmod>2024-05-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
