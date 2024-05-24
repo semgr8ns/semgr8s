@@ -1,7 +1,8 @@
-![](docs/assets/semgr8s-logo-full-dark.png#gh-dark-mode-only)
-![](docs/assets/semgr8s-logo-full-light.png#gh-light-mode-only)
-![](assets/semgr8s-logo-full-dark.png#gh-dark-mode-only)
-![](assets/semgr8s-logo-full-light.png#gh-light-mode-only)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/semgr8s-logo-full-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="docs/assets/semgr8s-logo-full-light.png">
+  <img alt="Semgr8s logo" src="docs/assets/semgr8s-logo-full-light.png">
+</picture>
 
 <h2 align="center">
 Semgrep-based Policy controller for Kubernetes.
@@ -9,18 +10,19 @@ Semgrep-based Policy controller for Kubernetes.
 
 Admission controller to use your well-known publicly available or custom Semgrep rules to validate k8s resources before deployment to the cluster.
 
-:hammer_and_wrench: developed by ![](docs/assets/sse-logo-dark.svg#gh-dark-mode-only)![](docs/assets/sse-logo-light.svg#gh-light-mode-only)[![](assets/sse-logo-dark.svg#gh-dark-mode-only)![](assets/sse-logo-light.svg#gh-light-mode-only)](https://securesystems.de/)
+:hammer_and_wrench: developed by <a href="https://securesystems.de/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/sse-logo-dark.svg"><source media="(prefers-color-scheme: light)" srcset="docs/assets/sse-logo-light.svg"><img alt="Semgr8s logo" src="docs/assets/sse-logo-light.svg"></picture></a>
 
-:zap: powered by ![](docs/assets/semgrep-logo-dark.svg#gh-dark-mode-only)![](docs/assets/semgrep-logo-light.svg#gh-light-mode-only)[![](assets/semgrep-logo-dark.svg#gh-dark-mode-only)![](assets/semgrep-logo-light.svg#gh-light-mode-only)](https://semgrep.dev)
+:zap: powered by <a href="https://semgrep.dev/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/semgrep-logo-dark.svg"><source media="(prefers-color-scheme: light)" srcset="docs/assets/semgrep-logo-light.svg"><img alt="Semgr8s logo" src="docs/assets/semgrep-logo-light.svg"></picture></a>
 
-> :warning: semgr8s is in a proof-of-concept state. Do not use in production. Breaking changes, service interruptions, and development flow adjustments are expected.
+> :warning: Semgr8s is in a proof-of-concept state. Do not use in production. Breaking changes, service interruptions, and development flow adjustments are expected.
+
+### :point_right: More? Read the [docs](https://semgr8ns.github.io/semgr8s/latest/).
 
 ## Getting started
 
 Getting started to validate Kubernetes resources against Semgrep rules is only a matter of minutes:
 
 ![](docs/assets/semgr8s-demo.gif)
-![](assets/semgr8s-demo.gif)
 
 ### Requirements
 
@@ -28,9 +30,6 @@ Getting started to validate Kubernetes resources against Semgrep rules is only a
 - Kubernetes cluster for testing (e.g. [kind](https://kind.sigs.k8s.io/), [microk8s](https://microk8s.io/docs), or [minikube](https://minikube.sigs.k8s.io/docs/start/))
 - [kubectl](https://kubernetes.io/docs/reference/kubectl/)
 - [Helm](https://helm.sh/)
-- *(optional)* [yq v4.x](https://mikefarah.gitbook.io/yq/)
-- *(optional)* [make](https://www.gnu.org/software/make/) (e.g. via [build-essential](https://packages.ubuntu.com/focal/build-essential))
-- *(optional)* [docker](https://docs.docker.com/get-docker/)
 
 ### Get Code
 
@@ -72,7 +71,7 @@ helm install semgr8s charts/semgr8s --create-namespace --namespace semgr8ns
   ```
 </details>
 
-You can check successful deployment of semgr8s via:
+You can check successful deployment of Semgr8s via:
 
 ```bash
 kubectl get all -n semgr8ns
@@ -95,7 +94,7 @@ kubectl get all -n semgr8ns
   ```
 </details>
 
-Once all resources are in `READY` state, you have successfully installed semgr8s :rocket:
+Once all resources are in `READY` state, you have successfully installed Semgr8s :rocket:
 
 ### Testing
 

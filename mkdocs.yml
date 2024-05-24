@@ -48,6 +48,7 @@ theme:
   logo: 'assets/semgr8s-logo-single.png'
   favicon: 'assets/semgr8s-logo-single.png'
   features:
+    - content.code.annotate
     - content.code.copy
     - content.code.select
     - navigation.top
