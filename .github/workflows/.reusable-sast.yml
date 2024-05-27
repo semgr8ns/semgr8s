@@ -236,7 +236,9 @@ jobs:
     permissions:
       security-events: write
     container:
-      image: returntocorp/semgrep
+      image: semgrep/semgrep
+    env:
+      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
