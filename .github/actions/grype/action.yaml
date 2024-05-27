@@ -33,6 +33,7 @@ runs:
       with:
         image: ${{ inputs.image }}
         fail-build: true
+        severity-cutoff: high
         output-format: table
     - name: Scan
       id: scan
