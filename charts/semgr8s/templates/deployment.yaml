@@ -62,6 +62,14 @@ spec:
           envFrom:
           - configMapRef:
               name: {{ include "semgr8s.envName" . }}
+          {{- if .Values.application.semgrepLogin }}
+          env:
+          - name: SEMGREP_APP_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: semgrep-app-token
+                key: token
+          {{ end }}
       volumes:
       - name: cert
         secret:

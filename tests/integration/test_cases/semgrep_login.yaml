@@ -1,0 +1,22 @@
+testCases:
+- id: sl-01
+  txt: Testing compliant pod...
+  type: k8s-yaml
+  ref: 20_compliant_pod
+  namespace: validatedns
+  expected_msg: pod/compliant-pod created
+- id: sl-02
+  txt: Testing non-compliant pod...
+  type: k8s-yaml
+  ref: 45_other_testlabel_pod
+  namespace: validatedns
+  expected_msg: semgr8ns.test-other-semgr8s-forbidden-label
+
+values:
+  deployment:
+    image:
+      repository: "${IMAGE}"
+      tag: "${TAG}"
+  application:
+    remoteRules: ["r/semgr8ns.test-other-semgr8s-forbidden-label"]
+    semgrepLogin: true

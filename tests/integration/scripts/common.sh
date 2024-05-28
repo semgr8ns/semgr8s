@@ -107,11 +107,17 @@ add_test_rules() {
 	cp tests/integration/rules/* charts/semgr8s/rules/
 }
 
-## TEST NAMESPACES --------------------------------------------- ##
+## NAMESPACES --------------------------------------------- ##
 
-create_namespaces() {
+create_semgr8ns_namespace() {
+	echo -n "Creating semgr8ns namespace..."
+	kubectl apply -f tests/integration/data/01_semgr8ns_namespace.yaml >/dev/null
+	success
+}
+
+create_test_namespaces() {
 	echo -n "Creating test namespaces..."
-	kubectl apply -f tests/integration/data/00_namespaces.yaml >/dev/null
+	kubectl apply -f tests/integration/data/00_test_namespaces.yaml >/dev/null
 	success
 }
 
