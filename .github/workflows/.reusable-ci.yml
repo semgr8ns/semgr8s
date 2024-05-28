@@ -144,6 +144,11 @@ jobs:
       skip: ${{ needs.conditionals.outputs.skip_sast }}
       output: ${{ needs.conditionals.outputs.output_type }}
 
+  semgrep:
+    uses: ./.github/workflows/semgrep.yml
+    needs: [sast]
+    secrets: inherit
+
   sca:
     uses: ./.github/workflows/.reusable-sca.yml
     needs: [conditionals, build]
