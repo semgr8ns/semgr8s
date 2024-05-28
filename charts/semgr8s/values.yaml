@@ -69,3 +69,4 @@ application:
   # common choices: p/kubernetes, r/yaml.kubernetes
   remoteRules: ["p/kubernetes"]
   autofix: false
+  semgrepLogin: false  # requires generic secret with name 'semgrep-app-token' and key 'token' in semgr8ns namespace

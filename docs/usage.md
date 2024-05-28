@@ -220,10 +220,23 @@ kubectl delete -f tests/demo/
 
 ## Features
 
+### Semgrep login
+
+With the *Semgrep login* feature, you can connect Semgr8s to your [Semgrep AppSec Platform](https://semgrep.dev/login) account and use platform features such as [private remote rules](https://semgrep.dev/docs/writing-rules/private-rules).
+To use the login feature, set `.application.semgrepLogin=true` in the `charts/semgr8s/values.yaml` and provide a Kubernetes generic secret `semgrep-app-token` containing a Semgrep agent token as `token` key:
+
+```bash 
+kubectl create secret generic -n semgr8ns --from-literal=token=iamsupersecret semgrep-app-token
+```
+
+To generate a new token go to the [API token settings](https://semgrep.dev/orgs/-/settings/tokens/api) on web platform and create a new token with *Agent (CI)* scope.
+Proceed with the Semgr8s installation as normal.
+
+
 ### Autofix
 
 Semgr8s supports the Semgrep [autofix feature](https://semgrep.dev/docs/writing-rules/autofix/).
-To use autofix, simply set `.application.autofix=true` in the `charts/semgr8s/values.yaml` before installation and provide `fix` instructions for your rules.
+To use autofix, simply set `.application.autofix=true` in the `charts/semgr8s/values.yaml` and provide `fix` instructions for your rules.
 Semgr8s will attempt to fix resources before validation.
 
 Technically, this is implemented via an additional mutating admission controller that is called before the validating admission controller.
@@ -251,6 +264,8 @@ For inspiration checkout Semgreps [Kubernetes ruleset](https://semgrep.dev/p/kub
 They are added as a list under `.application.remoteRules` `charts/semgr8s/values.yaml`.
 Simply reference the respective rule(set) as you would for a local installation, e.g. `p/kubernetes`.
 Remote rules can currently only be configured prior to deployment and changes require re-installation of Semgr8s.
+However, it is possible to use [private rules](https://semgrep.dev/docs/writing-rules/private-rules) via [*Semgrep login*](#semgrep-login) feature.
+Adding, changing, or modifying private rules and even rulesets propagates to the running Semgr8s installation.
 
 !!! warning
     Remote rules require requests to external resources.

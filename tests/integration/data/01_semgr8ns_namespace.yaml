@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: semgr8ns
+  labels:
+    kubernetes.io/metadata.name: semgr8ns

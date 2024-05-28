@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: forbiddenlabel-pod
+  labels:
+    use: semgr8s-integration-test
+    foo: bar
+    semgr8s-test: other-forbidden-test-label-a948904f2f0f47
+spec:
+  containers:
+  - image: busybox
+    name: forbiddenlabel-container
+    command: ["/bin/sh", "-ec", "sleep 1000"]

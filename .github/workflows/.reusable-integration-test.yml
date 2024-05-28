@@ -60,6 +60,8 @@ jobs:
         with:
           k8s-version: v1.25
       - name: Run test
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
         run: |
           bash tests/integration/main.sh "${{ matrix.integration-test-arg }}"
       - name: Display semgr8s configuration
@@ -95,6 +97,7 @@ jobs:
         integration-test-arg:
           [
             "remote_rules",
+            "semgrep_login",
           ]
     steps:
       - name: Checkout code
@@ -113,6 +116,8 @@ jobs:
         with:
           k8s-version: v1.25
       - name: Run test
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
         run: |
           bash tests/integration/main.sh "${{ matrix.integration-test-arg }}"
       - name: Display semgr8s configuration
