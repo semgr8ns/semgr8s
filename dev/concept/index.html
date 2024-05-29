@@ -24,7 +24,7 @@
     
     
       
-        <title>Concept - semgr8s - Semgrep-based Policy Controller for Kubernetes.</title>
+        <title>Concept - Semgr8s - Semgrep-based Policy Controller for Kubernetes.</title>
       
     
     
@@ -115,7 +115,7 @@ You're not viewing the docs of the latest version.
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="semgr8s - Semgrep-based Policy Controller for Kubernetes." class="md-header__button md-logo" aria-label="semgr8s - Semgrep-based Policy Controller for Kubernetes." data-md-component="logo">
+    <a href=".." title="Semgr8s - Semgrep-based Policy Controller for Kubernetes." class="md-header__button md-logo" aria-label="Semgr8s - Semgrep-based Policy Controller for Kubernetes." data-md-component="logo">
       
   <img src="../assets/semgr8s-logo-single.png" alt="logo">
 
@@ -128,7 +128,7 @@ You're not viewing the docs of the latest version.
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            semgr8s - Semgrep-based Policy Controller for Kubernetes.
+            Semgr8s - Semgrep-based Policy Controller for Kubernetes.
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -220,12 +220,12 @@ You're not viewing the docs of the latest version.
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="semgr8s - Semgrep-based Policy Controller for Kubernetes." class="md-nav__button md-logo" aria-label="semgr8s - Semgrep-based Policy Controller for Kubernetes." data-md-component="logo">
+    <a href=".." title="Semgr8s - Semgrep-based Policy Controller for Kubernetes." class="md-nav__button md-logo" aria-label="Semgr8s - Semgrep-based Policy Controller for Kubernetes." data-md-component="logo">
       
   <img src="../assets/semgr8s-logo-single.png" alt="logo">
 
     </a>
-    semgr8s - Semgrep-based Policy Controller for Kubernetes.
+    Semgr8s - Semgrep-based Policy Controller for Kubernetes.
   </label>
   
     <div class="md-nav__source">
@@ -691,9 +691,9 @@ You're not viewing the docs of the latest version.
 <ul>
 <li>Semgr8s is a Kubernetes admission controller</li>
 <li>Semgr8s directly integrates Semgrep under the hood</li>
-<li>Policy logic should be implemented via rules NOT Semgr8s configuration</li>
 <li>Rules are validated against admission requests that are similar to Kubernetes manifests</li>
 <li>Admission requests might exhibit some important differences to Kubernetes manifests</li>
+<li>Policy logic should be implemented via Semgrep rules NOT Semgr8s configuration</li>
 </ul>
 <h2 id="basics">Basics<a class="headerlink" href="#basics" title="Permanent link">⚓︎</a></h2>
 <p>Semgr8s is a policy controller for Kubernetes.
@@ -784,6 +784,7 @@ However, rendering of Kubernetes manifests for usage with <code>kubectl apply</c
 </span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">  </span><span class="c1"># common choices: p/kubernetes, r/yaml.kubernetes</span>
 </span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">  </span><span class="nt">remoteRules</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;p/kubernetes&quot;</span><span class="p p-Indicator">]</span>
 </span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="w">  </span><span class="nt">autofix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="w">  </span><span class="nt">semgrepLogin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># requires generic secret with name &#39;semgrep-app-token&#39; and key &#39;token&#39; in semgr8ns namespace</span>
 </span></code></pre></div>
 </details>
 <p>With exception of the admission webhook, all Semgr8s resources reside in its namespace <code>semgr8ns</code>.
@@ -844,7 +845,7 @@ Semgr8s exhibits a validating and an optional mutating admission webhook for use
 </span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 </span></code></pre></div>
 </details>
-<p>Their default configuration includes all <code>CREATE</code> and <code>UPDATE</code> for all <em>apiGroups</em>, <em>resources</em>, and <em>apiVersions</em> for namespaces with label <code>semgr8s/validation=enabled</code>. However, <code>Event</code> resources are manually dropped in application logic to suppress unnecessary load.
+<p>Their default configuration includes all <code>CREATE</code> and <code>UPDATE</code> requests for all <em>apiGroups</em>, <em>resources</em>, and <em>apiVersions</em> for namespaces with label <code>semgr8s/validation=enabled</code>. However, <code>Event</code> resources are manually dropped in application logic to suppress unnecessary load.
 The corresponding <code>/validate/</code> and <code>/mutate/</code> webhooks are exposed via HTTPS as a service that also handles load balancing.</p>
 <details class="abstract">
 <summary><code>service.yaml</code> chart</summary>
@@ -863,7 +864,7 @@ The corresponding <code>/validate/</code> and <code>/mutate/</code> webhooks are
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="p p-Indicator">{{</span><span class="nv">- include &quot;semgr8s.selectorLabels&quot; . | nindent 4</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 </span></code></pre></div>
 </details>
-<p>The application logic is written in Python, exposed via <a href="https://github.com/cherrypy/cheroot">cheroot</a> webserver for performance, using <a href="https://github.com/pallets/flask/">flask</a> framework for simplicity and maintainability, packaged in minimal container image based on <a href="https://hub.docker.com/_/alpine">Alpine</a> and deployed as securely configured single Pod with configurable number of replicas (default: <em>2</em>) for scalability and availability.
+<p>The application logic is written in Python, exposed via <a href="https://github.com/cherrypy/cheroot">cheroot</a> webserver for performance, using <a href="https://github.com/pallets/flask/">flask</a> framework for simplicity and maintainability, packaged in a minimal container image based on <a href="https://hub.docker.com/_/alpine">Alpine</a> and deployed as securely configured single Pod with configurable number of replicas (default: <em>2</em>) for scalability and availability.
 The core functionality of rule validation against admission requests is implemented by directly integrating <a href="https://github.com/semgrep/semgrep">Semgrep</a>.</p>
 <p>The Semgr8s application logic performs the following core functions:</p>
 <ul>
@@ -876,16 +877,16 @@ The core functionality of rule validation against admission requests is implemen
 As the container file system is configured as <code>readOnlyRootFilesystem</code>, corresponding volumes (<code>/app/rules/</code>, <code>/app/data</code>) and additional Semgrep folders (<code>/.semgrep/</code>, <code>/.cache</code>, <code>/tmp</code>) are provided via volume mounts.
 Performance-critical, small-size, ephemeral folders are mounted as <em>tmpfs</em> in order to avoid race conditions and timeouts at the expense of additional memory.
 The TLS certificate for HTTPS is provided as secret volume.</p>
-<p>For <strong>mutation</strong> and <strong>validation</strong>, an incoming admission requests is input validated, the admission <em>object</em> is converted to <em>yaml</em> and written to file.
+<p>For <strong>mutation</strong> and <strong>validation</strong>, an incoming admission request is input validated, the admission <em>object</em> is converted to <em>yaml</em> and written to file.
 Semgrep is invoked on the admission request file using rules stored under <code>/app/rules/</code>.
 Additional configuration is passed as system arguments.
 Semgrep writes scan results to a results file that is parsed and rendered for admission response.
-After completion request and result file are deleted.</p>
-<p>Finally, Semgreps periodically runs an <strong>update</strong> job that gets the rule configmaps, decodes them and writes them to the file system under <code>/app/rules/</code>.
+After completion request and result file are deleted to maintain a constant storage size.</p>
+<p>Semgreps periodically runs an <strong>update</strong> job that gets the rule configmaps, decodes them and writes them to the file system under <code>/app/rules/</code>.
 The update job runs once every minute.
 Thus, adding new rules, modifying existing ones, or removing them can take up to 1min to propagate.</p>
-<p>While the local rules provided as configmaps and updated manually, Semgr8s configuration configmaps (including remote rules) are mounted as environment variables upon container creation and require a restart for updating.
-Semgr8s uses a service account with <code>list</code>/<code>get</code> configmaps permission in its own namespace to get updated rule configmaps.</p>
+<p>While the local rules provided as configmaps are updated manually, Semgr8s configuration configmaps (including remote rules) are mounted as environment variables upon container creation and require a restart for updating.</p>
+<p>Semgr8s uses a service account with <code>list</code>/<code>get</code> configmaps permission in its own namespace to get updated rule configmaps:</p>
 <details class="abstract">
 <summary>role.yaml</summary>
 <div class="language-yaml highlight"><span class="filename">charts/semgr8s/templates/role.yaml</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
@@ -901,7 +902,7 @@ Semgr8s uses a service account with <code>list</code>/<code>get</code> configmap
 </span></code></pre></div>
 </details>
 <h2 id="admission-requests">Admission requests<a class="headerlink" href="#admission-requests" title="Permanent link">⚓︎</a></h2>
-<p>It is important to note that an admission request is in essence similar to Kubernetes manifests, but not the same and those differences might matter when writing policies.
+<p>It is important to note that an admission request is in essence similar to Kubernetes manifests, but not the same and those differences might matter when writing rules.
 Consider a simple pod resource:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -916,10 +917,10 @@ Consider a simple pod resource:</p>
 The (reduced) admission request takes the following form:</p>
 <details class="abstract">
 <summary>Admission request</summary>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">metadata</span><span class="p">:</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="hll"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span></span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="hll"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+</span></span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="hll"><span class="nt">metadata</span><span class="p">:</span>
+</span></span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">kubectl.kubernetes.io/last-applied-configuration</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Pod&quot;,&quot;metadata&quot;:{&quot;annotations&quot;:{},&quot;name&quot;:&quot;mypod&quot;,&quot;namespace&quot;:&quot;test-semgr8s&quot;},&quot;spec&quot;:{&quot;containers&quot;:[{&quot;image&quot;:&quot;nginx&quot;,&quot;name&quot;:&quot;mycontainer&quot;}]}}&#39;</span>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2024-05-10T13:47:01Z&#39;</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="nt">managedFields</span><span class="p">:</span>
@@ -949,15 +950,15 @@ The (reduced) admission request takes the following form:</p>
 </span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">    </span><span class="nt">manager</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl-client-side-apply</span>
 </span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">    </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update</span>
 </span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">    </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2024-05-10T13:47:01Z&#39;</span>
-</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mypod</span>
-</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-semgr8s</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="hll"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mypod</span>
+</span></span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-semgr8s</span>
 </span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">  </span><span class="nt">uid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2d28a432-6526-4022-96fa-cb9d0ff50756</span>
-</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="nt">spec</span><span class="p">:</span>
-</span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
-</span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-</span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">    </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span>
-</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mycontainer</span>
-</span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="hll"><span class="nt">spec</span><span class="p">:</span>
+</span></span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="hll"><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+</span></span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="hll"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span></span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">    </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span>
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="hll"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mycontainer</span>
+</span></span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="w">    </span><span class="nt">terminationMessagePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/termination-log</span>
 </span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="w">    </span><span class="nt">terminationMessagePolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
 </span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span>

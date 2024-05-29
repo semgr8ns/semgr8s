@@ -24,7 +24,7 @@
     
     
       
-        <title>Usage - semgr8s - Semgrep-based Policy Controller for Kubernetes.</title>
+        <title>Usage - Semgr8s - Semgrep-based Policy Controller for Kubernetes.</title>
       
     
     
@@ -115,7 +115,7 @@ You're not viewing the docs of the latest version.
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="semgr8s - Semgrep-based Policy Controller for Kubernetes." class="md-header__button md-logo" aria-label="semgr8s - Semgrep-based Policy Controller for Kubernetes." data-md-component="logo">
+    <a href=".." title="Semgr8s - Semgrep-based Policy Controller for Kubernetes." class="md-header__button md-logo" aria-label="Semgr8s - Semgrep-based Policy Controller for Kubernetes." data-md-component="logo">
       
   <img src="../assets/semgr8s-logo-single.png" alt="logo">
 
@@ -128,7 +128,7 @@ You're not viewing the docs of the latest version.
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            semgr8s - Semgrep-based Policy Controller for Kubernetes.
+            Semgr8s - Semgrep-based Policy Controller for Kubernetes.
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -220,12 +220,12 @@ You're not viewing the docs of the latest version.
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="semgr8s - Semgrep-based Policy Controller for Kubernetes." class="md-nav__button md-logo" aria-label="semgr8s - Semgrep-based Policy Controller for Kubernetes." data-md-component="logo">
+    <a href=".." title="Semgr8s - Semgrep-based Policy Controller for Kubernetes." class="md-nav__button md-logo" aria-label="Semgr8s - Semgrep-based Policy Controller for Kubernetes." data-md-component="logo">
       
   <img src="../assets/semgr8s-logo-single.png" alt="logo">
 
     </a>
-    semgr8s - Semgrep-based Policy Controller for Kubernetes.
+    Semgr8s - Semgrep-based Policy Controller for Kubernetes.
   </label>
   
     <div class="md-nav__source">
@@ -432,6 +432,15 @@ You're not viewing the docs of the latest version.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#semgrep-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semgrep login
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#autofix" class="md-nav__link">
     <span class="md-ellipsis">
       Autofix
@@ -475,9 +484,18 @@ You're not viewing the docs of the latest version.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#adding-local-rules" class="md-nav__link">
+  <a href="#adding-rules" class="md-nav__link">
     <span class="md-ellipsis">
-      Adding local rules
+      Adding rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing rules
     </span>
   </a>
   
@@ -531,15 +549,6 @@ You're not viewing the docs of the latest version.
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete-all-local-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      Delete all local rules
-    </span>
-  </a>
   
 </li>
         
@@ -916,6 +925,15 @@ You're not viewing the docs of the latest version.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#semgrep-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semgrep login
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#autofix" class="md-nav__link">
     <span class="md-ellipsis">
       Autofix
@@ -959,9 +977,18 @@ You're not viewing the docs of the latest version.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#adding-local-rules" class="md-nav__link">
+  <a href="#adding-rules" class="md-nav__link">
     <span class="md-ellipsis">
-      Adding local rules
+      Adding rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing rules
     </span>
   </a>
   
@@ -1015,15 +1042,6 @@ You're not viewing the docs of the latest version.
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete-all-local-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      Delete all local rules
-    </span>
-  </a>
   
 </li>
         
@@ -1158,6 +1176,7 @@ Central configuration is maintained in <code>charts/semgr8s/values.yaml</code>:<
 </span><span id="__span-1-69"><a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="w">  </span><span class="c1"># common choices: p/kubernetes, r/yaml.kubernetes</span>
 </span><span id="__span-1-70"><a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a><span class="w">  </span><span class="nt">remoteRules</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;p/kubernetes&quot;</span><span class="p p-Indicator">]</span>
 </span><span id="__span-1-71"><a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="w">  </span><span class="nt">autofix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-1-72"><a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="w">  </span><span class="nt">semgrepLogin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># requires generic secret with name &#39;semgrep-app-token&#39; and key &#39;token&#39; in semgr8ns namespace</span>
 </span></code></pre></div>
 </details>
 <p>Configuration aims to provide the most native integration of Semgrep's functionality into Kubernetes.
@@ -1178,15 +1197,14 @@ It is possible to either reference remote rules or add custom rules locally.
 <a href="#writing-rules">Custom Semgrep rules</a> can be placed in <code>charts/semgr8s/rules/</code> and will be auto-mounted into the admission controller or <a href="#adding-local-rules">added later as configmaps</a>.
 Additional information on rule creation and management is shared <a href="#rules">below</a>.
 Some useful example rules are provided under <code>./rules/</code>.</p>
-<p>At present, Semgr8s is shipped with one local test rule detecting a unique label and Semgrep's <code>p/kubernetes</code> ruleset.</p>
+<p>At present, Semgr8s is shipped with Semgrep's <a href="https://semgrep.dev/p/kubernetes"><code>p/kubernetes</code></a> ruleset and one local test rule detecting a unique label.</p>
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">⚓︎</a></h3>
 <p>To deploy the preconfigured admission controller simply run:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>helm<span class="w"> </span>install<span class="w"> </span>semgr8s<span class="w"> </span>charts/semgr8s<span class="w"> </span>--create-namespace<span class="w"> </span>--namespace<span class="w"> </span>semgr8ns
 </span></code></pre></div>
-<details>
-  <summary>output</summary>
-
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>NAME:<span class="w"> </span>semgr8s
+<details class="note">
+<summary>output</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>NAME:<span class="w"> </span>semgr8s
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>LAST<span class="w"> </span>DEPLOYED:<span class="w"> </span>Tue<span class="w"> </span>Apr<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">00</span>:16:04<span class="w"> </span><span class="m">2023</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>NAMESPACE:<span class="w"> </span>semgr8ns
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>STATUS:<span class="w"> </span>deployed
@@ -1196,14 +1214,12 @@ Some useful example rules are provided under <code>./rules/</code>.</p>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>Successfully<span class="w"> </span>installed<span class="w"> </span>semgr8s!
 </span></code></pre></div>
 </details>
-
 <p>You can check successful deployment of semgr8s via:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>semgr8ns
 </span></code></pre></div>
-<details>
-  <summary>output</summary>
-
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>NAME<span class="w">                           </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE
+<details class="note">
+<summary>output</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>NAME<span class="w">                           </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>pod/semgr8s-665dbb8756-qhqv6<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>7s
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>NAME<span class="w">                      </span>TYPE<span class="w">        </span>CLUSTER-IP<span class="w">      </span>EXTERNAL-IP<span class="w">   </span>PORT<span class="o">(</span>S<span class="o">)</span><span class="w">   </span>AGE
@@ -1216,7 +1232,6 @@ Some useful example rules are provided under <code>./rules/</code>.</p>
 </span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>replicaset.apps/semgr8s-665dbb8756<span class="w">   </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">       </span>7s
 </span></code></pre></div>
 </details>
-
 <p>Once all resources are in <code>READY</code> state, you have successfully installed Semgr8s.</p>
 <h3 id="enable-namespaces">Enable namespaces<a class="headerlink" href="#enable-namespaces" title="Permanent link">⚓︎</a></h3>
 <p>To activate Semgr8s admission control for a namespace in default configuration, it is required to set the label <code>semgr8s/validation=enabled</code>.
@@ -1232,77 +1247,191 @@ Either update the labels for existing namespaces directly via <code>kubectl</cod
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="hll"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 </span></span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="hll"><span class="w">    </span><span class="nt">semgr8s/validation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
 </span></span></code></pre></div>
-<p>It is recommended to exclude cluster operation critical namespaces such <code>kube-system</code> to avoid interruptions.</p>
+<p>It is recommended to exclude cluster operation critical namespaces such as <code>kube-system</code> and <code>semgr8ns</code> to avoid interruptions.</p>
 <h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">⚓︎</a></h3>
 <p>Several test resources are provided under <code>tests/demo/</code>.
 Semgr8s only validates resources in namespaces with label <code>semgr8s/validation=enabled</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>tests/demo/00_test-namespace.yaml
 </span></code></pre></div>
-<details>
-  <summary>output</summary>
-
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>namespace/test-semgr8s<span class="w"> </span>created
+<details class="info">
+<summary>input</summary>
+<div class="language-yaml highlight"><span class="filename">tests/demo/00_test-namespace.yaml</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nn">---</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-semgr8s</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="nt">semgr8s/validation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
 </span></code></pre></div>
 </details>
-
-<p>It denies creating pods with non-compliant configuration according to the local rules in <code>charts/semgr8s/rules</code> and <code>.application.remoteRules</code>  <code>charts/semgr8s/values.yaml</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>tests/demo/40_failing-deployment.yaml
-</span></code></pre></div>
-<details>
-  <summary>output</summary>
-
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Error<span class="w"> </span>from<span class="w"> </span>server:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>creating<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>admission<span class="w"> </span>webhook<span class="w"> </span><span class="s2">&quot;semgr8s-svc.semgr8ns.svc&quot;</span><span class="w"> </span>denied<span class="w"> </span>the<span class="w"> </span>request:<span class="w"> </span>Found<span class="w"> </span><span class="m">1</span><span class="w"> </span>violation<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>policies:<span class="w"> </span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>*<span class="w"> </span>rules.test-semgr8s-forbidden-label
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>Error<span class="w"> </span>from<span class="w"> </span>server:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>creating<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>admission<span class="w"> </span>webhook<span class="w"> </span><span class="s2">&quot;semgr8s-svc.semgr8ns.svc&quot;</span><span class="w"> </span>denied<span class="w"> </span>the<span class="w"> </span>request:<span class="w"> </span>Found<span class="w"> </span><span class="m">1</span><span class="w"> </span>violation<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>policies:<span class="w"> </span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>*<span class="w"> </span>yaml.kubernetes.security.writable-filesystem-container.writable-filesystem-container
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>Error<span class="w"> </span>from<span class="w"> </span>server:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>creating<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>admission<span class="w"> </span>webhook<span class="w"> </span><span class="s2">&quot;semgr8s-svc.semgr8ns.svc&quot;</span><span class="w"> </span>denied<span class="w"> </span>the<span class="w"> </span>request:<span class="w"> </span>Found<span class="w"> </span><span class="m">1</span><span class="w"> </span>violation<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>policies:<span class="w"> </span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>*<span class="w"> </span>yaml.kubernetes.security.privileged-container.privileged-container
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>Error<span class="w"> </span>from<span class="w"> </span>server:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>creating<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>admission<span class="w"> </span>webhook<span class="w"> </span><span class="s2">&quot;semgr8s-svc.semgr8ns.svc&quot;</span><span class="w"> </span>denied<span class="w"> </span>the<span class="w"> </span>request:<span class="w"> </span>Found<span class="w"> </span><span class="m">1</span><span class="w"> </span>violation<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>policies:<span class="w"> </span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>*<span class="w"> </span>yaml.kubernetes.security.hostnetwork-pod.hostnetwork-pod
+<details class="note">
+<summary>output</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>namespace/test-semgr8s<span class="w"> </span>created
 </span></code></pre></div>
 </details>
-
+<p>It denies creating pods with non-compliant configuration according to the local rules in <code>charts/semgr8s/rules</code> and remote rules configured under <code>.application.remoteRules</code> in  <code>charts/semgr8s/values.yaml</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>tests/demo/40_failing-deployment.yaml
+</span></code></pre></div>
+<details class="info">
+<summary>input</summary>
+<div class="language-yaml highlight"><span class="filename">tests/demo/40_failing-deployment.yaml</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nn">---</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">forbiddenlabel-pod</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-semgr8s</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">    </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="nt">semgr8s-test</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">forbidden-test-label-e3b0c44298fc1c</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="nt">spec</span><span class="p">:</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">forbiddenlabel-container</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/sh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-ec&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;sleep</span><span class="nv"> </span><span class="s">1000&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">    </span><span class="nt">securityContext</span><span class="p">:</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">      </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">      </span><span class="nt">capabilities</span><span class="p">:</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">        </span><span class="nt">drop</span><span class="p">:</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALL</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">      </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">      </span><span class="nt">readOnlyRootFilesystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">      </span><span class="nt">runAsNonRoot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">      </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10001</span><span class="w">  </span><span class="c1"># remove when using openshift or OKD 4</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">      </span><span class="nt">runAsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20001</span><span class="w">  </span><span class="c1"># remove when using openshift or OKD 4</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">      </span><span class="nt">seccompProfile</span><span class="p">:</span><span class="w">  </span><span class="c1"># remove when using Kubernetes prior v1.19, openshift or OKD 4</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RuntimeDefault</span><span class="w">  </span><span class="c1"># remove when using Kubernetes prior v1.19, openshift or OKD 4</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="nn">---</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">failing-testpod-1</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-semgr8s</span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="nt">spec</span><span class="p">:</span>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">failing-testpod-1</span>
+</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/sh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-ec&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;sleep</span><span class="nv"> </span><span class="s">1000&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a><span class="nn">---</span>
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">failing-testpod-2</span>
+</span><span id="__span-12-43"><a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-semgr8s</span>
+</span><span id="__span-12-44"><a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a><span class="nt">spec</span><span class="p">:</span>
+</span><span id="__span-12-45"><a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+</span><span id="__span-12-46"><a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
+</span><span id="__span-12-47"><a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">failing-testpod-2</span>
+</span><span id="__span-12-48"><a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/sh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-ec&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;sleep</span><span class="nv"> </span><span class="s">1000&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-12-49"><a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a><span class="w">    </span><span class="nt">securityContext</span><span class="p">:</span>
+</span><span id="__span-12-50"><a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a><span class="w">      </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-12-51"><a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="w">      </span><span class="nt">capabilities</span><span class="p">:</span>
+</span><span id="__span-12-52"><a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a><span class="w">        </span><span class="nt">drop</span><span class="p">:</span>
+</span><span id="__span-12-53"><a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALL</span>
+</span><span id="__span-12-54"><a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a><span class="w">      </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-12-55"><a id="__codelineno-12-55" name="__codelineno-12-55" href="#__codelineno-12-55"></a><span class="w">      </span><span class="nt">readOnlyRootFilesystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-12-56"><a id="__codelineno-12-56" name="__codelineno-12-56" href="#__codelineno-12-56"></a><span class="w">      </span><span class="nt">runAsNonRoot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-12-57"><a id="__codelineno-12-57" name="__codelineno-12-57" href="#__codelineno-12-57"></a><span class="nn">---</span>
+</span><span id="__span-12-58"><a id="__codelineno-12-58" name="__codelineno-12-58" href="#__codelineno-12-58"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-12-59"><a id="__codelineno-12-59" name="__codelineno-12-59" href="#__codelineno-12-59"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+</span><span id="__span-12-60"><a id="__codelineno-12-60" name="__codelineno-12-60" href="#__codelineno-12-60"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-12-61"><a id="__codelineno-12-61" name="__codelineno-12-61" href="#__codelineno-12-61"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">failing-testpod-3</span>
+</span><span id="__span-12-62"><a id="__codelineno-12-62" name="__codelineno-12-62" href="#__codelineno-12-62"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-semgr8s</span>
+</span><span id="__span-12-63"><a id="__codelineno-12-63" name="__codelineno-12-63" href="#__codelineno-12-63"></a><span class="nt">spec</span><span class="p">:</span>
+</span><span id="__span-12-64"><a id="__codelineno-12-64" name="__codelineno-12-64" href="#__codelineno-12-64"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+</span><span id="__span-12-65"><a id="__codelineno-12-65" name="__codelineno-12-65" href="#__codelineno-12-65"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
+</span><span id="__span-12-66"><a id="__codelineno-12-66" name="__codelineno-12-66" href="#__codelineno-12-66"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">failing-testpod-3</span>
+</span><span id="__span-12-67"><a id="__codelineno-12-67" name="__codelineno-12-67" href="#__codelineno-12-67"></a><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/sh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-ec&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;sleep</span><span class="nv"> </span><span class="s">1000&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-12-68"><a id="__codelineno-12-68" name="__codelineno-12-68" href="#__codelineno-12-68"></a><span class="w">    </span><span class="nt">securityContext</span><span class="p">:</span>
+</span><span id="__span-12-69"><a id="__codelineno-12-69" name="__codelineno-12-69" href="#__codelineno-12-69"></a><span class="w">      </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-12-70"><a id="__codelineno-12-70" name="__codelineno-12-70" href="#__codelineno-12-70"></a><span class="w">      </span><span class="nt">capabilities</span><span class="p">:</span>
+</span><span id="__span-12-71"><a id="__codelineno-12-71" name="__codelineno-12-71" href="#__codelineno-12-71"></a><span class="w">        </span><span class="nt">drop</span><span class="p">:</span>
+</span><span id="__span-12-72"><a id="__codelineno-12-72" name="__codelineno-12-72" href="#__codelineno-12-72"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALL</span>
+</span><span id="__span-12-73"><a id="__codelineno-12-73" name="__codelineno-12-73" href="#__codelineno-12-73"></a><span class="w">      </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-12-74"><a id="__codelineno-12-74" name="__codelineno-12-74" href="#__codelineno-12-74"></a><span class="w">      </span><span class="nt">readOnlyRootFilesystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-12-75"><a id="__codelineno-12-75" name="__codelineno-12-75" href="#__codelineno-12-75"></a><span class="w">  </span><span class="nt">hostNetwork</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div>
+</details>
+<details class="note">
+<summary>output</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Error<span class="w"> </span>from<span class="w"> </span>server:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>creating<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>admission<span class="w"> </span>webhook<span class="w"> </span><span class="s2">&quot;semgr8s-svc.semgr8ns.svc&quot;</span><span class="w"> </span>denied<span class="w"> </span>the<span class="w"> </span>request:<span class="w"> </span>Found<span class="w"> </span><span class="m">1</span><span class="w"> </span>violation<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>policies:<span class="w"> </span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>*<span class="w"> </span>rules.test-semgr8s-forbidden-label
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>Error<span class="w"> </span>from<span class="w"> </span>server:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>creating<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>admission<span class="w"> </span>webhook<span class="w"> </span><span class="s2">&quot;semgr8s-svc.semgr8ns.svc&quot;</span><span class="w"> </span>denied<span class="w"> </span>the<span class="w"> </span>request:<span class="w"> </span>Found<span class="w"> </span><span class="m">1</span><span class="w"> </span>violation<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>policies:<span class="w"> </span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>*<span class="w"> </span>yaml.kubernetes.security.writable-filesystem-container.writable-filesystem-container
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>Error<span class="w"> </span>from<span class="w"> </span>server:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>creating<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>admission<span class="w"> </span>webhook<span class="w"> </span><span class="s2">&quot;semgr8s-svc.semgr8ns.svc&quot;</span><span class="w"> </span>denied<span class="w"> </span>the<span class="w"> </span>request:<span class="w"> </span>Found<span class="w"> </span><span class="m">1</span><span class="w"> </span>violation<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>policies:<span class="w"> </span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>*<span class="w"> </span>yaml.kubernetes.security.privileged-container.privileged-container
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>Error<span class="w"> </span>from<span class="w"> </span>server:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>creating<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>admission<span class="w"> </span>webhook<span class="w"> </span><span class="s2">&quot;semgr8s-svc.semgr8ns.svc&quot;</span><span class="w"> </span>denied<span class="w"> </span>the<span class="w"> </span>request:<span class="w"> </span>Found<span class="w"> </span><span class="m">1</span><span class="w"> </span>violation<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>policies:<span class="w"> </span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>*<span class="w"> </span>yaml.kubernetes.security.hostnetwork-pod.hostnetwork-pod
+</span></code></pre></div>
+</details>
 <p>Compliantly configured resources on the other hand are permitted to the cluster:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>tests/demo/20_passing-deployment.yaml
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>tests/demo/20_passing-deployment.yaml
 </span></code></pre></div>
-<details>
-  <summary>output</summary>
-
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>pod/passing-testpod-1<span class="w"> </span>created
+<details class="info">
+<summary>input</summary>
+<div class="language-yaml highlight"><span class="filename">tests/demo/20_passing-deployment.yaml</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nn">---</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">passing-testpod-1</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-semgr8s</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="nt">spec</span><span class="p">:</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">passing-testpod-1</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/sh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-ec&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;sleep</span><span class="nv"> </span><span class="s">1000&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">    </span><span class="nt">securityContext</span><span class="p">:</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">      </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">      </span><span class="nt">capabilities</span><span class="p">:</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">        </span><span class="nt">drop</span><span class="p">:</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALL</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">      </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">      </span><span class="nt">readOnlyRootFilesystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">      </span><span class="nt">runAsNonRoot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="w">      </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10001</span><span class="w">  </span><span class="c1"># remove when using openshift or OKD 4</span>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">      </span><span class="nt">runAsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20001</span><span class="w">  </span><span class="c1"># remove when using openshift or OKD 4</span>
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="w">      </span><span class="nt">seccompProfile</span><span class="p">:</span><span class="w">  </span><span class="c1"># remove when using Kubernetes prior v1.19, openshift or OKD 4</span>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RuntimeDefault</span><span class="w">  </span><span class="c1"># remove when using Kubernetes prior v1.19, openshift or OKD 4</span>
 </span></code></pre></div>
 </details>
-
+<details class="note">
+<summary>output</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>pod/passing-testpod-1<span class="w"> </span>created
+</span></code></pre></div>
+</details>
 <h3 id="cleanup">Cleanup<a class="headerlink" href="#cleanup" title="Permanent link">⚓︎</a></h3>
 <p>To remove all resources of the admission controller run:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>semgr8s<span class="w"> </span>-n<span class="w"> </span>semgr8ns
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>ns<span class="w"> </span>semgr8ns
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>semgr8s<span class="w"> </span>-n<span class="w"> </span>semgr8ns
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>ns<span class="w"> </span>semgr8ns
 </span></code></pre></div>
-<details>
-  <summary>output</summary>
-
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>release<span class="w"> </span><span class="s2">&quot;semgr8s&quot;</span><span class="w"> </span>uninstalled
+<details class="note">
+<summary>output</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>release<span class="w"> </span><span class="s2">&quot;semgr8s&quot;</span><span class="w"> </span>uninstalled
 </span></code></pre></div>
 </details>
-
 <p>Test resources are deleted via:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>tests/demo/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>tests/demo/
 </span></code></pre></div>
-<details>
-  <summary>output</summary>
-
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>namespace<span class="w"> </span><span class="s2">&quot;test-semgr8s&quot;</span><span class="w"> </span>deleted
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>pod<span class="w"> </span><span class="s2">&quot;passing-testpod-1&quot;</span><span class="w"> </span>deleted
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>NotFound<span class="o">)</span>:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>deleting<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>pods<span class="w"> </span><span class="s2">&quot;forbiddenlabel-pod&quot;</span><span class="w"> </span>not<span class="w"> </span>found
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>NotFound<span class="o">)</span>:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>deleting<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>pods<span class="w"> </span><span class="s2">&quot;failing-testpod-1&quot;</span><span class="w"> </span>not<span class="w"> </span>found
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>NotFound<span class="o">)</span>:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>deleting<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>pods<span class="w"> </span><span class="s2">&quot;failing-testpod-2&quot;</span><span class="w"> </span>not<span class="w"> </span>found
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>NotFound<span class="o">)</span>:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>deleting<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>pods<span class="w"> </span><span class="s2">&quot;failing-testpod-3&quot;</span><span class="w"> </span>not<span class="w"> </span>found
+<details class="note">
+<summary>output</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>namespace<span class="w"> </span><span class="s2">&quot;test-semgr8s&quot;</span><span class="w"> </span>deleted
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>pod<span class="w"> </span><span class="s2">&quot;passing-testpod-1&quot;</span><span class="w"> </span>deleted
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>NotFound<span class="o">)</span>:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>deleting<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>pods<span class="w"> </span><span class="s2">&quot;forbiddenlabel-pod&quot;</span><span class="w"> </span>not<span class="w"> </span>found
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>NotFound<span class="o">)</span>:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>deleting<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>pods<span class="w"> </span><span class="s2">&quot;failing-testpod-1&quot;</span><span class="w"> </span>not<span class="w"> </span>found
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>NotFound<span class="o">)</span>:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>deleting<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>pods<span class="w"> </span><span class="s2">&quot;failing-testpod-2&quot;</span><span class="w"> </span>not<span class="w"> </span>found
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>NotFound<span class="o">)</span>:<span class="w"> </span>error<span class="w"> </span>when<span class="w"> </span>deleting<span class="w"> </span><span class="s2">&quot;tests/demo/40_failing-deployment.yaml&quot;</span>:<span class="w"> </span>pods<span class="w"> </span><span class="s2">&quot;failing-testpod-3&quot;</span><span class="w"> </span>not<span class="w"> </span>found
 </span></code></pre></div>
 </details>
-
 <h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">⚓︎</a></h2>
+<h3 id="semgrep-login">Semgrep login<a class="headerlink" href="#semgrep-login" title="Permanent link">⚓︎</a></h3>
+<p>With the <em>Semgrep login</em> feature, you can connect Semgr8s to your <a href="https://semgrep.dev/login">Semgrep AppSec Platform</a> account and use platform features such as <a href="https://semgrep.dev/docs/writing-rules/private-rules">private remote rules</a>.
+To use the login feature, set <code>.application.semgrepLogin=true</code> in the <code>charts/semgr8s/values.yaml</code> and provide a Kubernetes generic secret <code>semgrep-app-token</code> containing a Semgrep agent token as <code>token</code> key:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>-n<span class="w"> </span>semgr8ns<span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">token</span><span class="o">=</span>iamsupersecret<span class="w"> </span>semgrep-app-token
+</span></code></pre></div>
+<p>To generate a new token go to the <a href="https://semgrep.dev/orgs/-/settings/tokens/api">API token settings</a> on web platform and create a new token with <em>Agent (CI)</em> scope.
+Proceed with the Semgr8s installation as normal.</p>
 <h3 id="autofix">Autofix<a class="headerlink" href="#autofix" title="Permanent link">⚓︎</a></h3>
 <p>Semgr8s supports the Semgrep <a href="https://semgrep.dev/docs/writing-rules/autofix/">autofix feature</a>.
-To use autofix, simply set <code>.application.autofix=true</code> in the <code>charts/semgr8s/values.yaml</code> before installation and provide <code>fix</code> instructions for your rules.
+To use autofix, simply set <code>.application.autofix=true</code> in the <code>charts/semgr8s/values.yaml</code> and provide <code>fix</code> instructions for your rules.
 Semgr8s will attempt to fix resources before validation.</p>
 <p>Technically, this is implemented via an additional mutating admission controller that is called before the validating admission controller.</p>
 <h2 id="rules">Rules<a class="headerlink" href="#rules" title="Permanent link">⚓︎</a></h2>
@@ -1311,7 +1440,7 @@ They follow <a href="https://semgrep.dev/docs/writing-rules/overview">Semgrep sy
 As admission requests resemble Kubernetes manifests, standard Kubernetes patterns can be directly used for Semgr8s.
 It is however important to keep <a href="../concept/#admission-requests">some differences</a> in mind.
 Rules can be provided in two different ways: remote rules and local rules.
-Remote rules are directly implemented from their external sources such the <a href="https://semgrep.dev/r">Semgrep registry</a>.
+Remote rules are requested from their external sources such as the <a href="https://semgrep.dev/r">Semgrep registry</a> upon validation.
 Local rules are provided as configmaps directly to Semgr8s.</p>
 <h3 id="remote-rules">Remote rules<a class="headerlink" href="#remote-rules" title="Permanent link">⚓︎</a></h3>
 <p>Remote rules are directly used from external sources.
@@ -1322,9 +1451,11 @@ Common sources are:</p>
 <li><a href="https://github.com/semgrep/semgrep-rules/">Semgrep registry repository</a></li>
 </ul>
 <p>For inspiration checkout Semgreps <a href="https://semgrep.dev/p/kubernetes">Kubernetes ruleset</a> or the <a href="https://github.com/semgrep/semgrep-rules/tree/develop/yaml/kubernetes">Kubernetes repository folder</a>.
-They are added as a list under <code>.application.remoteRules</code> <code>charts/semgr8s/values.yaml</code>.
+They are added as a list under <code>.application.remoteRules</code> in <code>charts/semgr8s/values.yaml</code>.
 Simply reference the respective rule(set) as you would for a local installation, e.g. <code>p/kubernetes</code>.
-Remote rules can currently only be configured prior to deployment and changes require re-installation of Semgr8s.</p>
+Remote rules can currently only be configured prior to deployment and changes require re-installation of Semgr8s.
+However, it is possible to use <a href="https://semgrep.dev/docs/writing-rules/private-rules">private rules</a> via <a href="#semgrep-login"><em>Semgrep login</em></a> feature.
+Adding, changing, or modifying private rules and even rulesets propagates to the running Semgr8s installation.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Remote rules require requests to external resources.
@@ -1339,12 +1470,12 @@ Templates and selected rules are available under <a href="https://github.com/sem
 <p>We hope to continuously extend the list of selected rules to facilitate policy creation.
 So, please contribute your own favorite rules via PR <img alt="🙏" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f64f.svg" title=":pray:" /></p>
 </div>
-<h4 id="adding-local-rules">Adding local rules<a class="headerlink" href="#adding-local-rules" title="Permanent link">⚓︎</a></h4>
-<p>Local rules are provided as configmaps that are frequently mapped as files into the semgr8s pod.
+<h4 id="adding-rules">Adding rules<a class="headerlink" href="#adding-rules" title="Permanent link">⚓︎</a></h4>
+<p>Local rules are provided as configmaps that are automatically written to local rule files in the semgr8s pod by the <em>update</em> job.
 Therefore, adding, modifying, or deleting local rules does not require an update of the deployment.</p>
 <p>To add a new rule, simply create a configmap from a standard semgrep rule yaml file and add the label <code>semgr8s/rule=true</code>:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>configmap<span class="w"> </span>-n<span class="w"> </span>semgr8ns<span class="w"> </span>my-local-rule<span class="w"> </span>--from-file<span class="o">=</span>path/to/rule.yaml
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>kubectl<span class="w"> </span>label<span class="w"> </span>configmap<span class="w"> </span>-n<span class="w"> </span>semgr8ns<span class="w"> </span>my-local-rule<span class="w"> </span>semgr8s/rule<span class="o">=</span><span class="nb">true</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>configmap<span class="w"> </span>-n<span class="w"> </span>semgr8ns<span class="w"> </span>my-local-rule<span class="w"> </span>--from-file<span class="o">=</span>path/to/rule.yaml
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>kubectl<span class="w"> </span>label<span class="w"> </span>configmap<span class="w"> </span>-n<span class="w"> </span>semgr8ns<span class="w"> </span>my-local-rule<span class="w"> </span>semgr8s/rule<span class="o">=</span><span class="nb">true</span>
 </span></code></pre></div></p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -1352,34 +1483,42 @@ Therefore, adding, modifying, or deleting local rules does not require an update
 Consequently, it can take up to 1min until the changes take effect.
 This accounts for adding, modifying, and deleting local rules.</p>
 </div>
-<p>To delete the rule again, run:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>configmap<span class="w"> </span>-n<span class="w"> </span>semgr8ns<span class="w"> </span>my-local-rule
+<h4 id="removing-rules">Removing rules<a class="headerlink" href="#removing-rules" title="Permanent link">⚓︎</a></h4>
+<p>To delete a local rule, run:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>configmap<span class="w"> </span>-n<span class="w"> </span>semgr8ns<span class="w"> </span>my-local-rule
 </span></code></pre></div></p>
+<p>It is also possible to delete all local rules via:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-n<span class="w"> </span>semgr8ns<span class="w"> </span>cm<span class="w"> </span>-l<span class="w"> </span>semgr8s/rule<span class="o">=</span><span class="nb">true</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Semgrep fails if no rules are provided and consequently deleting all local rules in absence of remote rules causes Semgr8s to fail.</p>
+</div>
 <h4 id="writing-rules">Writing rules<a class="headerlink" href="#writing-rules" title="Permanent link">⚓︎</a></h4>
 <p>Semgr8s rules follow <a href="https://semgrep.dev/docs/writing-rules/rule-syntax/">Semgrep syntax</a> and, therefore, must comply with the Semgrep <a href="https://semgrep.dev/docs/writing-rules/rule-syntax/#required">rule requirements</a>.
-For convenience, admission requests converted to yaml and consequently all rules should define yaml as language.
+For convenience, admission requests are converted to yaml (just like manifest files) and consequently all rules should define yaml as language.
 A basic rule takes the form:</p>
-<div class="language-yaml highlight"><span class="filename">rules/template-rule.yaml</span><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nt">rules</span><span class="p">:</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-rule</span>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule template.</span>
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">  </span><span class="nt">languages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">yaml</span><span class="p p-Indicator">]</span>
-</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
-</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">  </span><span class="nt">patterns</span><span class="p">:</span>
-</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">        </span><span class="no">semgr8s-test: forbidden-test-label-e3b0c44298fc1c</span>
+<div class="language-yaml highlight"><span class="filename">rules/template-rule.yaml</span><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nt">rules</span><span class="p">:</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-rule</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">  </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule template.</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">  </span><span class="nt">languages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">yaml</span><span class="p p-Indicator">]</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">  </span><span class="nt">patterns</span><span class="p">:</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">        </span><span class="no">semgr8s-test: forbidden-test-label-e3b0c44298fc1c</span>
 </span></code></pre></div>
 <p>In order to use the autofix feature, a fix value must be specified additionally:</p>
-<div class="language-yaml highlight"><span class="filename">rules/template-autofix-rule.yaml</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nt">rules</span><span class="p">:</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-autofix-rule</span>
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule template with autofix.</span>
-</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">  </span><span class="nt">languages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">yaml</span><span class="p p-Indicator">]</span>
-</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
-</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">  </span><span class="nt">patterns</span><span class="p">:</span>
-</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">        </span><span class="no">semgr8s-test: forbidden-test-label-e3b0c44298fc1c</span>
-</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">  </span><span class="nt">fix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;semgr8s-test:</span><span class="nv"> </span><span class="s">allowed-test-label&quot;</span>
+<div class="language-yaml highlight"><span class="filename">rules/template-autofix-rule.yaml</span><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nt">rules</span><span class="p">:</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-autofix-rule</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule template with autofix.</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span><span class="nt">languages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">yaml</span><span class="p p-Indicator">]</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">  </span><span class="nt">patterns</span><span class="p">:</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="w">        </span><span class="no">semgr8s-test: forbidden-test-label-e3b0c44298fc1c</span>
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="w">  </span><span class="nt">fix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;semgr8s-test:</span><span class="nv"> </span><span class="s">allowed-test-label&quot;</span>
 </span></code></pre></div>
-<p>While admission requests purposely share similarities with Kubernetes resource files, there is critical differences and additional information to consider when writing semgr8s rules.
+<p>While admission requests purposely share similarities with Kubernetes manifest files, there is critical differences and additional information to consider when writing semgr8s rules.
 More details on admission requests are provided in the <a href="../concept/#admission-requests">respective conceptual section</a>.
 Rules should be carefully tested before rollout to production.</p>
 <div class="admonition tip">
@@ -1391,94 +1530,92 @@ Interactive development without local setup is supported via the <a href="https:
 <p>Semgrep provides some convenient <a href="https://semgrep.dev/docs/writing-rules/testing-rules/">testing mechanisms</a> out of the box.
 These can be leveraged to test rules locally before deployment.
 To validate rule syntax, Semgrep offers linting patterns:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>semgrep<span class="w"> </span>scan<span class="w"> </span>--metrics-off<span class="w"> </span>--validate<span class="w"> </span>./rules/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>semgrep<span class="w"> </span>scan<span class="w"> </span>--metrics-off<span class="w"> </span>--validate<span class="w"> </span>./rules/
 </span></code></pre></div>
 <p>Testing functionality of rules requires tests.
 To assess the example rules, run:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>semgrep<span class="w"> </span>scan<span class="w"> </span>--metrics<span class="o">=</span>off<span class="w"> </span>--test<span class="w"> </span>./rules/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>semgrep<span class="w"> </span>scan<span class="w"> </span>--metrics<span class="o">=</span>off<span class="w"> </span>--test<span class="w"> </span>./rules/
 </span></code></pre></div>
 <h4 id="typical-patterns">Typical patterns<a class="headerlink" href="#typical-patterns" title="Permanent link">⚓︎</a></h4>
+<p>Below, we share a few common and helpful patterns.</p>
 <h5 id="restrict-to-resource-type">Restrict to resource type<a class="headerlink" href="#restrict-to-resource-type" title="Permanent link">⚓︎</a></h5>
 <p>In order to restrict a rule to only certain resource types, simply prepend a <code>pattern-inside</code> expression for the desired resource type.
 In case of <code>Pod</code> resources, this takes the following form:</p>
-<div class="language-yaml highlight"><span class="filename">rules/forbidden-pod-label.yaml</span><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nt">rules</span><span class="p">:</span>
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">forbidden-pod-label</span>
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">  </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kubernetes pod with forbidden label. Any pod with label &quot;semgr8s-test=forbidden-test-label-e3b0c44298fc1c&quot; is denied. This label carries no meaning beyond testing and demonstration purposes.</span>
-</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">  </span><span class="nt">languages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">yaml</span><span class="p p-Indicator">]</span>
-</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
-</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="w">  </span><span class="nt">patterns</span><span class="p">:</span>
-</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="hll"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span></span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="hll"><span class="w">        </span><span class="no">...</span>
-</span></span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="hll"><span class="w">        </span><span class="no">kind: Pod</span>
-</span></span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="hll"><span class="w">        </span><span class="no">...</span>
-</span></span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="w">    </span><span class="c1"># remaining pattern as normal</span>
-</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="w">        </span><span class="no">metadata:</span>
-</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="w">          </span><span class="no">...</span>
-</span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a><span class="w">        </span><span class="no">labels:</span>
-</span><span id="__span-24-17"><a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="w">          </span><span class="no">...</span>
-</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a><span class="w">        </span><span class="no">semgr8s-test: forbidden-test-label-e3b0c44298fc1c</span>
-</span><span id="__span-24-20"><a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a><span class="w">  </span><span class="nt">fix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;semgr8s-test:</span><span class="nv"> </span><span class="s">allowed-test-label&quot;</span>
+<div class="language-yaml highlight"><span class="filename">rules/forbidden-pod-label.yaml</span><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nt">rules</span><span class="p">:</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">forbidden-pod-label</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">  </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kubernetes pod with forbidden label. Any pod with label &quot;semgr8s-test=forbidden-test-label-e3b0c44298fc1c&quot; is denied. This label carries no meaning beyond testing and demonstration purposes.</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">  </span><span class="nt">languages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">yaml</span><span class="p p-Indicator">]</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">  </span><span class="nt">patterns</span><span class="p">:</span>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="hll"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span></span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="hll"><span class="w">        </span><span class="no">...</span>
+</span></span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="hll"><span class="w">        </span><span class="no">kind: Pod</span>
+</span></span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="hll"><span class="w">        </span><span class="no">...</span>
+</span></span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="w">    </span><span class="c1"># remaining pattern as normal</span>
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="w">        </span><span class="no">metadata:</span>
+</span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="w">          </span><span class="no">...</span>
+</span><span id="__span-29-15"><a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-29-16"><a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="w">        </span><span class="no">labels:</span>
+</span><span id="__span-29-17"><a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="w">          </span><span class="no">...</span>
+</span><span id="__span-29-18"><a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-29-19"><a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a><span class="w">        </span><span class="no">semgr8s-test: forbidden-test-label-e3b0c44298fc1c</span>
+</span><span id="__span-29-20"><a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a><span class="w">  </span><span class="nt">fix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;semgr8s-test:</span><span class="nv"> </span><span class="s">allowed-test-label&quot;</span>
 </span></code></pre></div>
-<p>It is also possible to use <code>pattern-not-inside</code> to only exclude a rule for one specific resource type.
+<p>It is also possible to instead use <code>pattern-not-inside</code> in order to exclude a rule for one specific resource type.
 Multiple in-scope resource types can be defined via metavariable regular expressions:</p>
-<div class="language-yaml highlight"><span class="filename">rules/forbidden-workload-label.yaml</span><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nt">rules</span><span class="p">:</span>
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">forbidden-workload-label</span>
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">  </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kubernetes workload with forbidden label. Any workload resource with label &quot;semgr8s-test=forbidden-test-label-e3b0c44298fc1c&quot; is denied. This label carries no meaning beyond testing and demonstration purposes.</span>
-</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">  </span><span class="nt">languages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">yaml</span><span class="p p-Indicator">]</span>
-</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
-</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">  </span><span class="nt">patterns</span><span class="p">:</span>
-</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="hll"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span></span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="hll"><span class="w">        </span><span class="no">...</span>
-</span></span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="hll"><span class="w">        </span><span class="no">kind: $KIND</span>
-</span></span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="hll"><span class="w">        </span><span class="no">...</span>
-</span></span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="hll"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">metavariable-regex</span><span class="p">:</span>
-</span></span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="hll"><span class="w">        </span><span class="nt">metavariable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$KIND</span>
-</span></span><span id="__span-25-13"><a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="hll"><span class="w">        </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Pod|Deployment|ReplicaSet|DaemonSet|StatefulSet)</span>
-</span></span><span id="__span-25-14"><a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="w">    </span><span class="c1"># remaining pattern as normal</span>
-</span><span id="__span-25-15"><a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-25-16"><a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a><span class="w">        </span><span class="no">metadata:</span>
-</span><span id="__span-25-17"><a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a><span class="w">          </span><span class="no">...</span>
-</span><span id="__span-25-18"><a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-25-19"><a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="w">        </span><span class="no">labels:</span>
-</span><span id="__span-25-20"><a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a><span class="w">          </span><span class="no">...</span>
-</span><span id="__span-25-21"><a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-25-22"><a id="__codelineno-25-22" name="__codelineno-25-22" href="#__codelineno-25-22"></a><span class="w">        </span><span class="no">semgr8s-test: forbidden-test-label-e3b0c44298fc1c</span>
-</span><span id="__span-25-23"><a id="__codelineno-25-23" name="__codelineno-25-23" href="#__codelineno-25-23"></a><span class="w">  </span><span class="nt">fix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;semgr8s-test:</span><span class="nv"> </span><span class="s">allowed-test-label&quot;</span>
+<div class="language-yaml highlight"><span class="filename">rules/forbidden-workload-label.yaml</span><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nt">rules</span><span class="p">:</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">forbidden-workload-label</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">  </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kubernetes workload with forbidden label. Any workload resource with label &quot;semgr8s-test=forbidden-test-label-e3b0c44298fc1c&quot; is denied. This label carries no meaning beyond testing and demonstration purposes.</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">  </span><span class="nt">languages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">yaml</span><span class="p p-Indicator">]</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="w">  </span><span class="nt">patterns</span><span class="p">:</span>
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="hll"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span></span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="hll"><span class="w">        </span><span class="no">...</span>
+</span></span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="hll"><span class="w">        </span><span class="no">kind: $KIND</span>
+</span></span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="hll"><span class="w">        </span><span class="no">...</span>
+</span></span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="hll"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">metavariable-regex</span><span class="p">:</span>
+</span></span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="hll"><span class="w">        </span><span class="nt">metavariable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$KIND</span>
+</span></span><span id="__span-30-13"><a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a><span class="hll"><span class="w">        </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Pod|Deployment|ReplicaSet|DaemonSet|StatefulSet)</span>
+</span></span><span id="__span-30-14"><a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a><span class="w">    </span><span class="c1"># remaining pattern as normal</span>
+</span><span id="__span-30-15"><a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-30-16"><a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a><span class="w">        </span><span class="no">metadata:</span>
+</span><span id="__span-30-17"><a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a><span class="w">          </span><span class="no">...</span>
+</span><span id="__span-30-18"><a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-30-19"><a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a><span class="w">        </span><span class="no">labels:</span>
+</span><span id="__span-30-20"><a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a><span class="w">          </span><span class="no">...</span>
+</span><span id="__span-30-21"><a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-30-22"><a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a><span class="w">        </span><span class="no">semgr8s-test: forbidden-test-label-e3b0c44298fc1c</span>
+</span><span id="__span-30-23"><a id="__codelineno-30-23" name="__codelineno-30-23" href="#__codelineno-30-23"></a><span class="w">  </span><span class="nt">fix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;semgr8s-test:</span><span class="nv"> </span><span class="s">allowed-test-label&quot;</span>
 </span></code></pre></div>
 <h5 id="restrict-to-specific-namespaces">Restrict to specific namespaces<a class="headerlink" href="#restrict-to-specific-namespaces" title="Permanent link">⚓︎</a></h5>
 <p>By prepending a <code>pattern-inside</code>, it is possible to restrict a rule to selected namespaces:</p>
-<div class="language-yaml highlight"><span class="filename">rules/forbidden-namespaced-label.yaml</span><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nt">rules</span><span class="p">:</span>
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">forbidden-namespaced-label</span>
-</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kubernetes resource with label forbidden in designated namespace. Any resource with label &quot;semgr8s-test=forbidden-test-label-e3b0c44298fc1c&quot; is denied for this namespace. This label carries no meaning beyond testing and demonstration purposes.</span>
-</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span><span class="nt">languages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">yaml</span><span class="p p-Indicator">]</span>
-</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
-</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">  </span><span class="nt">patterns</span><span class="p">:</span>
-</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="hll"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span></span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="hll"><span class="w">        </span><span class="no">metadata:</span>
-</span></span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="hll"><span class="w">          </span><span class="no">...</span>
-</span></span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="hll"><span class="w">          </span><span class="no">namespace: $NS</span>
-</span></span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="hll"><span class="w">        </span><span class="no">...</span>
-</span></span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="hll"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">metavariable-regex</span><span class="p">:</span>
-</span></span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="hll"><span class="w">        </span><span class="nt">metavariable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$NS</span>
-</span></span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="hll"><span class="w">        </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(test-semgr8s|audit-semgr8s)</span>
-</span></span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="w">    </span><span class="c1"># remaining pattern as normal</span>
-</span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-26-17"><a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a><span class="w">        </span><span class="no">metadata:</span>
-</span><span id="__span-26-18"><a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a><span class="w">          </span><span class="no">...</span>
-</span><span id="__span-26-19"><a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-26-20"><a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a><span class="w">        </span><span class="no">labels:</span>
-</span><span id="__span-26-21"><a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a><span class="w">          </span><span class="no">...</span>
-</span><span id="__span-26-22"><a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-26-23"><a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a><span class="w">        </span><span class="no">semgr8s-test: forbidden-test-label-e3b0c44298fc1c</span>
-</span><span id="__span-26-24"><a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a><span class="w">  </span><span class="nt">fix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;semgr8s-test:</span><span class="nv"> </span><span class="s">allowed-test-label&quot;</span>
+<div class="language-yaml highlight"><span class="filename">rules/forbidden-namespaced-label.yaml</span><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nt">rules</span><span class="p">:</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">forbidden-namespaced-label</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">  </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kubernetes resource with label forbidden in designated namespace. Any resource with label &quot;semgr8s-test=forbidden-test-label-e3b0c44298fc1c&quot; is denied for this namespace. This label carries no meaning beyond testing and demonstration purposes.</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">  </span><span class="nt">languages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">yaml</span><span class="p p-Indicator">]</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="w">  </span><span class="nt">patterns</span><span class="p">:</span>
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="hll"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span></span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="hll"><span class="w">        </span><span class="no">metadata:</span>
+</span></span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="hll"><span class="w">          </span><span class="no">...</span>
+</span></span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="hll"><span class="w">          </span><span class="no">namespace: $NS</span>
+</span></span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="hll"><span class="w">        </span><span class="no">...</span>
+</span></span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="hll"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">metavariable-regex</span><span class="p">:</span>
+</span></span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="hll"><span class="w">        </span><span class="nt">metavariable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$NS</span>
+</span></span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="hll"><span class="w">        </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(test-semgr8s|audit-semgr8s)</span>
+</span></span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="w">    </span><span class="c1"># remaining pattern as normal</span>
+</span><span id="__span-31-16"><a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-31-17"><a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a><span class="w">        </span><span class="no">metadata:</span>
+</span><span id="__span-31-18"><a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="w">          </span><span class="no">...</span>
+</span><span id="__span-31-19"><a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern-inside</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-31-20"><a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a><span class="w">        </span><span class="no">labels:</span>
+</span><span id="__span-31-21"><a id="__codelineno-31-21" name="__codelineno-31-21" href="#__codelineno-31-21"></a><span class="w">          </span><span class="no">...</span>
+</span><span id="__span-31-22"><a id="__codelineno-31-22" name="__codelineno-31-22" href="#__codelineno-31-22"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-31-23"><a id="__codelineno-31-23" name="__codelineno-31-23" href="#__codelineno-31-23"></a><span class="w">        </span><span class="no">semgr8s-test: forbidden-test-label-e3b0c44298fc1c</span>
+</span><span id="__span-31-24"><a id="__codelineno-31-24" name="__codelineno-31-24" href="#__codelineno-31-24"></a><span class="w">  </span><span class="nt">fix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;semgr8s-test:</span><span class="nv"> </span><span class="s">allowed-test-label&quot;</span>
 </span></code></pre></div>
 <p>This cannot extend beyond the <a href="#enable-namespaces">enabled namespaces</a>, but allows for more granular control on a per rule basis.</p>
-<h4 id="delete-all-local-rules">Delete all local rules<a class="headerlink" href="#delete-all-local-rules" title="Permanent link">⚓︎</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-n<span class="w"> </span>semgr8ns<span class="w"> </span>cm<span class="w"> </span>-l<span class="w"> </span>semgr8s/rule<span class="o">=</span><span class="nb">true</span>
-</span></code></pre></div>
 
 
 
