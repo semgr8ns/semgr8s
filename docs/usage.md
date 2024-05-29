@@ -67,7 +67,7 @@ It is possible to either reference remote rules or add custom rules locally.
 Additional information on rule creation and management is shared [below](#rules).
 Some useful example rules are provided under `./rules/`.
 
-At present, Semgr8s is shipped with one local test rule detecting a unique label and Semgrep's `p/kubernetes` ruleset.
+At present, Semgr8s is shipped with Semgrep's [`p/kubernetes`](https://semgrep.dev/p/kubernetes) ruleset and one local test rule detecting a unique label.
 
 ### Installation
 
@@ -76,43 +76,37 @@ To deploy the preconfigured admission controller simply run:
 ```bash
 helm install semgr8s charts/semgr8s --create-namespace --namespace semgr8ns
 ```
-<details>
-  <summary>output</summary>
-  
-  ```bash
-  NAME: semgr8s
-  LAST DEPLOYED: Tue Apr 25 00:16:04 2023
-  NAMESPACE: semgr8ns
-  STATUS: deployed
-  REVISION: 1
-  TEST SUITE: None
-  NOTES:
-  Successfully installed semgr8s!
-  ```
-</details>
+??? note "output"
+    ```bash
+    NAME: semgr8s
+    LAST DEPLOYED: Tue Apr 25 00:16:04 2023
+    NAMESPACE: semgr8ns
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    NOTES:
+    Successfully installed semgr8s!
+    ```
 
 You can check successful deployment of semgr8s via:
 
 ```bash
 kubectl get all -n semgr8ns
 ```
-<details>
-  <summary>output</summary>
-  
-  ```bash
-  NAME                           READY   STATUS    RESTARTS   AGE
-  pod/semgr8s-665dbb8756-qhqv6   1/1     Running   0          7s
+??? note "output"
+    ```bash
+    NAME                           READY   STATUS    RESTARTS   AGE
+    pod/semgr8s-665dbb8756-qhqv6   1/1     Running   0          7s
 
-  NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
-  service/semgr8s-service   ClusterIP   10.96.135.157   <none>        443/TCP   7s
+    NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+    service/semgr8s-service   ClusterIP   10.96.135.157   <none>        443/TCP   7s
 
-  NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
-  deployment.apps/semgr8s   1/1     1            1           7s
+    NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
+    deployment.apps/semgr8s   1/1     1            1           7s
 
-  NAME                                 DESIRED   CURRENT   READY   AGE
-  replicaset.apps/semgr8s-665dbb8756   1         1         1       7s
-  ```
-</details>
+    NAME                                 DESIRED   CURRENT   READY   AGE
+    replicaset.apps/semgr8s-665dbb8756   1         1         1       7s
+    ```
 
 Once all resources are in `READY` state, you have successfully installed Semgr8s.
 
@@ -131,7 +125,7 @@ Or extend the Kubernetes yaml files for target namespaces:
 --8<-- "tests/demo/00_test-namespace.yaml"
 ```
 
-It is recommended to exclude cluster operation critical namespaces such `kube-system` to avoid interruptions.
+It is recommended to exclude cluster operation critical namespaces such as `kube-system` and `semgr8ns` to avoid interruptions.
 
 ### Testing
 
@@ -141,46 +135,53 @@ Semgr8s only validates resources in namespaces with label `semgr8s/validation=en
 ```bash
 kubectl apply -f tests/demo/00_test-namespace.yaml
 ```
-<details>
-  <summary>output</summary>
-  
-  ```bash
-  namespace/test-semgr8s created
-  ```
-</details>
+??? info "input"
 
-It denies creating pods with non-compliant configuration according to the local rules in `charts/semgr8s/rules` and `.application.remoteRules`  `charts/semgr8s/values.yaml`:
+    ```yaml title="tests/demo/00_test-namespace.yaml"
+    --8<-- "tests/demo/00_test-namespace.yaml"
+    ```
+
+??? note "output"
+    ```bash
+    namespace/test-semgr8s created
+    ```
+
+It denies creating pods with non-compliant configuration according to the local rules in `charts/semgr8s/rules` and remote rules configured under `.application.remoteRules` in  `charts/semgr8s/values.yaml`:
 
 ```bash
 kubectl apply -f tests/demo/40_failing-deployment.yaml
 ```
-<details>
-  <summary>output</summary>
-  
-  ```bash
-  Error from server: error when creating "tests/demo/40_failing-deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
-  * rules.test-semgr8s-forbidden-label
-  Error from server: error when creating "tests/demo/40_failing-deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
-  * yaml.kubernetes.security.writable-filesystem-container.writable-filesystem-container
-  Error from server: error when creating "tests/demo/40_failing-deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
-  * yaml.kubernetes.security.privileged-container.privileged-container
-  Error from server: error when creating "tests/demo/40_failing-deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
-  * yaml.kubernetes.security.hostnetwork-pod.hostnetwork-pod
-  ```
-</details>
+??? info "input"
+
+    ```yaml title="tests/demo/40_failing-deployment.yaml"
+    --8<-- "tests/demo/40_failing-deployment.yaml"
+    ```
+??? note "output"
+    ```bash
+    Error from server: error when creating "tests/demo/40_failing-deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+    * rules.test-semgr8s-forbidden-label
+    Error from server: error when creating "tests/demo/40_failing-deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+    * yaml.kubernetes.security.writable-filesystem-container.writable-filesystem-container
+    Error from server: error when creating "tests/demo/40_failing-deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+    * yaml.kubernetes.security.privileged-container.privileged-container
+    Error from server: error when creating "tests/demo/40_failing-deployment.yaml": admission webhook "semgr8s-svc.semgr8ns.svc" denied the request: Found 1 violation(s) of the following policies: 
+    * yaml.kubernetes.security.hostnetwork-pod.hostnetwork-pod
+    ```
 
 Compliantly configured resources on the other hand are permitted to the cluster:
 
 ```bash
 kubectl apply -f tests/demo/20_passing-deployment.yaml
 ```
-<details>
-  <summary>output</summary>
-  
-  ```bash
-  pod/passing-testpod-1 created
-  ```
-</details>
+??? info "input"
+
+    ```yaml title="tests/demo/20_passing-deployment.yaml"
+    --8<-- "tests/demo/20_passing-deployment.yaml"
+    ```
+??? note "output"
+    ```bash
+    pod/passing-testpod-1 created
+    ```
 
 
 ### Cleanup
@@ -191,32 +192,25 @@ To remove all resources of the admission controller run:
 helm uninstall semgr8s -n semgr8ns
 kubectl delete ns semgr8ns
 ```
-<details>
-  <summary>output</summary>
-  
-  ```bash
-  release "semgr8s" uninstalled
-  ```
-</details>
+??? note "output"
+    ```bash
+    release "semgr8s" uninstalled
+    ```
 
 Test resources are deleted via:
 
 ```bash
 kubectl delete -f tests/demo/
 ```
-<details>
-  <summary>output</summary>
-  
-  ```bash
-  namespace "test-semgr8s" deleted
-  pod "passing-testpod-1" deleted
-  Error from server (NotFound): error when deleting "tests/demo/40_failing-deployment.yaml": pods "forbiddenlabel-pod" not found
-  Error from server (NotFound): error when deleting "tests/demo/40_failing-deployment.yaml": pods "failing-testpod-1" not found
-  Error from server (NotFound): error when deleting "tests/demo/40_failing-deployment.yaml": pods "failing-testpod-2" not found
-  Error from server (NotFound): error when deleting "tests/demo/40_failing-deployment.yaml": pods "failing-testpod-3" not found
-
-  ```
-</details>
+??? note "output"
+    ```bash
+    namespace "test-semgr8s" deleted
+    pod "passing-testpod-1" deleted
+    Error from server (NotFound): error when deleting "tests/demo/40_failing-deployment.yaml": pods "forbiddenlabel-pod" not found
+    Error from server (NotFound): error when deleting "tests/demo/40_failing-deployment.yaml": pods "failing-testpod-1" not found
+    Error from server (NotFound): error when deleting "tests/demo/40_failing-deployment.yaml": pods "failing-testpod-2" not found
+    Error from server (NotFound): error when deleting "tests/demo/40_failing-deployment.yaml": pods "failing-testpod-3" not found
+    ```
 
 ## Features
 
@@ -248,7 +242,7 @@ They follow [Semgrep syntax](https://semgrep.dev/docs/writing-rules/overview) th
 As admission requests resemble Kubernetes manifests, standard Kubernetes patterns can be directly used for Semgr8s.
 It is however important to keep [some differences](./concept.md/#admission-requests) in mind.
 Rules can be provided in two different ways: remote rules and local rules.
-Remote rules are directly implemented from their external sources such the [Semgrep registry](https://semgrep.dev/r).
+Remote rules are requested from their external sources such as the [Semgrep registry](https://semgrep.dev/r) upon validation.
 Local rules are provided as configmaps directly to Semgr8s.
 
 ### Remote rules
@@ -261,7 +255,7 @@ Common sources are:
 * [Semgrep registry repository](https://github.com/semgrep/semgrep-rules/)
 
 For inspiration checkout Semgreps [Kubernetes ruleset](https://semgrep.dev/p/kubernetes) or the [Kubernetes repository folder](https://github.com/semgrep/semgrep-rules/tree/develop/yaml/kubernetes).
-They are added as a list under `.application.remoteRules` `charts/semgr8s/values.yaml`.
+They are added as a list under `.application.remoteRules` in `charts/semgr8s/values.yaml`.
 Simply reference the respective rule(set) as you would for a local installation, e.g. `p/kubernetes`.
 Remote rules can currently only be configured prior to deployment and changes require re-installation of Semgr8s.
 However, it is possible to use [private rules](https://semgrep.dev/docs/writing-rules/private-rules) via [*Semgrep login*](#semgrep-login) feature.
@@ -281,9 +275,9 @@ Templates and selected rules are available under [`./rules/`](https://github.com
     We hope to continuously extend the list of selected rules to facilitate policy creation.
     So, please contribute your own favorite rules via PR :pray:
 
-#### Adding local rules
+#### Adding rules
 
-Local rules are provided as configmaps that are frequently mapped as files into the semgr8s pod.
+Local rules are provided as configmaps that are automatically written to local rule files in the semgr8s pod by the *update* job.
 Therefore, adding, modifying, or deleting local rules does not require an update of the deployment.
 
 To add a new rule, simply create a configmap from a standard semgrep rule yaml file and add the label `semgr8s/rule=true`:
@@ -296,15 +290,26 @@ kubectl label configmap -n semgr8ns my-local-rule semgr8s/rule=true
     Consequently, it can take up to 1min until the changes take effect.
     This accounts for adding, modifying, and deleting local rules.
 
-To delete the rule again, run:
+#### Removing rules
+
+To delete a local rule, run:
 ```bash
 kubectl delete configmap -n semgr8ns my-local-rule
 ```
 
+It is also possible to delete all local rules via:
+
+```bash
+kubectl delete -n semgr8ns cm -l semgr8s/rule=true
+```
+
+!!! warning
+    Semgrep fails if no rules are provided and consequently deleting all local rules in absence of remote rules causes Semgr8s to fail.
+
 #### Writing rules
 
 Semgr8s rules follow [Semgrep syntax](https://semgrep.dev/docs/writing-rules/rule-syntax/) and, therefore, must comply with the Semgrep [rule requirements](https://semgrep.dev/docs/writing-rules/rule-syntax/#required).
-For convenience, admission requests converted to yaml and consequently all rules should define yaml as language.
+For convenience, admission requests are converted to yaml (just like manifest files) and consequently all rules should define yaml as language.
 A basic rule takes the form:
 
 ```yaml title="rules/template-rule.yaml"
@@ -317,7 +322,7 @@ In order to use the autofix feature, a fix value must be specified additionally:
 --8<-- "rules/template-autofix-rule.yaml"
 ```
 
-While admission requests purposely share similarities with Kubernetes resource files, there is critical differences and additional information to consider when writing semgr8s rules.
+While admission requests purposely share similarities with Kubernetes manifest files, there is critical differences and additional information to consider when writing semgr8s rules.
 More details on admission requests are provided in the [respective conceptual section](./concept.md#admission-requests).
 Rules should be carefully tested before rollout to production.
 
@@ -344,6 +349,8 @@ semgrep scan --metrics=off --test ./rules/
 
 #### Typical patterns
 
+Below, we share a few common and helpful patterns.
+
 ##### Restrict to resource type
 
 In order to restrict a rule to only certain resource types, simply prepend a `pattern-inside` expression for the desired resource type.
@@ -353,7 +360,7 @@ In case of `Pod` resources, this takes the following form:
 --8<-- "rules/forbidden-pod-label.yaml"
 ```
 
-It is also possible to use `pattern-not-inside` to only exclude a rule for one specific resource type.
+It is also possible to instead use `pattern-not-inside` in order to exclude a rule for one specific resource type.
 Multiple in-scope resource types can be defined via metavariable regular expressions:
 
 
@@ -371,8 +378,3 @@ By prepending a `pattern-inside`, it is possible to restrict a rule to selected 
 
 This cannot extend beyond the [enabled namespaces](#enable-namespaces), but allows for more granular control on a per rule basis.
 
-#### Delete all local rules
-
-```bash
-kubectl delete -n semgr8ns cm -l semgr8s/rule=true
-```

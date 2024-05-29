@@ -4,9 +4,9 @@
 
 * Semgr8s is a Kubernetes admission controller
 * Semgr8s directly integrates Semgrep under the hood
-* Policy logic should be implemented via rules NOT Semgr8s configuration
 * Rules are validated against admission requests that are similar to Kubernetes manifests
 * Admission requests might exhibit some important differences to Kubernetes manifests
+* Policy logic should be implemented via Semgrep rules NOT Semgr8s configuration
 
 ## Basics
 
@@ -47,7 +47,7 @@ Semgr8s exhibits a validating and an optional mutating admission webhook for use
     ```yaml title="charts/semgr8s/templates/webhook.yaml"
     --8<-- "charts/semgr8s/templates/webhook.yaml"
     ```
-Their default configuration includes all `CREATE` and `UPDATE` for all *apiGroups*, *resources*, and *apiVersions* for namespaces with label `semgr8s/validation=enabled`. However, `Event` resources are manually dropped in application logic to suppress unnecessary load.
+Their default configuration includes all `CREATE` and `UPDATE` requests for all *apiGroups*, *resources*, and *apiVersions* for namespaces with label `semgr8s/validation=enabled`. However, `Event` resources are manually dropped in application logic to suppress unnecessary load.
 The corresponding `/validate/` and `/mutate/` webhooks are exposed via HTTPS as a service that also handles load balancing.
 
 ??? abstract "`service.yaml` chart"
@@ -56,7 +56,7 @@ The corresponding `/validate/` and `/mutate/` webhooks are exposed via HTTPS as 
     --8<-- "charts/semgr8s/templates/service.yaml"
     ```
 
-The application logic is written in Python, exposed via [cheroot](https://github.com/cherrypy/cheroot) webserver for performance, using [flask](https://github.com/pallets/flask/) framework for simplicity and maintainability, packaged in minimal container image based on [Alpine](https://hub.docker.com/_/alpine) and deployed as securely configured single Pod with configurable number of replicas (default: *2*) for scalability and availability.
+The application logic is written in Python, exposed via [cheroot](https://github.com/cherrypy/cheroot) webserver for performance, using [flask](https://github.com/pallets/flask/) framework for simplicity and maintainability, packaged in a minimal container image based on [Alpine](https://hub.docker.com/_/alpine) and deployed as securely configured single Pod with configurable number of replicas (default: *2*) for scalability and availability.
 The core functionality of rule validation against admission requests is implemented by directly integrating [Semgrep](https://github.com/semgrep/semgrep).
 
 The Semgr8s application logic performs the following core functions:
@@ -72,18 +72,19 @@ As the container file system is configured as `readOnlyRootFilesystem`, correspo
 Performance-critical, small-size, ephemeral folders are mounted as *tmpfs* in order to avoid race conditions and timeouts at the expense of additional memory.
 The TLS certificate for HTTPS is provided as secret volume.
 
-For **mutation** and **validation**, an incoming admission requests is input validated, the admission *object* is converted to *yaml* and written to file.
+For **mutation** and **validation**, an incoming admission request is input validated, the admission *object* is converted to *yaml* and written to file.
 Semgrep is invoked on the admission request file using rules stored under `/app/rules/`.
 Additional configuration is passed as system arguments.
 Semgrep writes scan results to a results file that is parsed and rendered for admission response.
-After completion request and result file are deleted.
+After completion request and result file are deleted to maintain a constant storage size.
 
-Finally, Semgreps periodically runs an **update** job that gets the rule configmaps, decodes them and writes them to the file system under `/app/rules/`.
+Semgreps periodically runs an **update** job that gets the rule configmaps, decodes them and writes them to the file system under `/app/rules/`.
 The update job runs once every minute.
 Thus, adding new rules, modifying existing ones, or removing them can take up to 1min to propagate.
 
-While the local rules provided as configmaps and updated manually, Semgr8s configuration configmaps (including remote rules) are mounted as environment variables upon container creation and require a restart for updating.
-Semgr8s uses a service account with `list`/`get` configmaps permission in its own namespace to get updated rule configmaps.
+While the local rules provided as configmaps are updated manually, Semgr8s configuration configmaps (including remote rules) are mounted as environment variables upon container creation and require a restart for updating.
+
+Semgr8s uses a service account with `list`/`get` configmaps permission in its own namespace to get updated rule configmaps:
 
 ??? abstract "role.yaml"
 
@@ -94,7 +95,7 @@ Semgr8s uses a service account with `list`/`get` configmaps permission in its ow
 
 ## Admission requests
 
-It is important to note that an admission request is in essence similar to Kubernetes manifests, but not the same and those differences might matter when writing policies.
+It is important to note that an admission request is in essence similar to Kubernetes manifests, but not the same and those differences might matter when writing rules.
 Consider a simple pod resource:
 
 ```yaml
@@ -112,7 +113,7 @@ Semgr8s extracts the `object` from the admission request and ignores additional 
 The (reduced) admission request takes the following form:
 
 ??? abstract "Admission request"
-    ```yaml
+    ```yaml hl_lines="1-3 34 37-39 41"
     apiVersion: v1
     kind: Pod
     metadata:
