@@ -146,7 +146,7 @@ jobs:
 
   semgrep:
     uses: ./.github/workflows/semgrep.yml
-    needs: [sast]
+    needs: [compliance]
     secrets: inherit
 
   sca:
