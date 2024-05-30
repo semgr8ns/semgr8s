@@ -1014,6 +1014,14 @@ With Semgr8s both, user-supplied Kubernetes manifest data and additionally added
 <p>It is certainly instructive to consider Kubernetes manifests and configuration knowledge during rule development, but it is imperative to bear in mind that rules validate admission requests in the end.
 Consider for example a rule that checks whether a <code>securityContext</code> is explicitly set and otherwise adds a secure configuration (see e.g. <a href="https://semgrep.dev/r?q=yaml.kubernetes.security.run-as-non-root.run-as-non-root"><code>run-as-non-root</code></a>).
 Above, we observe that the Kube API adds an explicit empty <code>securityContext</code> when none is provided and as a result the above rule offers no benefit.</p>
+<p>It is possible to render such an admission object for a given target resource <code>resource.yaml</code> via the <a href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/#options"><code>--dry-run=server</code></a> flag:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>resource.yaml<span class="w"> </span>--dry-run<span class="o">=</span>server<span class="w"> </span>-o<span class="w"> </span>yaml
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>--dry-run=server</code> submits the server-side request without persisting the resource and consequently also passes admission phases of your cluster.
+A running Semgr8s instance might therefore block successful execution of the above request.</p>
+</div>
 <h2 id="philosophy">Philosophy<a class="headerlink" href="#philosophy" title="Permanent link">⚓︎</a></h2>
 <blockquote>
 <p>Implement policy logic via Semgrep rules to leverage its extensive rule syntax and maintain a single source of truth.
