@@ -119,7 +119,7 @@ Either update the labels for existing namespaces directly via `kubectl`:
 kubectl label namespace test-semgr8s semgr8s/validation=enabled --overwrite
 ```
 
-Or extend the Kubernetes yaml files for target namespaces:
+Or extend the Kubernetes *yaml* files for target namespaces:
 
 ```yaml title="namespace.yaml" hl_lines="6-7"
 --8<-- "tests/demo/00_test-namespace.yaml"
@@ -280,7 +280,7 @@ Templates and selected rules are available under [`./rules/`](https://github.com
 Local rules are provided as configmaps that are automatically written to local rule files in the semgr8s pod by the *update* job.
 Therefore, adding, modifying, or deleting local rules does not require an update of the deployment.
 
-To add a new rule, simply create a configmap from a standard semgrep rule yaml file and add the label `semgr8s/rule=true`:
+To add a new rule, simply create a configmap from a standard semgrep rule *yaml* file and add the label `semgr8s/rule=true`:
 ```bash
 kubectl create configmap -n semgr8ns my-local-rule --from-file=path/to/rule.yaml
 kubectl label configmap -n semgr8ns my-local-rule semgr8s/rule=true
@@ -309,7 +309,7 @@ kubectl delete -n semgr8ns cm -l semgr8s/rule=true
 #### Writing rules
 
 Semgr8s rules follow [Semgrep syntax](https://semgrep.dev/docs/writing-rules/rule-syntax/) and, therefore, must comply with the Semgrep [rule requirements](https://semgrep.dev/docs/writing-rules/rule-syntax/#required).
-For convenience, admission requests are converted to yaml (just like manifest files) and consequently all rules should define yaml as language.
+For convenience, admission requests are converted to *yaml* (just like manifest files) and consequently all rules should define *yaml* as language.
 A basic rule takes the form:
 
 ```yaml title="rules/template-rule.yaml"
@@ -322,8 +322,14 @@ In order to use the autofix feature, a fix value must be specified additionally:
 --8<-- "rules/template-autofix-rule.yaml"
 ```
 
-While admission requests purposely share similarities with Kubernetes manifest files, there is critical differences and additional information to consider when writing semgr8s rules.
+While admission requests purposely share similarities with Kubernetes manifest files, there is critical differences and additional information to consider when writing Semgr8s rules.
 More details on admission requests are provided in the [respective conceptual section](./concept.md#admission-requests).
+In order to develop a rule for the actual admission object locally, create the admission object for your target resource `resource.yaml` via:
+
+```bash
+kubectl apply -f resource.yaml --dry-run=server -o yaml
+```
+
 Rules should be carefully tested before rollout to production.
 
 !!! tip

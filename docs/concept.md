@@ -213,6 +213,16 @@ It is certainly instructive to consider Kubernetes manifests and configuration k
 Consider for example a rule that checks whether a `securityContext` is explicitly set and otherwise adds a secure configuration (see e.g. [`run-as-non-root`](https://semgrep.dev/r?q=yaml.kubernetes.security.run-as-non-root.run-as-non-root)).
 Above, we observe that the Kube API adds an explicit empty `securityContext` when none is provided and as a result the above rule offers no benefit.
 
+It is possible to render such an admission object for a given target resource `resource.yaml` via the [`--dry-run=server`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/#options) flag:
+
+```bash
+kubectl apply -f resource.yaml --dry-run=server -o yaml
+```
+
+!!! note
+    `--dry-run=server` submits the server-side request without persisting the resource and consequently also passes admission phases of your cluster.
+    A running Semgr8s instance might therefore block successful execution of the above request.
+
 ## Philosophy
 
 > Implement policy logic via Semgrep rules to leverage its extensive rule syntax and maintain a single source of truth.
