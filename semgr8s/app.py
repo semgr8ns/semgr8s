@@ -128,6 +128,7 @@ def perform_review(
             "--metrics",
             "off",
             "--disable-version-check",
+            "--disable-nosem",
             *(["--autofix"] if autofix else []),
             "--config",
             "/app/rules/",
