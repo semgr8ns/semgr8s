@@ -10,7 +10,7 @@ testCases:
   type: k8s-yaml
   ref: 45_other_testlabel_pod
   namespace: validatedns
-  expected_msg: semgr8ns.test-other-semgr8s-forbidden-label
+  expected_msg: k8s.test-other-semgr8s-forbidden-label
 
 values:
   deployment:
@@ -18,5 +18,5 @@ values:
       repository: "${IMAGE}"
       tag: "${TAG}"
   application:
-    remoteRules: ["r/semgr8ns.test-other-semgr8s-forbidden-label"]
+    remoteRules: ["r/k8s.test-other-semgr8s-forbidden-label"]
     semgrepLogin: true
