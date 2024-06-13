@@ -15,6 +15,7 @@ from werkzeug.exceptions import UnsupportedMediaType
 from semgr8s.files import S8sFiles
 
 APP = Flask(__name__)
+AUDIT = os.environ.get("ENFORCE", "true").lower() == "false"
 
 
 @APP.route("/health", methods=["GET", "POST"])
@@ -70,7 +71,7 @@ def perform_review(
             'allowed': <bool True/False>,
             'status': {
                 'code': <int http_status_codes>,
-                'message': <str reponse_message>
+                'msg': <str reponse_msg>
             },
             'uid': <str admission_request_uid>
         }
@@ -181,26 +182,30 @@ def perform_review(
     return send_response(True, uid, 201, "Compliant resource admitted")
 
 
-def send_response(allowed, uid, code, message, patch=None):
+def send_response(allowed, uid, code, msg, patch=None):
     """
     Prepare json response in expected format based on validation result.
     """
     APP.logger.info(
-        "> response:(allowed=%s, uid=%s, status_code=%s message=%s)",
-        allowed,
+        "> response:(allowed=%s, uid=%s, status_code=%s msg=%s)",
+        allowed | AUDIT,
         uid,
         code,
-        message,
+        msg,
     )
     review = {
         "apiVersion": "admission.k8s.io/v1",
         "kind": "AdmissionReview",
         "response": {
-            "allowed": allowed,
+            "allowed": allowed | AUDIT,
             "uid": uid,
-            "status": {"code": code, "message": message},
+            "status": {"code": code, "message": msg},
         },
     }
+
+    if AUDIT and not allowed:
+        review["response"]["warnings"] = ["[Semgr8s] " + msg.replace("\n", "")]
+
     if patch:
         review["response"]["patchType"] = "JSONPatch"
         review["response"]["patch"] = base64.b64encode(

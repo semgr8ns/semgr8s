@@ -63,10 +63,11 @@ webhooks:  # configuration options for webhooks described under https://kubernet
         operations: ["CREATE", "UPDATE"]
 
 application:
-  # Apply remote rules from e.g.
+  enforce: true  # fail on rule violation (true/false)
+  # remoteRules: Apply remote rules from e.g.
   # * semgrep registry: https://semgrep.dev/r
   # * semgrep-rules github repo: https://github.com/semgrep/semgrep-rules
   # common choices: p/kubernetes, r/yaml.kubernetes
   remoteRules: ["p/kubernetes"]
-  autofix: false
+  autofix: false  # apply semgrep fixes before validation (see https://semgrep.dev/docs/writing-rules/autofix)
   semgrepLogin: false  # requires generic secret with name 'semgrep-app-token' and key 'token' in semgr8ns namespace

@@ -1,0 +1,27 @@
+testCases:
+- id: a-01
+  txt: Testing compliant pod...
+  type: k8s-yaml
+  ref: 20_compliant_pod
+  namespace: validatedns
+  expected_msg: pod/compliant-pod created
+- id: a-02
+  txt: Testing non-compliant pod against local rule for forbidden test label...
+  type: k8s-yaml
+  ref: 40_testlabel_pod
+  namespace: validatedns
+  expected_msg: "Warning: [Semgr8s] Found 1 violation"
+- id: a-03
+  txt: Testing non-compliant pod against local rule for forbidden test label...
+  type: k8s-yaml
+  ref: 41_nosc_pod
+  namespace: validatedns
+  expected_msg: pod/nosc-pod created
+
+values:
+  deployment:
+    image:
+      repository: "${IMAGE}"
+      tag: "${TAG}"
+  application:
+    enforce: false

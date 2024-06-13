@@ -214,6 +214,14 @@ kubectl delete -f tests/demo/
 
 ## Features
 
+### Audit mode
+
+It is possible to run Semgr8s in *audit* mode by which it will not block but only warn on non-compliant resources.
+As the logs contain an explicit error code, it is possible to alert on admission responses with warnings via typical monitoring solutions such as [Prometheus](https://prometheus.io/) or [DataDog](https://www.datadoghq.com/).
+This is particularly useful during rollout of Semgr8s and for enforcement of new policies.
+
+To activate audit mode, set `.application.enforce=false` in the `charts/semgr8s/values.yaml`.
+
 ### Semgrep login
 
 With the *Semgrep login* feature, you can connect Semgr8s to your [Semgrep AppSec Platform](https://semgrep.dev/login) account and use platform features such as [private remote rules](https://semgrep.dev/docs/writing-rules/private-rules).

@@ -43,6 +43,7 @@ jobs:
             "basic",
             "autofix",
             "semgrep_login",
+            "audit",
           ]
     steps:
       - name: Checkout code
