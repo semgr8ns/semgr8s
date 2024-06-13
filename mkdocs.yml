@@ -52,6 +52,8 @@ theme:
     - content.code.copy
     - content.code.select
     - navigation.top
+    - search.suggest
+    - search.highlight
 
 # Extensions
 markdown_extensions:
@@ -80,6 +82,7 @@ plugins:
   - glightbox:
       skip_classes:
         - skip-lightbox
+  - search
 
 # Extras
 extra_javascript:
