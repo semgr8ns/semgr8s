@@ -42,7 +42,7 @@ webhooks:  # configuration options for webhooks described under https://kubernet
       matchLabels:
         semgr8s/validation: enabled
     rules:
-      - scope: "*"
+      - scope: "Namespaced"
         apiGroups: ["", "apps", "batch", "networking.k8s.io", "rbac.authorization.k8s.io"]
         resources: ["*/*"]
         apiVersions: ["*"]
@@ -56,7 +56,7 @@ webhooks:  # configuration options for webhooks described under https://kubernet
       matchLabels:
         semgr8s/validation: enabled
     rules:
-      - scope: "*"
+      - scope: "Namespaced"
         apiGroups: ["", "apps", "batch", "networking.k8s.io", "rbac.authorization.k8s.io"]
         resources: ["*/*"]
         apiVersions: ["*"]
