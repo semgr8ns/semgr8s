@@ -19,6 +19,7 @@ source "${SCRIPT_PATH}/scripts/basic.sh"
 source "${SCRIPT_PATH}/scripts/remote_rules.sh"
 source "${SCRIPT_PATH}/scripts/autofix.sh"
 source "${SCRIPT_PATH}/scripts/semgrep_login.sh"
+source "${SCRIPT_PATH}/scripts/audit.sh"
 
 # backup values.yaml
 cp charts/semgr8s/values.yaml charts/semgr8s/values.yaml.bak
@@ -39,6 +40,10 @@ case $1 in
 "semgrep_login")
 	# testing semgrep appsec platform login with private rules
 	semgrep_login_integration_test
+	;;
+"audit")
+	# testing autofixing with mutating webhook
+	audit_integration_test
 	;;
 "restore")
 	restore
