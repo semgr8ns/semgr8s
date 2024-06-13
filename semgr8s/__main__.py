@@ -3,6 +3,7 @@ Main method starting the web server.
 """
 
 import logging
+import os
 
 from apscheduler.schedulers.background import BackgroundScheduler
 from cheroot.server import HTTPServer
@@ -12,8 +13,10 @@ from cheroot.ssl.builtin import BuiltinSSLAdapter
 from semgr8s.app import APP
 from semgr8s.updater import update_rules
 
+
 if __name__ == "__main__":
-    APP.logger.setLevel(logging.DEBUG)
+    LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
+    APP.logger.setLevel(logging.getLevelName(LOG_LEVEL))
 
     scheduler = BackgroundScheduler()
     job = scheduler.add_job(update_rules, "interval", minutes=1)

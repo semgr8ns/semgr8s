@@ -186,13 +186,15 @@ def send_response(allowed, uid, code, msg, patch=None):
     """
     Prepare json response in expected format based on validation result.
     """
-    APP.logger.info(
-        "> response:(allowed=%s, uid=%s, status_code=%s msg=%s)",
+    APP.logger.warning(
+        "> response:(allowed=%s, uid=%s, status_code=%s, msg=%s, audit=%s)",
         allowed | AUDIT,
         uid,
         code,
-        msg,
+        msg.replace("\n", ""),
+        AUDIT,
     )
+
     review = {
         "apiVersion": "admission.k8s.io/v1",
         "kind": "AdmissionReview",
