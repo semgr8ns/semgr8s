@@ -42,7 +42,6 @@ jobs:
           [
             "basic",
             "autofix",
-            "semgrep_login",
             "audit",
           ]
     steps:
@@ -99,6 +98,7 @@ jobs:
         integration-test-arg:
           [
             "remote_rules",
+            "semgrep_login",
           ]
     steps:
       - name: Checkout code
