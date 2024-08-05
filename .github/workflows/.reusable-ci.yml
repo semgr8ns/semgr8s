@@ -63,6 +63,7 @@ jobs:
       skip_integration_tests: ${{ steps.conditionals.outputs.skip_integration_tests }}
       output_type: ${{ steps.conditionals.outputs.output_type }}
     steps:
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
       - name: CI conditionals
         id: conditionals
         run: |
