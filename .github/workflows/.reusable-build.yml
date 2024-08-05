@@ -62,6 +62,7 @@ jobs:
       build_image: ${{ steps.get_context.outputs.build_image }}
       build_labels: ${{ steps.get_context.outputs.build_labels }}
     steps:
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
       - name: Checkout code
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Get context
@@ -78,6 +79,7 @@ jobs:
       id-token: write
       packages: write
     steps:
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
       - name: Checkout code
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Build semgr8s
