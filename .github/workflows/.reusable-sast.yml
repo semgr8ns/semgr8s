@@ -31,7 +31,7 @@ jobs:
         with:
           python-version-file: '.python-version'
       - name: Install poetry
-        uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b # v1.3.4
+        uses: snok/install-poetry@76e04a911780d5b312d89783f7b1cd627778900a # v1.4.1
         with:
           version: 1.8.3
           virtualenvs-create: false
@@ -48,7 +48,7 @@ jobs:
         run: bandit -r -f sarif -o bandit-results.sarif semgr8s/ --exit-zero
       - name: Upload
         if: inputs.output == 'sarif'
-        uses: github/codeql-action/upload-sarif@afb54ba388a7dca6ecae48f608c4ff05ff4cc77a # v3.25.15
+        uses: github/codeql-action/upload-sarif@eb055d739abdc2e8de2e5f4ba1a8b246daa779aa # v3.26.0
         with:
           sarif_file: 'bandit-results.sarif'
 
@@ -66,7 +66,7 @@ jobs:
         with:
           python-version-file: '.python-version'
       - name: Install poetry
-        uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b # v1.3.4
+        uses: snok/install-poetry@76e04a911780d5b312d89783f7b1cd627778900a # v1.4.1
         with:
           version: 1.8.3
           virtualenvs-create: false
@@ -99,14 +99,14 @@ jobs:
         shell: bash
       - name: Scan
         if: inputs.output == 'table'
-        uses: bridgecrewio/checkov-action@f34d0f0acd8974b1655797c684ecd907aa3ef929 # v12.2837.0
+        uses: bridgecrewio/checkov-action@d26020ae0b8dfdddfab43acf7fdcf3b1f7298246 # v12.2845.0
         with:
           skip_check: CKV_DOCKER_2
           output_format: cli
           soft_fail: false
       - name: Scan
         if: inputs.output == 'sarif'
-        uses: bridgecrewio/checkov-action@f34d0f0acd8974b1655797c684ecd907aa3ef929 # v12.2837.0
+        uses: bridgecrewio/checkov-action@d26020ae0b8dfdddfab43acf7fdcf3b1f7298246 # v12.2845.0
         with:
           skip_check: CKV_DOCKER_2
           output_file_path: console,checkov-results.sarif
@@ -114,7 +114,7 @@ jobs:
           soft_fail: true
       - name: Upload
         if: inputs.output == 'sarif'
-        uses: github/codeql-action/upload-sarif@afb54ba388a7dca6ecae48f608c4ff05ff4cc77a # v3.25.15
+        uses: github/codeql-action/upload-sarif@eb055d739abdc2e8de2e5f4ba1a8b246daa779aa # v3.26.0
         with:
           sarif_file: checkov-results.sarif
 
@@ -131,11 +131,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@afb54ba388a7dca6ecae48f608c4ff05ff4cc77a # v3.25.15
+      uses: github/codeql-action/init@eb055d739abdc2e8de2e5f4ba1a8b246daa779aa # v3.26.0
       with:
         languages: 'python'
     - name: Analyze
-      uses: github/codeql-action/analyze@afb54ba388a7dca6ecae48f608c4ff05ff4cc77a # v3.25.15
+      uses: github/codeql-action/analyze@eb055d739abdc2e8de2e5f4ba1a8b246daa779aa # v3.26.0
 
   hadolint:
     runs-on: ubuntu-latest
@@ -164,7 +164,7 @@ jobs:
           no-fail: true
           output-file: hadolint-results.sarif
       - name: Upload
-        uses: github/codeql-action/upload-sarif@afb54ba388a7dca6ecae48f608c4ff05ff4cc77a # v3.25.15
+        uses: github/codeql-action/upload-sarif@eb055d739abdc2e8de2e5f4ba1a8b246daa779aa # v3.26.0
         if: inputs.output == 'sarif'
         with:
           sarif_file: 'hadolint-results.sarif'
@@ -197,7 +197,7 @@ jobs:
           format: sarif
           output-file: kubelinter-results.sarif
       - name: Upload
-        uses: github/codeql-action/upload-sarif@afb54ba388a7dca6ecae48f608c4ff05ff4cc77a # v3.25.15
+        uses: github/codeql-action/upload-sarif@eb055d739abdc2e8de2e5f4ba1a8b246daa779aa # v3.26.0
         if: inputs.output == 'sarif'
         with:
           sarif_file: 'kubelinter-results.sarif'
@@ -215,7 +215,7 @@ jobs:
         with:
           python-version-file: '.python-version'
       - name: Install poetry
-        uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b # v1.3.4
+        uses: snok/install-poetry@76e04a911780d5b312d89783f7b1cd627778900a # v1.4.1
         with:
           version: 1.8.3
           virtualenvs-create: false
@@ -249,7 +249,7 @@ jobs:
         if: inputs.output == 'sarif'
         run: semgrep ci --config=auto --suppress-errors --sarif --output=semgrep-results.sarif || exit 0
       - name: Upload
-        uses: github/codeql-action/upload-sarif@afb54ba388a7dca6ecae48f608c4ff05ff4cc77a # v3.25.15
+        uses: github/codeql-action/upload-sarif@eb055d739abdc2e8de2e5f4ba1a8b246daa779aa # v3.26.0
         if: inputs.output == 'sarif'
         with:
           sarif_file: semgrep-results.sarif
