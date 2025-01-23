@@ -1,5 +1,5 @@
 ## BASE
-FROM alpine:3.20.3@sha256:beefdbd8a1da6d2915566fde36db9db0b524eb737fc57cd1367effd16dc0d06d as base
+FROM alpine:3.21.2@sha256:56fa17d2a7e7f168a043a2712e63aed1f8543aeafdcee47c58dcffe38ed51099 as base
 
 COPY .python-version /
 RUN apk add --no-cache python3~="$(cat .python-version)"
