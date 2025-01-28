@@ -29,7 +29,7 @@ optional = false
 bandit = "1.8.2"
 bandit-sarif-formatter = "1.1.1"
 black = "24.10.0"
-pylint = "3.3.3"
+pylint = "3.3.4"
 
 [tool.poetry.group.test]
 optional = false
